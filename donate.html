@@ -4,57 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate – WSUA</title>
+
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg">
+
+    <!-- Full-site search engine -->
+    <script src="assets/js/fuse.min.js"></script>
+    <script src="assets/js/search-index.js" defer></script>
+    <script src="assets/js/search.js" defer></script>
 </head>
 
 <body>
 
-    <nav class="navbar">
+    <!-- FLOATING WATERMARK + VIGNETTE -->
+    <div class="watermark"></div>
+    <div class="vignette"></div>
+
+    <!-- NAVIGATION BAR (ROOT VERSION) -->
+    <nav class="navbar fade-in">
         <div class="nav-left">
             <img src="assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
             <span class="nav-title">WSUA</span>
         </div>
+
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="programs/programs.html">Programs</a>
             <a href="about.html">About</a>
             <a href="donate.html" class="donate-btn">Donate</a>
             <a href="transparency.html">Transparency</a>
+            <span class="search-icon" onclick="toggleSearch()">🔍</span>
         </div>
     </nav>
 
+    <!-- HYBRID SEARCH BAR -->
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+        <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero fade-in-delayed" style="
+        background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('assets/images/cta-rally.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    ">
+        <div class="hero-text-wrapper">
+            <h1 class="hero-title">Support Ukraine Today</h1>
+            <p class="hero-subtitle">Your contribution strengthens communities, saves lives, and rebuilds hope.</p>
+        </div>
+    </section>
+
     <main>
-        <section class="content">
-            <h1>Donate to WSUA</h1>
-            <p>Your support strengthens Ukraine — directly, transparently, and without delay.</p>
 
-            <h2>How Your Donation Helps</h2>
-            <ul>
-                <li>Humanitarian aid</li>
-                <li>Medical support</li>
-                <li>Education and youth programs</li>
-                <li>Community resilience projects</li>
-            </ul>
-
-            <h2>Ways to Give</h2>
-            <h3>Online Donation</h3>
-            <p>[Insert donation platform link]</p>
-
-            <h3>Bank Transfer</h3>
-            <p>EIN: [insert]<br>
-               Bank: [insert]<br>
-               Account Number: [insert]<br>
-               Routing Number: [insert]<br>
-               SWIFT: [insert]</p>
-
-            <h3>Mail a Check</h3>
-            <p>Make checks payable to:<br>
-               <strong>Western Solidarity With Ukraine Alliance</strong><br>
-               [Insert mailing address]</p>
+        <!-- DONATION INTRO -->
+        <section class="content fade-in">
+            <h2>Why Your Support Matters</h2>
+            <p>
+                Every donation to WSUA directly supports humanitarian aid, reconstruction, community resilience, and
+                diaspora programs. We operate with full transparency and partner with trusted organizations in Ukraine
+                to ensure your contribution has real impact.
+            </p>
         </section>
+
+        <!-- DONATION OPTIONS -->
+        <section class="content fade-in">
+            <h2>Choose Your Impact</h2>
+
+            <div class="card" style="background:#005bbb; color:white; height:auto; padding:2rem;">
+                <h3>General Support Fund</h3>
+                <p>Helps sustain all WSUA programs and respond to urgent needs.</p>
+            </div>
+
+            <div class="card" style="background:#ffd500; color:#222; height:auto; padding:2rem;">
+                <h3>Humanitarian Aid</h3>
+                <p>Provides food, hygiene kits, medical supplies, and winter relief.</p>
+            </div>
+
+            <div class="card" style="background:#003f88; color:white; height:auto; padding:2rem;">
+                <h3>Reconstruction</h3>
+                <p>Supports rebuilding homes, schools, clinics, and community infrastructure.</p>
+            </div>
+
+            <div class="card" style="background:#2b6cb0; color:white; height:auto; padding:2rem;">
+                <h3>Community Resilience</h3>
+                <p>Funds micro‑grants, volunteer networks, and long‑term recovery initiatives.</p>
+            </div>
+
+            <div class="card" style="background:#1a73e8; color:white; height:auto; padding:2rem;">
+                <h3>Diaspora Support</h3>
+                <p>Strengthens Ukrainian communities across the Western United States.</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta fade-in">
+            <h2>Make a Contribution</h2>
+            <p>WSUA accepts donations via credit card, bank transfer, and partner platforms.</p>
+            <a href="#" class="btn-primary">Donate Securely</a>
+        </section>
+
     </main>
 
-    <footer>
+    <!-- FOOTER -->
+    <footer class="fade-in">
         <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
         <p>EIN: [insert EIN] • Email: [insert email]</p>
         <p>© 2026 WSUA. All rights reserved.</p>
