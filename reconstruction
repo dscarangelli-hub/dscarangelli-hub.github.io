@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconstruction – WSUA</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/emblem.svg">
+
+    <!-- Full-site search engine -->
+    <script src="../assets/js/fuse.min.js"></script>
+    <script src="../assets/js/search-index.js" defer></script>
+    <script src="../assets/js/search.js" defer></script>
+</head>
+
+<body>
+
+    <!-- FLOATING WATERMARK + VIGNETTE -->
+    <div class="watermark"></div>
+    <div class="vignette"></div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fade-in">
+        <div class="nav-left">
+            <img src="../assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
+            <span class="nav-title">WSUA</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="../about.html">About</a>
+            <a href="../donate.html" class="donate-btn">Donate</a>
+            <a href="../transparency.html">Transparency</a>
+
+            <!-- DESKTOP SEARCH ICON -->
+            <span class="search-icon" onclick="toggleSearch()">🔍</span>
+        </div>
+    </nav>
+
+    <!-- SEARCH BAR -->
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+        <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero fade-in-delayed" style="
+        background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('../assets/images/programs/reconstruction.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    ">
+        <div class="hero-text-wrapper">
+            <h1 class="hero-title">Reconstruction</h1>
+            <p class="hero-subtitle">Rebuilding homes, schools, clinics, and community infrastructure.</p>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- PROGRAM DESCRIPTION -->
+        <section class="content fade-in">
+            <h2>About This Program</h2>
+            <p>
+                WSUA’s Reconstruction Program supports the rebuilding of essential infrastructure across Ukraine. 
+                Many communities have suffered extensive damage to homes, schools, medical facilities, and public 
+                buildings — structures that form the backbone of daily life and long-term stability.
+            </p>
+
+            <p>
+                Our reconstruction efforts focus on:
+            </p>
+
+            <ul>
+                <li>Repairing damaged homes for displaced and returning families</li>
+                <li>Rebuilding schools and educational facilities</li>
+                <li>Restoring clinics and community health centers</li>
+                <li>Supporting local contractors and Ukrainian-led rebuilding initiatives</li>
+                <li>Providing materials, tools, and logistical support</li>
+            </ul>
+        </section>
+
+        <!-- IMPACT SECTION -->
+        <section class="content fade-in">
+            <h2>Impact</h2>
+            <p>
+                Reconstruction is more than rebuilding structures — it restores dignity, stability, and hope. 
+                Every completed project strengthens a community’s ability to recover and thrive.
+            </p>
+
+            <ul>
+                <li>Homes repaired for families returning to liberated areas</li>
+                <li>Schools restored to allow children to resume education</li>
+                <li>Clinics reopened to provide essential medical care</li>
+                <li>Local workers employed through reconstruction partnerships</li>
+            </ul>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta fade-in">
+            <h2>Support Reconstruction</h2>
+            <p>Your contribution helps rebuild the foundations of Ukrainian communities.</p>
+            <a href="../donate.html" class="btn-primary">Donate to This Program</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="fade-in">
+        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
+        <p>EIN: [insert EIN] • Email: [insert email]</p>
+        <p>© 2026 WSUA. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
