@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanitarian Aid – WSUA</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/emblem.svg">
+
+    <!-- Full-site search engine -->
+    <script src="../assets/js/fuse.min.js"></script>
+    <script src="../assets/js/search-index.js" defer></script>
+    <script src="../assets/js/search.js" defer></script>
+</head>
+
+<body>
+
+    <!-- FLOATING WATERMARK + VIGNETTE -->
+    <div class="watermark"></div>
+    <div class="vignette"></div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar fade-in">
+        <div class="nav-left">
+            <img src="../assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
+            <span class="nav-title">WSUA</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="../about.html">About</a>
+            <a href="../donate.html" class="donate-btn">Donate</a>
+            <a href="../transparency.html">Transparency</a>
+
+            <!-- DESKTOP SEARCH ICON -->
+            <span class="search-icon" onclick="toggleSearch()">🔍</span>
+        </div>
+    </nav>
+
+    <!-- SEARCH BAR -->
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+        <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero fade-in-delayed" style="
+        background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('../assets/images/programs/humanitarian.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    ">
+        <div class="hero-text-wrapper">
+            <h1 class="hero-title">Humanitarian Aid</h1>
+            <p class="hero-subtitle">Emergency relief for families and frontline communities.</p>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- PROGRAM DESCRIPTION -->
+        <section class="content fade-in">
+            <h2>About This Program</h2>
+            <p>
+                WSUA’s Humanitarian Aid Program delivers essential relief to Ukrainians affected by war — including
+                displaced families, elderly residents, frontline communities, and those living in recently liberated
+                regions. Our support focuses on immediate survival needs while maintaining transparency and dignity in
+                every delivery.
+            </p>
+
+            <p>
+                Working with trusted partners across Ukraine, we provide:
+            </p>
+
+            <ul>
+                <li>Food packages and clean water</li>
+                <li>Hygiene kits and sanitation supplies</li>
+                <li>Medical supplies and first-aid materials</li>
+                <li>Winter clothing, blankets, and heating essentials</li>
+                <li>Emergency support for displaced families</li>
+            </ul>
+        </section>
+
+        <!-- IMPACT SECTION -->
+        <section class="content fade-in">
+            <h2>Impact</h2>
+            <p>
+                Your support helps deliver life-saving aid directly to communities in need. Every contribution strengthens
+                Ukraine’s resilience and ensures families receive the essentials required to survive and rebuild.
+            </p>
+
+            <ul>
+                <li>Over 1,000 families supported through partner networks</li>
+                <li>Winter relief delivered to frontline regions</li>
+                <li>Medical kits distributed to community volunteers</li>
+                <li>Food and hygiene supplies delivered to displaced families</li>
+            </ul>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta fade-in">
+            <h2>Support Humanitarian Aid</h2>
+            <p>Your contribution provides immediate relief to families across Ukraine.</p>
+            <a href="../donate.html" class="btn-primary">Donate to This Program</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="fade-in">
+        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
+        <p>EIN: [insert EIN] • Email: [insert email]</p>
+        <p>© 2026 WSUA. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
