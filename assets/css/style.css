@@ -171,3 +171,35 @@ footer {
     .hero-subtitle { font-size: 1.1rem; }
     .card { height: 220px; }
 }
+/* FIXED HERO BACKGROUND */
+.hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../images/hero-bg.jpg') center/cover no-repeat;
+    background-attachment: fixed;
+    z-index: -3;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: -2;
+}
+
+.hero-text-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
