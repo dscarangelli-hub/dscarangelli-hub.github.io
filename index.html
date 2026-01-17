@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg">
 
-    <!-- Full-site search engine -->
+    <!-- Search -->
     <script src="assets/js/fuse.min.js"></script>
     <script src="assets/js/search-index.js" defer></script>
     <script src="assets/js/search.js" defer></script>
@@ -16,14 +16,14 @@
 
 <body>
 
-    <!-- FLOATING WATERMARK + VIGNETTE -->
+    <!-- WATERMARK + VIGNETTE -->
     <div class="watermark"></div>
     <div class="vignette"></div>
 
-    <!-- NAVIGATION BAR -->
+    <!-- NAVBAR -->
     <nav class="navbar fade-in">
         <div class="nav-left">
-            <img src="assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
+            <img src="assets/images/emblem.svg" class="nav-logo">
             <span class="nav-title">WSUA</span>
         </div>
 
@@ -37,22 +37,18 @@
         </div>
     </nav>
 
-    <!-- HYBRID SEARCH BAR -->
+    <!-- SEARCH BAR -->
     <div id="search-container" class="search-container">
-        <input type="text" id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+        <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
         <div id="search-results" class="search-results"></div>
     </div>
 
-    <!-- HERO SECTION (Seattle Protest Parallax) -->
-    <section class="hero fade-in-delayed" style="
-        background:
-            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-            url('assets/images/hero-bg.jpg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-    ">
-        <div class="hero-text-wrapper">
+    <!-- HERO — 3‑LAYER SCROLL‑SPEED PARALLAX -->
+    <section class="hero">
+        <div class="hero-bg layer-back"></div>
+        <div class="hero-overlay layer-mid"></div>
+
+        <div class="hero-text-wrapper layer-front">
             <h1 class="hero-title">Western Solidarity With Ukraine Alliance</h1>
             <p class="hero-subtitle">Rooted in unity. Growing in action.</p>
             <a href="donate.html" class="btn-primary">Donate Now</a>
@@ -61,58 +57,55 @@
 
     <main>
 
-        <!-- MISSION SECTION -->
+        <!-- MISSION -->
         <section class="content fade-in">
             <h2>Our Mission</h2>
             <p>
                 WSUA mobilizes communities across the Western United States to support Ukraine through transparent aid,
-                cultural solidarity, and sustained partnership. We believe solidarity is a living bond — one built through
-                action, trust, and shared purpose.
+                cultural solidarity, and sustained partnership.
             </p>
         </section>
 
-        <!-- WHAT WE DO -->
+        <!-- PROGRAM CARDS -->
         <section class="content fade-in">
             <h2>What We Do</h2>
 
-            <!-- CLICKABLE PROGRAM CARDS -->
             <a href="programs/humanitarian.html" class="card-link">
-                <div class="card fade-in" style="background-image: url('assets/images/programs/humanitarian.jpg');">
+                <div class="card" style="background-image:url('assets/images/programs/humanitarian.jpg');">
                     <h3>Humanitarian Aid</h3>
-                    <p>Emergency relief, food, hygiene kits, winter gear, and essential supplies.</p>
+                    <p>Emergency relief and essential supplies.</p>
                 </div>
             </a>
 
             <a href="programs/reconstruction.html" class="card-link">
-                <div class="card fade-in" style="background-image: url('assets/images/programs/reconstruction.jpg');">
+                <div class="card" style="background-image:url('assets/images/programs/reconstruction.jpg');">
                     <h3>Reconstruction</h3>
-                    <p>Rebuilding homes, schools, clinics, and community infrastructure.</p>
+                    <p>Rebuilding homes, schools, and clinics.</p>
                 </div>
             </a>
 
             <a href="programs/resilience.html" class="card-link">
-                <div class="card fade-in" style="background-image: url('assets/images/programs/resilience.jpg');">
+                <div class="card" style="background-image:url('assets/images/programs/resilience.jpg');">
                     <h3>Community Resilience</h3>
-                    <p>Micro‑grants, partnerships, and long‑term recovery initiatives.</p>
+                    <p>Micro‑grants and long‑term recovery.</p>
                 </div>
             </a>
 
             <a href="programs/diaspora.html" class="card-link">
-                <div class="card fade-in" style="background-image: url('assets/images/programs/diaspora.jpg');">
+                <div class="card" style="background-image:url('assets/images/programs/diaspora.jpg');">
                     <h3>Diaspora Support</h3>
-                    <p>Connecting and empowering Ukrainian communities across the Western U.S.</p>
+                    <p>Strengthening Ukrainian communities in the West.</p>
                 </div>
             </a>
-
         </section>
 
-        <!-- CTA (Seattle Protest Parallax) -->
+        <!-- CTA — SHOW MORE OF THE PROTEST -->
         <section class="cta fade-in" style="
             background:
                 linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
                 url('assets/images/cta-rally.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: top center;
             background-attachment: fixed;
         ">
             <h2>Stand With Ukraine</h2>
@@ -128,6 +121,16 @@
         <p>EIN: [insert EIN] • Email: [insert email]</p>
         <p>© 2026 WSUA. All rights reserved.</p>
     </footer>
+
+    <!-- SCROLL‑SPEED PARALLAX SCRIPT -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelector('.layer-back').style.transform = `translateY(${scrolled * 0.3}px)`;
+            document.querySelector('.layer-mid').style.transform = `translateY(${scrolled * 0.15}px)`;
+            document.querySelector('.layer-front').style.transform = `translateY(${scrolled * 0.05}px)`;
+        });
+    </script>
 
 </body>
 </html>
