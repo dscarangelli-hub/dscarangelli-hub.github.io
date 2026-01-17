@@ -76,16 +76,22 @@ ul {
     opacity: 0.8;
 }
 
+/* DONATE BUTTON WITH IMAGE BACKGROUND */
 .donate-btn {
-    background: #FFD700;
     padding: 8px 16px;
     border-radius: 6px;
-    color: #003300;
+    color: white;
+    font-weight: 700;
+    background: url('../images/blue-texture.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #FFD700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     transition: 0.2s ease;
 }
 
 .donate-btn:hover {
-    background: #e6c200;
+    filter: brightness(1.15);
 }
 
 /* --------------------------------------------------
@@ -95,9 +101,8 @@ ul {
 .hero {
     text-align: center;
     padding: 140px 20px;
-    color: white;
     background:
-        linear-gradient(to bottom right, rgba(0,87,183,0.35), rgba(11,79,47,0.35)),
+        linear-gradient(to bottom right, rgba(0,87,183,0.20), rgba(11,79,47,0.20)),
         url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -105,18 +110,28 @@ ul {
     border-bottom: 4px solid #FFD700;
 }
 
-/* Ukrainian flag gradient title */
+/* Wrapper behind text for readability */
+.hero-text-wrapper {
+    display: inline-block;
+    padding: 20px 30px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+}
+
+/* Ukrainian yellow title */
 .hero-title {
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(to bottom, #0057B7, #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #FFD700;
+    text-shadow:
+        0 0 6px rgba(0,0,0,0.7),
+        0 0 12px rgba(0,0,0,0.5);
 }
 
-/* Subtitle readability */
-.hero p {
+/* Ukrainian blue subtitle */
+.hero-subtitle {
+    color: #0057B7;
     font-size: 1.2rem;
     margin-bottom: 30px;
     text-shadow: 0 2px 6px rgba(0,0,0,0.4);
