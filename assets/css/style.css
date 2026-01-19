@@ -44,12 +44,12 @@ a {
 }
 
 /* ============================
-   FULL‑SCREEN HERO (NO PARALLAX)
+   MODERN PARALLAX HERO
    ============================ */
 
 .hero {
   position: relative;
-  height: 100vh; /* Full screen */
+  height: 80vh; /* Adjustable */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,23 +58,25 @@ a {
   overflow: hidden;
 }
 
-/* Background image */
-.hero-bg {
+/* Parallax background using pseudo-element */
+.hero::before {
+  content: "";
   position: absolute;
   inset: 0;
   background: url('../images/hero-bg.jpg') center center / cover no-repeat;
-  z-index: -3;
+  transform: translateZ(-1px) scale(2); /* Creates depth */
+  z-index: -2;
 }
 
-/* Dark overlay */
+/* Overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: -2;
+  z-index: -1;
 }
 
-/* Text wrapper */
+/* Text */
 .hero-text-wrapper {
   position: relative;
   z-index: 1;
@@ -122,3 +124,82 @@ a {
   margin-bottom: 1rem;
 }
 
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================
+   PROGRAM CARDS
+   ============================ */
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+.program-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+}
+
+.program-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.program-card .content {
+  padding: 1.5rem;
+}
+
+.program-card h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.program-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
+footer {
+  background: #003566;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar a {
+    margin: 0.5rem 0;
+  }
+}
