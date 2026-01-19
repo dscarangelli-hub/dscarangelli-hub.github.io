@@ -15,8 +15,11 @@
 
 <body>
 
+    <div class="watermark"></div>
+    <div class="vignette"></div>
+
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar fade-in">
         <div class="nav-left">
             <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
             <span class="nav-title">WSUA</span>
@@ -26,7 +29,7 @@
             <a href="index.html">Home</a>
             <a href="programs/programs.html">Programs</a>
             <a href="about.html">About</a>
-            <a href="donate.html" class="btn-primary">Donate</a>
+            <a href="donate.html" class="donate-btn">Donate</a>
             <a href="transparency.html">Transparency</a>
             <span class="search-icon" onclick="toggleSearch()">🔍</span>
         </div>
@@ -38,8 +41,9 @@
         <div id="search-results" class="search-results"></div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero fade-in">
+        <div class="hero-bg" style="background-image: url('assets/images/hero-bg.jpg');"></div>
         <div class="hero-overlay"></div>
 
         <div class="hero-text-wrapper">
@@ -51,8 +55,8 @@
 
     <main>
 
-        <!-- CTA SECTION: OUR MISSION -->
-        <section class="cta-section">
+        <!-- MISSION -->
+        <section class="content fade-in">
             <h2>Our Mission</h2>
             <p>
                 WSUA mobilizes communities across the Western United States to support Ukraine through transparent aid,
@@ -60,54 +64,47 @@
             </p>
         </section>
 
-        <!-- PROGRAM GRID -->
-        <section class="program-grid">
+        <!-- PROGRAM CARDS -->
+        <section class="content fade-in">
+            <h2>What We Do</h2>
 
-            <div class="program-card">
-                <img src="assets/images/programs/humanitarian.jpg" alt="Humanitarian Aid">
-                <div class="content">
+            <a href="programs/humanitarian.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/humanitarian.jpg');">
                     <h3>Humanitarian Aid</h3>
                     <p>Emergency relief and essential supplies.</p>
-                    <a href="programs/humanitarian.html" class="btn-primary">Learn More</a>
                 </div>
-            </div>
+            </a>
 
-            <div class="program-card">
-                <img src="assets/images/programs/reconstruction.jpg" alt="Reconstruction">
-                <div class="content">
+            <a href="programs/reconstruction.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/reconstruction.jpg');">
                     <h3>Reconstruction</h3>
                     <p>Rebuilding homes, schools, and clinics.</p>
-                    <a href="programs/reconstruction.html" class="btn-primary">Learn More</a>
                 </div>
-            </div>
+            </a>
 
-            <div class="program-card">
-                <img src="assets/images/programs/resilience.jpg" alt="Community Resilience">
-                <div class="content">
+            <a href="programs/resilience.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/resilience.jpg');">
                     <h3>Community Resilience</h3>
                     <p>Micro‑grants and long‑term recovery.</p>
-                    <a href="programs/resilience.html" class="btn-primary">Learn More</a>
                 </div>
-            </div>
+            </a>
 
-            <div class="program-card">
-                <img src="assets/images/programs/diaspora.jpg" alt="Diaspora Support">
-                <div class="content">
+            <a href="programs/diaspora.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/diaspora.jpg');">
                     <h3>Diaspora Support</h3>
                     <p>Strengthening Ukrainian communities in the West.</p>
-                    <a href="programs/diaspora.html" class="btn-primary">Learn More</a>
                 </div>
-            </div>
-
+            </a>
         </section>
 
-        <!-- CTA SECTION: DONATE -->
-        <section class="cta-section" style="
+        <!-- CTA -->
+        <section class="cta fade-in" style="
             background:
                 linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
                 url('assets/images/cta-rally.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: top center;
+            background-attachment: fixed;
         ">
             <h2>Stand With Ukraine</h2>
             <p>Your support makes a real, measurable impact.</p>
@@ -117,10 +114,11 @@
     </main>
 
     <!-- FOOTER -->
-    <footer>
+    <footer class="fade-in">
         <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
         <p>© 2024 WSUA. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
+
