@@ -63,5 +63,11 @@ const searchIndex = [
         title: "Transparency",
         url: "/transparency.html",
         content: "transparency financials accountability reporting nonprofit governance"
+    },
+    {
+        title: "Document Library",
+        url: "/legal/document-library.html",
+        content: "document library legal research reparations restitution transitional justice property rights claims guidance PDFs downloads"
     }
+
 ];
