@@ -1,98 +1,62 @@
-// ------------------------------------------------------------
-// WSUA Search Index
-// Works on GitHub Pages and future custom domain
-// ------------------------------------------------------------
-
-window.WSUA_SEARCH_INDEX = [
+  const searchIndex = [
     {
         title: "Home",
-        url: "../index.html",
-        content: `
-            Western Solidarity With Ukraine Alliance.
-            Our Mission.
-            What We Do.
-            Humanitarian Aid.
-            Reconstruction.
-            Community Resilience.
-            Diaspora Support.
-        `
+        url: "/index.html",
+        content: "WSUA Western Solidarity With Ukraine Alliance humanitarian aid legal research justice restitution Ukraine support"
     },
     {
-        title: "Programs Overview",
-        url: "programs.html",
-        content: `
-            WSUA Programs.
-            Humanitarian Aid.
-            Reconstruction.
-            Community Resilience.
-            Diaspora Support.
-        `
+        title: "Programs",
+        url: "/programs/programs.html",
+        content: "WSUA programs humanitarian reconstruction resilience diaspora support Ukraine aid"
     },
     {
         title: "Humanitarian Aid",
-        url: "humanitarian.html",
-        content: `
-            Emergency relief.
-            Food, hygiene kits, medical supplies.
-            Winter clothing.
-            Support for displaced families.
-        `
+        url: "/programs/humanitarian.html",
+        content: "humanitarian aid emergency relief medical supplies displaced families Ukraine support"
     },
     {
         title: "Reconstruction",
-        url: "reconstruction.html",
-        content: `
-            Rebuilding homes, schools, clinics.
-            Infrastructure recovery.
-            Local contractor support.
-        `
+        url: "/programs/reconstruction.html",
+        content: "reconstruction rebuilding infrastructure legal research property loss Ukraine recovery"
     },
     {
         title: "Community Resilience",
-        url: "resilience.html",
-        content: `
-            Micro-grants.
-            Volunteer networks.
-            Grassroots leadership.
-            Long-term recovery.
-        `
+        url: "/programs/resilience.html",
+        content: "community resilience microgrants legal navigation recovery support Ukraine"
     },
     {
         title: "Diaspora Support",
-        url: "diaspora.html",
-        content: `
-            Ukrainian communities in the Western U.S.
-            Cultural events.
-            Advocacy.
-            Student groups.
-        `
+        url: "/programs/diaspora.html",
+        content: "diaspora support legal guidance documentation Ukrainian community Western United States"
+    },
+    {
+        title: "Legal Research Hub",
+        url: "/legal/legal-research.html",
+        content: "legal research reparations restitution transitional justice property rights wartime postwar Ukraine"
+    },
+    {
+        title: "Claims Guidance",
+        url: "/legal/claims-guidance.html",
+        content: "claims guidance restitution documentation property loss claims process Ukraine"
+    },
+    {
+        title: "WSUA Newsletter",
+        url: "/newsletter.html",
+        content: "newsletter updates videos announcements Ukraine WSUA community news"
     },
     {
         title: "About",
-        url: "../about.html",
-        content: `
-            About WSUA.
-            Mission.
-            Values.
-            Leadership.
-        `
+        url: "/about.html",
+        content: "about WSUA mission values team Ukraine support organization"
     },
     {
         title: "Donate",
-        url: "../donate.html",
-        content: `
-            Donate to WSUA.
-            Support Ukraine.
-            Program funding.
-        `
+        url: "/donate.html",
+        content: "donate support Ukraine humanitarian legal research fundraising"
     },
     {
         title: "Transparency",
-        url: "../transparency.html",
-        content: `
-            Financial transparency.
-            Reporting.
-            Accountability.
-        `
+        url: "/transparency.html",
+        content: "transparency financials accountability reporting nonprofit governance"
     }
 ];
