@@ -3,146 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSUA – Western Solidarity With Ukraine Alliance</title>
+    <title>Legal Research Hub – WSUA</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
-
-    <script src="/assets/js/fuse.min.js"></script>
-    <script src="/assets/js/search-index.js" defer></script>
-    <script src="/assets/js/search.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/legal.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/emblem.svg">
 </head>
 
 <body>
 
-    <div class="watermark"></div>
-    <div class="vignette"></div>
-
-    <!-- NAVBAR -->
-    <nav class="navbar fade-in">
+<nav class="navbar fade-in">
     <div class="nav-left">
-        <img src="/assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
+        <img src="../assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
         <span class="nav-title">WSUA</span>
     </div>
 
     <div class="nav-links">
-        <a href="/index.html" class="btn-primary">Home</a>
-        <a href="/legal/legal-overview.html">Legal Overview</a>
-        <a href="/programs/programs.html">Programs</a>
-        <a href="/newsletter.html">Newsletter</a>
-        <a href="/about.html">About</a>
-        <a href="/donate.html">Donate</a>
-        <a href="/transparency.html">Transparency</a>
+        <a href="../index.html">Home</a>
+        <a href="legal-overview.html">Legal Overview</a>
+        <a href="../newsletter.html">Newsletter</a>
+        <a href="../about.html">About</a>
+        <a href="../donate.html">Donate</a>
+        <a href="../transparency.html">Transparency</a>
     </div>
 </nav>
-    <!-- SEARCH BAR -->
-    <div id="search-container" class="search-container">
-        <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
-        <div id="search-results" class="search-results"></div>
+
+<section class="hero small-hero fade-in">
+    <div class="hero-bg" style="background-image:url('../assets/images/legal/legalresearch.jpg');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text-wrapper">
+        <h1 class="hero-title">Legal Research Hub</h1>
+        <p class="hero-subtitle">Research on reparations, restitution, transitional justice, and property rights.</p>
     </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero fade-in">
-        <div class="hero-bg" style="background-image: url('/assets/images/hero-bg.jpg');"></div>
-        <div class="hero-overlay"></div>
+<main class="content fade-in">
 
-        <div class="hero-text-wrapper">
-            <h1 class="hero-title">Western Solidarity With Ukraine Alliance</h1>
-            <p class="hero-subtitle">Advancing justice, restitution, and humanitarian support for Ukraine.</p>
-            <a href="/donate.html" class="btn-primary">Donate Now</a>
-        </div>
+    <h2>About This Hub</h2>
+    <p>
+        The WSUA Legal Research Hub provides accessible, high‑quality research on the legal frameworks that will shape 
+        Ukraine’s long‑term recovery. Our work focuses on reparations, restitution, transitional justice, property rights, 
+        and documentation standards for future claims processes.
+    </p>
+
+    <section class="content fade-in">
+        <h2>Legal Tools</h2>
+
+        <a href="claims-guidance.html" class="card-link">
+            <div class="card" style="background-image:url('../assets/images/legal/claimsguidance.jpg');">
+                <h3>Claims Guidance</h3>
+                <p>Guidance for documenting losses and preparing for future claims.</p>
+            </div>
+        </a>
+
+        <a href="document-library.html" class="card-link">
+            <div class="card" style="background-image:url('../assets/images/legal/documentlibrary.jpg');">
+                <h3>Document Library</h3>
+                <p>Browse legal research, restitution models, and documentation guides.</p>
+            </div>
+        </a>
     </section>
 
-    <main>
+    <h2>Research Areas</h2>
 
-        <!-- OUR MISSION -->
-        <section class="content fade-in">
-            <h2>Our Mission</h2>
-            <p>
-                WSUA mobilizes communities across the Western United States to support Ukraine through 
-                <strong>humanitarian aid</strong>, <strong>legal research</strong>, and 
-                <strong>justice‑focused advocacy</strong>. We work to protect the rights of displaced Ukrainians, 
-                strengthen accountability efforts, and build the foundations for long‑term recovery and restitution.
-            </p>
-        </section>
+    <h3>Reparations</h3>
+    <ul>
+        <li><a href="../assets/docs/reparations-brief.pdf" target="_blank">Reparations Models: Comparative Brief</a></li>
+        <li><a href="../assets/docs/reparations-history.pdf" target="_blank">Historical Reparations Mechanisms</a></li>
+    </ul>
 
-        <!-- WHAT WE DO -->
-        <section class="content fade-in">
-            <h2>What We Do</h2>
+    <h3>Restitution</h3>
+    <ul>
+        <li><a href="../assets/docs/property-restitution.pdf" target="_blank">Property Restitution Pathways</a></li>
+        <li><a href="../assets/docs/restitution-case-studies.pdf" target="_blank">Restitution Case Studies</a></li>
+    </ul>
 
-            <a href="/programs/humanitarian.html" class="card-link">
-                <div class="card" style="background-image:url('/assets/images/programs/humanitarian.jpg');">
-                    <h3>Humanitarian Aid</h3>
-                    <p>Emergency relief, medical supplies, and direct support for displaced families.</p>
-                </div>
-            </a>
+    <h3>Transitional Justice</h3>
+    <ul>
+        <li><a href="../assets/docs/transitional-justice-ukraine.pdf" target="_blank">Transitional Justice for Ukraine</a></li>
+        <li><a href="../assets/docs/truth-commissions.pdf" target="_blank">Truth Commissions Overview</a></li>
+    </ul>
 
-            <a href="/programs/reconstruction.html" class="card-link">
-                <div class="card" style="background-image:url('/assets/images/programs/reconstruction.jpg');">
-                    <h3>Reconstruction</h3>
-                    <p>Legal and logistical research supporting the rebuilding of homes and infrastructure.</p>
-                </div>
-            </a>
+    <h3>Property Rights</h3>
+    <ul>
+        <li><a href="../assets/docs/property-rights-wartime.pdf" target="_blank">Property Rights in Wartime</a></li>
+        <li><a href="../assets/docs/housing-loss-categories.pdf" target="_blank">Housing Loss Categories</a></li>
+    </ul>
 
-            <a href="/programs/resilience.html" class="card-link">
-                <div class="card" style="background-image:url('/assets/images/programs/resilience.jpg');">
-                    <h3>Community Resilience</h3>
-                    <p>Micro‑grants, legal navigation assistance, and long‑term recovery programs.</p>
-                </div>
-            </a>
+    <h2>Research Updates</h2>
+    <div class="updates-grid">
 
-            <a href="/programs/diaspora.html" class="card-link">
-                <div class="card" style="background-image:url('/assets/images/programs/diaspora.jpg');">
-                    <h3>Diaspora Support</h3>
-                    <p>Legal guidance and empowerment for Ukrainians across the Western U.S.</p>
-                </div>
-            </a>
-        </section>
-        <!-- LEGAL RESOURCES & RESEARCH -->
-<section class="content fade-in">
-    <h2>Legal Resources & Research</h2>
-
-    <a href="/legal/legal-research.html" class="card-link">
-        <div class="card" style="background-image:url('/assets/images/legal/legal-research-card.jpg');">
-            <h3>Legal Research Hub</h3>
-            <p>Explore reparations, restitution, transitional justice, and property rights research.</p>
+        <div class="update-card">
+            <div class="update-thumb" style="background-image:url('../assets/images/legal/update1.jpg');"></div>
+            <h3>New Comparative Study on Reparations Models</h3>
+            <p class="update-date">January 2026</p>
+            <p class="update-excerpt">A comparative analysis of post‑conflict reparations systems...</p>
+            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+            <div class="update-full">
+                <p>
+                    The study identifies key lessons for Ukraine, including hybrid funding models, 
+                    community‑based restitution mechanisms, and the importance of early documentation.
+                </p>
+            </div>
         </div>
-    </a>
 
-    <a href="/legal/claims-guidance.html" class="card-link">
-        <div class="card" style="background-image:url('/assets/images/legal/claims-guidance-card.jpg');">
-            <h3>Claims Guidance</h3>
-            <p>Learn how to prepare documentation for future restitution and claims processes.</p>
+        <div class="update-card">
+            <div class="update-thumb" style="background-image:url('../assets/images/legal/update2.jpg');"></div>
+            <h3>Property Rights Mapping Initiative Launched</h3>
+            <p class="update-date">December 2025</p>
+            <p class="update-excerpt">WSUA has begun mapping property loss categories...</p>
+            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+            <div class="update-full">
+                <p>
+                    This initiative will help displaced Ukrainians understand their rights and prepare 
+                    documentation for future claims processes.
+                </p>
+            </div>
         </div>
-    </a>
 
-    <a href="/legal/document-library.html" class="card-link">
-        <div class="card" style="background-image:url('/assets/images/legal/document-library-card.jpg');">
-            <h3>Document Library</h3>
-            <p>Access research briefs, guidance documents, and legal resources.</p>
-        </div>
-    </a>
-</section>
-        <!-- CTA -->
-        <section class="cta fade-in" style="
-            background:
-                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-                url('/assets/images/cta-rally.jpg');
-            background-size: cover;
-            background-position: top center;
-            background-attachment: fixed;
-        ">
-            <h2>Stand With Ukraine</h2>
-            <p>Your support strengthens humanitarian relief and advances Ukraine’s path to justice and recovery.</p>
-            <a href="/donate.html" class="btn-primary">Donate Today</a>
-        </section>
+    </div>
 
-    </main>
+    <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">→</a>
+    </div>
 
-    <footer class="fade-in">
-        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-        <p>© 2026 WSUA. All rights reserved.</p>
-    </footer>
+</main>
+
+<footer class="fade-in">
+    <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
+    <p>© 2026 WSUA. All rights reserved.</p>
+</footer>
+
+<script src="../assets/js/legal.js"></script>
+<script src="../assets/js/components.js"></script>
 
 </body>
 </html>
+
