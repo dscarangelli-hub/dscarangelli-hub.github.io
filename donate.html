@@ -3,185 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support Ukraine – WSUA</title>
+
+  <title>Donate - WSUA</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg" />
 
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #003366;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #003366;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .coffee-box {
-      background: #eef6ff;
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 5px solid #0070f3;
-    }
-
-    .tiers {
+    /* --- CARD STYLING FOR DONOR TIERS --- */
+    .tier-cards {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 30px;
     }
 
-    .tier {
-      border: 1px solid #ddd;
-      padding: 20px;
+    .tier-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 25px;
+      width: 300px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+      transition: transform 0.2s ease;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .tier-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .tier-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .tier-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .tier-card ul li {
+      margin-bottom: 8px;
+    }
+
+    /* --- PROGRESS BAR --- */
+    .progress-container {
+      background: #ddd;
       border-radius: 10px;
-      background: #fafafa;
+      height: 22px;
+      width: 100%;
+      margin: 15px 0;
     }
 
-    .tier h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.2rem;
-      color: #003366;
-    }
-
-    .muted {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .donate-btn {
-      display: inline-block;
-      padding: 14px 22px;
+    .progress-bar {
       background: #005bbb;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      margin-top: 10px;
+      height: 100%;
+      width: 42%; /* placeholder */
+      border-radius: 10px;
     }
 
-    .donate-btn:hover {
-      background: #004999;
+    /* --- DONOR WALL --- */
+    .donor-wall {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .donor-name {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 10px 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- SUBSCRIPTION CARDS --- */
+    .sub-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .sub-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 25px;
+      width: 300px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+    }
+
+    .sub-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .sub-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sub-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="watermark"></div>
+  <div class="vignette"></div>
 
-    <!-- HERO -->
-    <h1>Support Ukraine’s Survival and Justice</h1>
-    <p>
-      Western Solidarity with Ukraine Alliance (WSUA) supports Ukrainian communities under pressure
-      <strong>and</strong> advances legal research and advocacy to hold perpetrators accountable.
-      Your donation strengthens both immediate relief and long-term justice.
-    </p>
-
-    <!-- ONE-TIME COFFEE DONATION -->
-    <div class="section coffee-box">
-      <h2>Give Once</h2>
-      <p>
-        <strong>For the price of a coffee, you can support Ukrainian communities in need and help sustain legal research and advocacy for accountability.</strong>
-      </p>
-      <p>
-        Your one-time gift helps deliver practical support on the ground while also backing documentation, legal analysis,
-        and advocacy that keeps Ukraine’s case alive in courts and institutions.
-      </p>
-
-      <button id="donate-once" class="donate-btn">Donate Once</button>
+  <!-- NAVBAR -->
+  <nav class="navbar fade-in">
+    <div class="nav-left">
+      <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo" />
+      <span class="nav-title">WSUA</span>
     </div>
 
-    <!-- SUPPORTER TIERS -->
-    <div class="section">
-      <h2>Supporter Packages</h2>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="legal/legal-overview.html">Legal Overview</a>
+      <a href="programs/programs.html">Programs</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="about.html">About</a>
+      <a href="donate.html" class="btn-primary">Donate</a>
+      <a href="transparency.html">Transparency</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero small-hero fade-in">
+    <div class="hero-bg" style="background-image:url('assets/images/hero-bg.jpg');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text-wrapper">
+      <h1 class="hero-title">Support WSUA</h1>
+      <p class="hero-subtitle">
+        Your contribution strengthens humanitarian aid, legal advocacy, and Ukraine's path to justice.
+      </p>
+    </div>
+  </section>
+
+  <main class="content fade-in">
+
+    <!-- DONATION FORM (STRIPE INSTEAD OF DONORBOX) -->
+    <section class="content-section">
+      <h2>Make a Secure Donation</h2>
       <p>
-        Choose a meaningful tier to stand with Ukraine in both <strong>humanitarian resilience</strong> and
-        <strong>legal accountability</strong>.
+        WSUA relies on the generosity of supporters like you to deliver humanitarian relief, advance legal
+        accountability, and empower displaced Ukrainian communities. All donations are processed securely
+        through Stripe.
       </p>
 
-      <div class="tiers">
+      <p><strong>Quick one-time support (the “price of a coffee”):</strong></p>
+      <button id="donate-once" class="btn-primary">
+        Donate once with card
+      </button>
 
-        <!-- $30 TIER -->
-        <div class="tier">
-          <h3>$30 — Supporter</h3>
-          <p>
-            A steady act of solidarity that helps keep Ukrainian communities supported with essentials
-            <strong>while also contributing to ongoing legal research and documentation</strong>.
-          </p>
-          <p class="muted">
-            Your support can help a family stay connected and informed, and help researchers and advocates
-            track violations, collect evidence, and build credible records for future proceedings.
-          </p>
-          <button class="donate-btn" onclick="startTier(30)">Give $30</button>
+      <p style="margin-top: 20px;">
+        Or choose a giving tier below for a more structured contribution.
+      </p>
+    </section>
+
+    <!-- DONOR TIERS AS CARDS -->
+    <section class="content-section">
+      <h2>Giving Tiers</h2>
+      <p><em>Physical gifts are currently limited to donors within the United States.</em></p>
+
+      <div class="tier-cards">
+
+        <div class="tier-card">
+          <div class="tier-icon"></div>
+          <h3>$30 - Supporter</h3>
+          <ul>
+            <li>Digital Certificate of Solidarity</li>
+            <li>Access to WSUA Premium content when launched</li>
+            <li>One WSUA-branded chocolate bar (U.S. only)</li>
+          </ul>
+          <button class="btn-primary" onclick="startTier(30)">
+            Give $30
+          </button>
         </div>
 
-        <!-- $60 TIER -->
-        <div class="tier">
-          <h3>$60 — Advocate</h3>
-          <p>
-            A deeper commitment that strengthens local humanitarian networks
-            <strong>and amplifies legal advocacy for Ukraine</strong>.
-          </p>
-          <p class="muted">
-            Your contribution can support community-level aid and outreach, while also helping sustain legal analysis,
-            policy briefs, and advocacy efforts that push institutions to act on evidence of crimes and abuses.
-          </p>
-          <button class="donate-btn" onclick="startTier(60)">Give $60</button>
+        <div class="tier-card">
+          <div class="tier-icon"></div>
+          <h3>$60 - Advocate</h3>
+          <ul>
+            <li>Printed Certificate of Appreciation (mailed)</li>
+            <li>One bag of WSUA Coffee (U.S. only)</li>
+            <li>One WSUA-branded chocolate bar (U.S. only)</li>
+            <li>Access to all future WSUA Premium content</li>
+          </ul>
+          <button class="btn-primary" onclick="startTier(60)">
+            Give $60
+          </button>
         </div>
 
-        <!-- $120 TIER -->
-        <div class="tier">
-          <h3>$120 — Partner</h3>
-          <p>
-            A sustaining, high-impact contribution that supports long-term recovery and community resilience
-            <strong>alongside strategic legal work for justice and accountability</strong>.
-          </p>
-          <p class="muted">
-            Your partnership can help stabilize communities over time and underwrite serious legal research,
-            documentation projects, and advocacy that keeps Ukraine’s case present in international forums.
-          </p>
-          <button class="donate-btn" onclick="startTier(120)">Give $120</button>
+        <div class="tier-card">
+          <div class="tier-icon"></div>
+          <h3>$120+ - Partner</h3>
+          <ul>
+            <li>Framed Certificate of Appreciation (mailed)</li>
+            <li>Thank-You Gift Basket (U.S. only)</li>
+            <li>Access to all future WSUA Premium content</li>
+            <li>Optional recognition on the WSUA Donor Wall</li>
+          </ul>
+          <button class="btn-primary" onclick="startTier(120)">
+            Give $120
+          </button>
         </div>
 
       </div>
-    </div>
+    </section>
 
-  </div>
+    <!-- PROGRESS BAR -->
+    <section class="content-section">
+      <h2>Campaign Progress</h2>
+      <p>Your support helps us reach our operational and humanitarian goals.</p>
+
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+      </div>
+
+      <p><strong>$42,000 raised</strong> of our <strong>$100,000 goal</strong></p>
+    </section>
+
+    <!-- DONOR WALL -->
+    <section class="content-section">
+      <h2>Donor Wall</h2>
+      <p>We honor the supporters who make our work possible.</p>
+
+      <div class="donor-wall">
+        <div class="donor-name">Alexandra M.</div>
+        <div class="donor-name">Jonathan R.</div>
+        <div class="donor-name">Emily S.</div>
+        <div class="donor-name">Michael T.</div>
+        <div class="donor-name">Anonymous</div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIPTION PROGRAM -->
+    <section class="content-section">
+      <h2>WSUA Subscription Programs</h2>
+      <p>Become a sustaining supporter with one of our monthly subscription options.</p>
+
+      <div class="sub-cards">
+
+        <div class="sub-card">
+          <h3>WSUA Premium - $15/mo</h3>
+          <ul>
+            <li>Access to premium reports & updates</li>
+            <li>Digital Certificate</li>
+            <li>Exclusive behind-the-scenes content</li>
+          </ul>
+          <!-- Optional: wire to a subscription price later -->
+        </div>
+
+        <div class="sub-card">
+          <h3>Coffee &amp; Chocolate Club - $40/mo</h3>
+          <ul>
+            <li>1 bag WSUA Coffee</li>
+            <li>1 WSUA Chocolate Bar</li>
+            <li>Premium content access</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <h3>Partner Box - $75/mo</h3>
+          <ul>
+            <li>2 bags WSUA Coffee</li>
+            <li>2 chocolate bars</li>
+            <li>Quarterly physical gift</li>
+            <li>Premium content access</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BANK DETAILS + NONPROFIT STATUS (unchanged) -->
+    <section class="content-section">
+      <h2>Other Ways to Give</h2>
+
+      <h3>United States Bank Transfer (USD)</h3>
+      <ul>
+        <li><strong>Account Number:</strong> 219453356202</li>
+        <li><strong>Routing Number:</strong> 101019628</li>
+        <li><strong>SWIFT:</strong> TRWIUS35XXX</li>
+        <li><strong>Bank:</strong> Wise US Inc</li>
+        <li><strong>Address:</strong> 108 W 13th St, Wilmington, DE 19801</li>
+      </ul>
+
+      <h3>Eurozone / SEPA Transfer (EUR)</h3>
+      <ul>
+        <li><strong>IBAN:</strong> BE82 9675 3381 0968</li>
+        <li><strong>SWIFT:</strong> TRWIBEB1XXX</li>
+        <li><strong>Bank:</strong> Wise</li>
+        <li><strong>Address:</strong> Rue du Trône 100, Brussels</li>
+      </ul>
+
+      <h3>United Kingdom Bank Transfer (GBP)</h3>
+      <ul>
+        <li><strong>Account Number:</strong> 47116852</li>
+        <li><strong>Sort Code:</strong> 60-84-64</li>
+        <li><strong>IBAN:</strong> GB48 TRWI 6084 6447 1168 52</li>
+        <li><strong>SWIFT:</strong> TRWIGB2LXXX</li>
+        <li><strong>Bank:</strong> Wise Payments Limited</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Organizational Status</h2>
+
+      <p>
+        <strong>WSUA - Western Solidarity With Ukraine Alliance</strong> is a registered nonprofit organization in the
+        State of Washington.
+      </p>
+
+      <p>
+        <em>WSUA is not yet a 501(c)(3) tax-exempt organization. We are actively preparing our IRS application and
+        will update donors immediately once approved.</em>
+      </p>
+
+      <p>
+        At this time, donations may not be tax-deductible for U.S. federal income tax purposes.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="fade-in">
+    <p><strong>WSUA - Western Solidarity With Ukraine Alliance</strong></p>
+    <p>© 2026 WSUA. All rights reserved.</p>
+  </footer>
 
   <!-- STRIPE -->
   <script src="https://js.stripe.com/v3/"></script>
   <script>
-    // Replace with your real publishable key from Stripe
     const stripe = Stripe("YOUR_PUBLISHABLE_KEY");
+    const WORKER_BASE = "https://wsua-2.dominicscar-law.workers.dev";
 
-    // One-time donation (coffee-level or default amount via Checkout)
-    document.getElementById("donate-once").onclick = async () => {
-      const res = await fetch("YOUR_WORKER_URL/create-checkout", {
+    // One-time “coffee” style donation (Worker can decide default amount or use a fixed price)
+    document.getElementById("donate-once").addEventListener("click", async () => {
+      const res = await fetch(`${WORKER_BASE}/create-checkout`, {
         method: "POST"
       });
 
@@ -196,11 +370,11 @@
       if (result.error) {
         alert(result.error.message);
       }
-    };
+    });
 
-    // Tiered donations (30, 60, 120) – assumes your Worker can accept a JSON body with { amount }
+    // Tiered donations (30, 60, 120) – expects Worker to accept { amount } in the body
     async function startTier(amount) {
-      const res = await fetch("YOUR_WORKER_URL/create-checkout", {
+      const res = await fetch(`${WORKER_BASE}/create-checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount })
@@ -219,6 +393,5 @@
       }
     }
   </script>
-
 </body>
 </html>
