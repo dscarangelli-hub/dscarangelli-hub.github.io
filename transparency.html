@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+  <!-- GLOBAL BACKGROUND -->
   <div class="watermark"></div>
   <div class="vignette"></div>
 
@@ -47,12 +49,18 @@
     </div>
   </section>
 
+  <!-- MAIN CONTENT -->
   <main class="content fade-in">
 
     <!-- TRANSPARENCY VALUES -->
     <section class="content-section wsua-values">
       <h2>Our Commitment to Transparency</h2>
-      <p>Western Solidarity With Ukraine Alliance (WSUA) was founded on the belief that humanitarian work must be accountable, verifiable, and open to public scrutiny. Transparency is not an optional virtue for us — it is a core operational value.</p>
+
+      <p>
+        Western Solidarity With Ukraine Alliance (WSUA) was founded on the belief that humanitarian work must be accountable,
+        verifiable, and open to public scrutiny. Transparency is not an optional virtue for us — it is a core operational value.
+      </p>
+
       <ul class="values-list">
         <li><strong>Radical Openness:</strong> All financial reports, donor-source disclosures, and governance documents are made publicly accessible.</li>
         <li><strong>Accountability to Donors:</strong> Every contribution is tracked, documented, and tied to a verifiable program outcome.</li>
@@ -62,7 +70,11 @@
       </ul>
 
       <h3>About U.S. 501(c)(3) Compliance</h3>
-      <p>WSUA intends to pursue federal 501(c)(3) charitable status. While we are not yet recognized as a 501(c)(3), we voluntarily follow widely accepted nonprofit compliance norms, including:</p>
+      <p>
+        WSUA intends to pursue federal 501(c)(3) charitable status. While we are not yet recognized as a 501(c)(3), we voluntarily
+        follow widely accepted nonprofit compliance norms, including:
+      </p>
+
       <ul class="values-list">
         <li><strong>Clear Organizational Purpose:</strong> Activities must align with a charitable, educational, or humanitarian mission.</li>
         <li><strong>No Private Benefit:</strong> Funds cannot personally benefit board members, officers, or insiders.</li>
@@ -80,36 +92,10 @@
       </div>
     </section>
 
-    <!-- LEGAL & GOVERNANCE DOCUMENTS -->
+    <!-- AUTO-GENERATED DOCUMENT LIST -->
     <section class="content-section wsua-section">
-      <h2>Legal & Governance</h2>
-      <ul class="document-list">
-
-        <li class="document">
-          <img src="/assets/icons/pdf-wsua-large.svg" alt="PDF icon" class="doc-icon">
-          <div class="doc-info">
-            <a href="/docs/articles.pdf" class="doc-title">Articles of Incorporation</a>
-            <p class="doc-meta">PDF • Filed 2024</p>
-          </div>
-        </li>
-
-        <li class="document">
-          <img src="/assets/icons/pdf-wsua-large.svg" alt="PDF icon" class="doc-icon">
-          <div class="doc-info">
-            <a href="/docs/Charities%20Filing%20information.pdf" class="doc-title">Charities Filing Information</a>
-            <p class="doc-meta">PDF • Submitted 2024</p>
-          </div>
-        </li>
-
-        <li class="document">
-          <img src="/assets/icons/pdf-wsua-large.svg" alt="PDF icon" class="doc-icon">
-          <div class="doc-info">
-            <a href="/docs/WA%20CC%20registration%20con.pdf" class="doc-title">Washington Charitable Registration Confirmation</a>
-            <p class="doc-meta">PDF • Confirmed 2024</p>
-          </div>
-        </li>
-
-      </ul>
+      <h2>Documents</h2>
+      <ul id="auto-documents" class="document-list"></ul>
     </section>
 
   </main>
@@ -119,6 +105,110 @@
     <p><strong>WSUA - Western Solidarity With Ukraine Alliance</strong></p>
     <p>© 2026 WSUA. All rights reserved.</p>
   </footer>
+
+  <!-- AUTO DOCUMENT SCRIPT -->
+  <script>
+    async function loadDocuments() {
+      const repoOwner = "dscarangelli-hub";
+      const repoName = "dscarangelli-hub.github.io";
+      const folderPath = "docs";
+
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+      const commitsApi = `https://api.github.com/repos/${repoOwner}/${repoName}/commits?path=${folderPath}`;
+
+      const response = await fetch(apiUrl);
+      const files = await response.json();
+
+      const commitResponse = await fetch(commitsApi);
+      const commits = await commitResponse.json();
+
+      const container = document.getElementById("auto-documents");
+
+      const iconMap = {
+        "pdf": "/assets/icons/pdf-wsua-large.svg",
+        "doc": "/assets/icons/docx-wsua-large.svg",
+        "docx": "/assets/icons/docx-wsua-large.svg",
+        "xlsx": "/assets/icons/xlsx-wsua-large.svg",
+        "xls": "/assets/icons/xlsx-wsua-large.svg",
+        "csv": "/assets/icons/csv-wsua-large.svg",
+        "txt": "/assets/icons/file-wsua-large.svg"
+      };
+
+      const categories = {
+        "Legal": [],
+        "Registration": [],
+        "Financial": [],
+        "Other": []
+      };
+
+      const prettyName = (filename) => {
+        return filename
+          .replace(/[-_]/g, " ")
+          .replace(/\.[^/.]+$/, "")
+          .replace(/\b\w/g, c => c.toUpperCase());
+      };
+
+      const categorize = (name) => {
+        const lower = name.toLowerCase();
+        if (lower.includes("article") || lower.includes("bylaw") || lower.includes("policy")) return "Legal";
+        if (lower.includes("charities") || lower.includes("registration") || lower.includes("wa cc")) return "Registration";
+        if (lower.includes("ledger") || lower.includes("financial") || lower.includes("statement")) return "Financial";
+        return "Other";
+      };
+
+      const getLastUpdated = (filename) => {
+        const commit = commits.find(c => c.files?.some(f => f.filename.endsWith(filename)));
+        if (!commit) return "Recently Updated";
+        return new Date(commit.commit.author.date).toLocaleDateString();
+      };
+
+      const formatSize = (bytes) => {
+        if (bytes < 1024) return bytes + " B";
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+        return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+      };
+
+      files.forEach(file => {
+        if (file.type !== "file") return;
+        if (file.name.toLowerCase().includes("placeholder")) return;
+
+        const ext = file.name.split(".").pop().toLowerCase();
+        const icon = iconMap[ext] || "/assets/icons/file-wsua-large.svg";
+
+        const title = prettyName(file.name);
+        const size = formatSize(file.size);
+        const updated = getLastUpdated(file.name);
+        const category = categorize(file.name);
+
+        const item = document.createElement("li");
+        item.className = "document";
+
+        item.innerHTML = `
+          <img src="${icon}" class="doc-icon" alt="File icon">
+          <div class="doc-info">
+            <a href="/docs/${file.name}" class="doc-title">${title}</a>
+            <p class="doc-meta">${ext.toUpperCase()} • ${size} • Updated ${updated}</p>
+          </div>
+        `;
+
+        categories[category].push(item);
+      });
+
+      Object.keys(categories).forEach(cat => {
+        if (categories[cat].length === 0) return;
+
+        const header = document.createElement("h3");
+        header.textContent = cat;
+        header.style.marginTop = "2rem";
+
+        container.appendChild(header);
+
+        categories[cat].forEach(item => container.appendChild(item));
+      });
+    }
+
+    loadDocuments();
+  </script>
 
 </body>
 </html>
