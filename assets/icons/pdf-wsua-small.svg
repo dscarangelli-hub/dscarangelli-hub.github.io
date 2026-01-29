@@ -1,0 +1,56 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- WSUA Mark (rounded square, subtle emboss) -->
+  <rect x="2" y="2" width="8" height="8" rx="4" 
+        fill="#d62828"/>
+
+  <!-- Emboss: inner shadow -->
+  <rect x="2" y="2" width="8" height="8" rx="4"
+        fill="none"
+        stroke="rgba(0,0,0,0.08)"
+        stroke-width="1"
+        transform="translate(0,1)"/>
+
+  <!-- Emboss: highlight -->
+  <rect x="2" y="2" width="8" height="8" rx="4"
+        fill="none"
+        stroke="rgba(255,255,255,0.12)"
+        stroke-width="1"
+        transform="translate(0,-1)"/>
+
+  <!-- WSUA text with subtle outline -->
+  <text x="3" y="8" 
+        font-family="Inter, sans-serif" 
+        font-weight="700" 
+        font-size="4.2" 
+        fill="white"
+        stroke="white"
+        stroke-width="0.3"
+        stroke-opacity="0.85">
+    WSUA
+  </text>
+
+  <!-- Document outline -->
+  <path d="M12 6h10l6 6v18H12z" 
+        fill="none" 
+        stroke="#0057b7" 
+        stroke-width="2" 
+        stroke-linejoin="round"/>
+
+  <!-- Folded corner -->
+  <path d="M22 6v6h6" 
+        fill="none" 
+        stroke="#0057b7" 
+        stroke-width="2" 
+        stroke-linejoin="round"/>
+
+  <!-- PDF label -->
+  <text x="14" y="24" 
+        font-family="Inter, sans-serif" 
+        font-weight="700" 
+        font-size="7" 
+        fill="#0057b7">
+    PDF
+  </text>
+
+</svg>
