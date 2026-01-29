@@ -1,5 +1,10 @@
 /* --- TRANSPARENCY PAGE ONLY --- */
 
+/* Use global hero system, only override background */
+.transparency-hero {
+  background-image: url('/assets/hero/transparency-hero.jpg');
+}
+
 /* Values Section */
 .wsua-values {
   background: #ffffff;
