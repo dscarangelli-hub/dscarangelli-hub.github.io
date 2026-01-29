@@ -1,0 +1,29 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Full WSUA Crest (top-left) -->
+  <image href="/assets/images/emblem.svg" x="4" y="4" width="12" height="12" />
+
+  <!-- Document outline -->
+  <path d="M20 10h20l10 10v34H20z" 
+        fill="none" 
+        stroke="#0057b7" 
+        stroke-width="2.5" 
+        stroke-linejoin="round"/>
+
+  <!-- Folded corner -->
+  <path d="M40 10v10h10" 
+        fill="none" 
+        stroke="#0057b7" 
+        stroke-width="2.5" 
+        stroke-linejoin="round"/>
+
+  <!-- PDF label -->
+  <text x="22" y="46" 
+        font-family="Inter, sans-serif" 
+        font-weight="700" 
+        font-size="12" 
+        fill="#d62828">
+    PDF
+  </text>
+
+</svg>
