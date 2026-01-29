@@ -35,11 +35,6 @@
   transform: translateY(-5px);
 }
 
-.tier-icon {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
 .tier-card h3 {
   margin-bottom: 10px;
 }
@@ -66,7 +61,7 @@
 .progress-bar {
   background: #005bbb;
   height: 100%;
-  width: 42%;
+  width: 10.3%; /* 103 / 1000 = 10.3% */
   border-radius: 10px;
 }
 
@@ -157,24 +152,25 @@
 
 <main class="content fade-in">
 
-<!-- DONATION FORM -->
+<!-- DONATION FORM (DONORBOX EMBED) -->
 <section class="content-section">
   <h2>Make a Secure Donation</h2>
   <p>
     WSUA relies on the generosity of supporters like you to deliver humanitarian relief, advance legal
     accountability, and empower displaced Ukrainian communities. All donations are processed securely
-    through Stripe.
+    through Donorbox.
   </p>
 
-  <p><strong>Quick one-time support (the “price of a coffee”):</strong></p>
-  <button id="donate-once" class="btn-primary">Donate once with card</button>
-
-  <p style="margin-top: 20px;">
-    Or choose a giving tier below for a more structured contribution.
-  </p>
+  <!-- DONORBOX EMBED -->
+  <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+  <iframe src="https://donorbox.org/YOUR-DONORBOX-CAMPAIGN"
+          height="900px" width="100%"
+          style="max-width: 500px; min-width: 310px; border: none;"
+          scrolling="no" seamless="seamless"
+          name="donorbox" frameborder="0"></iframe>
 </section>
 
-<!-- DONOR TIERS -->
+<!-- GIVING TIERS -->
 <section class="content-section">
   <h2>Giving Tiers</h2>
   <p><em>Physical gifts are currently limited to donors within the United States.</em></p>
@@ -188,7 +184,10 @@
         <li>Access to WSUA Premium content when launched</li>
         <li>One WSUA-branded chocolate bar (U.S. only)</li>
       </ul>
-      <button class="btn-primary" onclick="startTier(30)">Give $30</button>
+      <button class="btn-primary"
+              onclick="window.location.href='https://donorbox.org/YOUR-DONORBOX-CAMPAIGN?amount=30'">
+        Give $30
+      </button>
     </div>
 
     <div class="tier-card">
@@ -199,7 +198,10 @@
         <li>One WSUA-branded chocolate bar (U.S. only)</li>
         <li>Access to all future WSUA Premium content</li>
       </ul>
-      <button class="btn-primary" onclick="startTier(60)">Give $60</button>
+      <button class="btn-primary"
+              onclick="window.location.href='https://donorbox.org/YOUR-DONORBOX-CAMPAIGN?amount=60'">
+        Give $60
+      </button>
     </div>
 
     <div class="tier-card">
@@ -210,7 +212,10 @@
         <li>Access to all future WSUA Premium content</li>
         <li>Optional recognition on the WSUA Donor Wall</li>
       </ul>
-      <button class="btn-primary" onclick="startTier(120)">Give $120</button>
+      <button class="btn-primary"
+              onclick="window.location.href='https://donorbox.org/YOUR-DONORBOX-CAMPAIGN?amount=120'">
+        Give $120
+      </button>
     </div>
 
   </div>
@@ -225,7 +230,7 @@
     <div class="progress-bar"></div>
   </div>
 
-  <p><strong>$42,000 raised</strong> of our <strong>$100,000 goal</strong></p>
+  <p><strong>$103 raised</strong> of our <strong>$1,000 goal</strong></p>
 </section>
 
 <!-- DONOR WALL -->
@@ -234,11 +239,15 @@
   <p>We honor the supporters who make our work possible.</p>
 
   <div class="donor-wall">
+
+    <!-- ✏️ Add or remove donor names here -->
+    <div class="donor-name">Dominic S.</div>
     <div class="donor-name">Alexandra M.</div>
     <div class="donor-name">Jonathan R.</div>
     <div class="donor-name">Emily S.</div>
     <div class="donor-name">Michael T.</div>
     <div class="donor-name">Anonymous</div>
+
   </div>
 </section>
 
@@ -316,17 +325,19 @@
   <h2>Organizational Status</h2>
 
   <p>
-    <strong>WSUA - Western Solidarity With Ukraine Alliance</strong> is a registered nonprofit organization in the
-    State of Washington.
+    <strong>WSUA - Western Solidarity With Ukraine Alliance</strong> is a
+    registered nonprofit organization in the State of Washington.
   </p>
 
   <p>
-    <em>WSUA is not yet a 501(c)(3) tax-exempt organization. We are actively preparing our IRS application and
-    will update donors immediately once approved.</em>
+    <em>WSUA is not yet a 501(c)(3) tax-exempt organization. We are actively
+    preparing our IRS application and will update donors immediately once
+    approved.</em>
   </p>
 
   <p>
-    At this time, donations may not be tax-deductible for U.S. federal income tax purposes.
+    At this time, donations may not be tax-deductible for U.S. federal income tax
+    purposes.
   </p>
 </section>
 
@@ -336,54 +347,6 @@
   <p><strong>WSUA - Western Solidarity With Ukraine Alliance</strong></p>
   <p>© 2026 WSUA. All rights reserved.</p>
 </footer>
-
-<!-- STRIPE -->
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-const stripe = Stripe("pk_live_51StmiA03qJU1YgeOBQ9Bf6QT2BN4hu944B4ky40zHI66hdEyZerXgHjXZLeepOtVbCRr5sd6PGYJZ8ifgZdGhNRL00coeoP4Jg");
-
-const WORKER_BASE = "https://wsua-2.dominicscar-law.workers.dev";
-
-// One-time donation
-document.getElementById("donate-once").addEventListener("click", async () => {
-  const res = await fetch(`${WORKER_BASE}/create-checkout`, {
-    method: "POST"
-  });
-
-  if (!res.ok) {
-    alert("Something went wrong starting your donation. Please try again.");
-    return;
-  }
-
-  const data = await res.json();
-  const result = await stripe.redirectToCheckout({ sessionId: data.id });
-
-  if (result.error) {
-    alert(result.error.message);
-  }
-});
-
-// Tiered donations
-async function startTier(amount) {
-  const res = await fetch(`${WORKER_BASE}/create-checkout`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ amount })
-  });
-
-  if (!res.ok) {
-    alert("Something went wrong starting your donation. Please try again.");
-    return;
-  }
-
-  const data = await res.json();
-  const result = await stripe.redirectToCheckout({ sessionId: data.id });
-
-  if (result.error) {
-    alert(result.error.message);
-  }
-}
-</script>
 
 </body>
 </html>
