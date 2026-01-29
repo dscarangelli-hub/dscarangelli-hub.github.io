@@ -1,95 +1,10 @@
-/* Base layout */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Aptos, sans-serif;
-  background: #f7f9fc;
-  color: #0a0f1a;
-}
+/* --- TRANSPARENCY PAGE ONLY --- */
 
-/* NAVBAR */
-.wsua-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #ffffff;
-  border-bottom: 3px solid #0057b7;
-}
-
-.nav-logo {
-  font-weight: 800;
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: #0a0f1a;
-}
-
-.wsua-nav .nav-right a {
-  margin-left: 1.5rem;
-}
-
-.wsua-nav a {
-  text-decoration: none;
-  color: #0a0f1a;
-  font-weight: 600;
-}
-
-.wsua-nav .active {
-  color: #0057b7;
-  font-weight: 700;
-}
-
-.donate-btn {
-  padding: 0.4rem 0.9rem;
-  background: #0057b7;
-  color: #ffffff !important;
-  border-radius: 4px;
-}
-
-/* HERO */
-.wsua-hero {
-  position: relative;
-  height: 260px;
-  background: url('/assets/hero/transparency-hero.jpg') center/cover no-repeat;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #ffffff;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin: 0;
-}
-
-.hero-content p {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
-}
-
-/* Container */
-.wsua-container {
-  max-width: 900px;
-  margin: 2rem auto 3rem;
-  padding: 0 1rem;
-}
-
-/* Transparency Values Section */
+/* Values Section */
 .wsua-values {
   background: #ffffff;
   padding: 2rem;
-  margin-bottom: 3rem;
+  margin: 3rem 0;
   border: 1px solid #d9e1ec;
   border-radius: 8px;
 }
@@ -115,9 +30,10 @@ body {
 
 .values-list li {
   margin-bottom: 0.6rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
+/* Disclaimer Box */
 .wsua-disclaimer {
   margin-top: 2rem;
   padding: 1rem;
@@ -128,7 +44,7 @@ body {
   line-height: 1.5;
 }
 
-/* Section titles */
+/* Section Titles */
 .wsua-section h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -136,7 +52,7 @@ body {
   padding-left: 0.75rem;
 }
 
-/* Document list */
+/* Document List */
 .document-list {
   list-style: none;
   padding: 0;
@@ -165,7 +81,7 @@ body {
 .doc-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #0a0f1a;
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -179,29 +95,8 @@ body {
   margin-top: 0.25rem;
 }
 
-/* Mobile adjustments */
+/* Mobile */
 @media (max-width: 600px) {
-  .wsua-nav {
-    padding: 0.75rem 1rem;
-  }
-
-  .wsua-nav .nav-right a {
-    margin-left: 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .wsua-hero {
-    height: 220px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
   .doc-icon {
     width: 48px;
     height: 48px;
