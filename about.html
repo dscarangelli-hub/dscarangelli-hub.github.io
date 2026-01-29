@@ -1,50 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About – WSUA</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>About - WSUA</title>
+
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/components.css" />
+<link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg" />
+
 </head>
 
 <body>
+<div class="watermark"></div>
+<div class="vignette"></div>
 
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
-            <span class="nav-title">WSUA</span>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="donate.html" class="donate-btn">Donate</a>
-            <a href="transparency.html">Transparency</a>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar fade-in">
+  <div class="nav-left">
+    <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo" />
+    <span class="nav-title">WSUA</span>
+  </div>
 
-    <main>
-        <section class="content">
-            <h1>About WSUA</h1>
-            <p>WSUA was founded to build a living bridge of solidarity between the Western United States and Ukraine. Our emblem reflects our identity: Washington’s evergreen roots intertwined with Ukraine’s viburnum — two cultures connected in purpose.</p>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="legal/legal-overview.html">Legal Overview</a>
+    <a href="programs/programs.html">Programs</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="about.html" class="btn-primary">About</a>
+    <a href="donate.html">Donate</a>
+    <a href="transparency.html">Transparency</a>
+  </div>
+</nav>
 
-            <h2>Our Values</h2>
-            <ul>
-                <li><strong>Transparency</strong> — every donation is traceable</li>
-                <li><strong>Solidarity</strong> — unity across continents</li>
-                <li><strong>Action</strong> — real support, real impact</li>
-            </ul>
+<!-- HERO -->
+<section class="hero small-hero fade-in">
+  <div class="hero-bg" style="background-image:url('assets/images/hero-bg.jpg');"></div>
+  <div class="hero-overlay"></div>
 
-            <h2>Our Story</h2>
-            <p>WSUA began as a grassroots effort to support Ukrainian communities during crisis. Today, we continue that mission with integrity, clarity, and a commitment to long-term partnership.</p>
-        </section>
-    </main>
+  <div class="hero-text-wrapper">
+    <h1 class="hero-title">About WSUA</h1>
 
-    <footer>
-        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-        <p>EIN: [insert EIN] • Email: [insert email]</p>
-        <p>© 2026 WSUA. All rights reserved.</p>
-    </footer>
+    <p class="hero-subtitle">
+      Kitsap to Kupiansk — Port Orchard to Pokrovsk — Cascades to Carpathians
+    </p>
+
+    <div class="tagline-block fade-in" style="
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+      margin: 25px auto 0;
+      max-width: 900px;
+      padding: 12px 10px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    ">
+      Kitsap to Kupiansk — Port Orchard to Pokrovsk — Cascades to Carpathians
+    </div>
+  </div>
+</section>
+
+<main class="content fade-in">
+
+<!-- ABOUT SECTION -->
+<section class="content-section">
+  <h2>Who We Are</h2>
+
+  <p>
+    Western Solidarity With Ukraine Alliance (WSUA) was founded in <strong>2026</strong> in 
+    <strong>Port Orchard, Washington</strong>. The organization emerged as a continuation of work with the 
+    <strong>Solidarity With Ukraine Foundation in Kyiv</strong>, where our founder served as an international 
+    liaison supporting humanitarian coordination and civil society initiatives.
+  </p>
+
+  <p>
+    WSUA was created to bring that same spirit of solidarity to Washington State — connecting communities 
+    across continents through humanitarian support, partnership, and informed advocacy. Our identity is rooted 
+    in the belief that local action can have global impact, linking 
+    <strong>Kitsap to Kupiansk, Port Orchard to Pokrovsk, Cascades to Carpathians</strong>.
+  </p>
+</section>
+
+<!-- MAP BANNER -->
+<section class="map-banner fade-in" style="
+  width: 100%;
+  height: 320px;
+  background-image: url('assets/images/map-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  margin: 50px 0;
+  border-radius: 12px;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+  "></div>
+
+  <div style="
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  ">
+    A Bridge of Solidarity Across Continents
+  </div>
+</section>
+
+<!-- MISSION SECTION -->
+<section class="content-section">
+  <h2>Our Mission</h2>
+
+  <p>
+    WSUA exists to strengthen humanitarian resilience, support trusted Ukrainian partners, and advance 
+    legal research that contributes to long-term justice and recovery. We believe solidarity is not 
+    limited by geography — it is a commitment to dignity, clarity, and meaningful action.
+  </p>
+
+  <ul>
+    <li><strong>Humanitarian Assistance</strong> — providing generators, essential supplies, and community-level 
+        support to help Ukrainians endure blackouts, displacement, and infrastructure attacks.</li>
+
+    <li><strong>Support for Ukrainian Organizations</strong> — collaborating with trusted groups on the ground 
+        to reinforce local resilience, expand community programs, and ensure aid reaches those who need it most.</li>
+
+    <li><strong>Legal Research & Advocacy</strong> — drawing on our founder’s background in law, international 
+        justice, and transitional justice, WSUA conducts research on reparations, restitution, and mass claims 
+        mechanisms. This includes developing a comparative research paper and a clear, accessible guide to help 
+        Ukrainians understand their rights and prepare for future claims processes.</li>
+  </ul>
+</section>
+
+<!-- PHOTO BANNER -->
+<section class="photo-banner fade-in" style="
+  width: 100%;
+  height: 380px;
+  background-image: url('assets/images/ukraine-photo.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 50px 0;
+  border-radius: 12px;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+  "></div>
+
+  <div style="
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  ">
+    Standing With Ukraine — In Action, Not Abstraction
+  </div>
+</section>
+
+<!-- VISION SECTION -->
+<section class="content-section">
+  <h2>Our Vision</h2>
+
+  <p>
+    WSUA is built on the belief that informed, community-driven action can contribute to both immediate relief 
+    and long-term justice. What begins in Port Orchard can meaningfully support families, advocates, and 
+    communities thousands of miles away.
+  </p>
+
+  <p>
+    We envision a future where solidarity is practical, principled, and accessible — where local communities 
+    in Washington State can stand shoulder-to-shoulder with Ukrainians working toward recovery, accountability, 
+    and dignity.
+  </p>
+</section>
+
+</main>
+
+<footer class="fade-in">
+  <p><strong>WSUA - Western Solidarity With Ukraine Alliance</strong></p>
+  <p>© 2026 WSUA. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
+            
