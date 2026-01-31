@@ -19,23 +19,7 @@
     <div class="vignette"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar fade-in">
-        <div class="nav-left">
-            <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
-            <span class="nav-title">WSUA</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="index.html" class="btn-primary">Home</a>
-            <a href="legal/legal-overview.html">Legal Overview</a>
-            <a href="programs/programs.html">Programs</a>
-            <a href="newsletter.html">Newsletter</a>
-            <a href="about.html">About</a>
-            <a href="donate.html">Donate</a>
-            <a href="transparency.html">Transparency</a>
-        </div>
-    </nav>
-
+    {% include navbar.html %}
     <!-- SEARCH BAR -->
     <div id="search-container" class="search-container">
         <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
