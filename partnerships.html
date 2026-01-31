@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +12,8 @@
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="nav-left">
-        <a href="/index.html" class="nav-logo">WSUA</a>
-    </div>
-    <nav class="nav-right">
-        <a href="/about.html">About</a>
-        <a href="/donate.html">Donate</a>
-        <a href="/transparency.html">Transparency</a>
-        <a href="/partnerships.html" class="active">Partnerships</a>
-    </nav>
-</header>
+<!-- GLOBAL NAVBAR INCLUDE -->
+{% include navbar.html %}
 
 <!-- HERO -->
 <section class="hero hero-small">
@@ -30,7 +23,7 @@
     </div>
 </section>
 
-<!-- MAIN LAYOUT: CONTENT + SIDEBAR -->
+<!-- MAIN LAYOUT -->
 <div class="content-wrapper two-column">
 
     <!-- MAIN COLUMN -->
@@ -168,17 +161,14 @@
         <div class="sidebar-box">
             <h3>Partner With Us</h3>
             <p>We welcome collaborations with organizations committed to Ukraine’s recovery.</p>
-            <a href="mailto:partnerships@westernsolidarityua.org" class="btn-secondary">Reach Out</a>
+            <a href="mailto:partnerships@westernsolidarityua.org" class="btn-primary">Reach Out</a>
         </div>
     </aside>
 
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 Western Solidarity With Ukraine Alliance</p>
-    <p>EIN: 92‑XXXXXXX</p>
-</footer>
+<!-- GLOBAL FOOTER INCLUDE -->
+{% include footer.html %}
 
 </body>
 </html>
