@@ -1,0 +1,124 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Application — Western Solidarity With Ukraine Alliance</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+{% include navbar.html %}
+
+<!-- SMALL HERO -->
+<section class="hero small-hero">
+    <div class="hero-bg" style="background-image: url('/assets/images/ukraine-hero.jpg');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text-wrapper">
+        <h1 class="hero-title">Volunteer Application</h1>
+        <p class="hero-subtitle">Submit your information to join our mission.</p>
+    </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="content two-column">
+
+    <!-- MAIN COLUMN -->
+    <main class="main-column">
+
+        <h2>Apply to Volunteer</h2>
+        <p>
+            Thank you for your interest in supporting Ukraine through meaningful, mission‑driven service. 
+            Please complete the form below. Our team will review your application and follow up with next steps.
+        </p>
+
+        <hr class="section-divider">
+
+        <!-- FORM -->
+        <form 
+            action="https://formspree.io/f/your-form-id" 
+            method="POST" 
+            class="wsua-form"
+        >
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="_replyto" required>
+
+            <label for="phone">Phone Number (optional)</label>
+            <input type="text" id="phone" name="phone">
+
+            <label for="location">Location (City, Country)</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="skills">Relevant Skills or Experience</label>
+            <textarea id="skills" name="skills" rows="4" required></textarea>
+
+            <label for="interests">Areas of Interest</label>
+            <select id="interests" name="interests" required>
+                <option value="">Select one</option>
+                <option value="Humanitarian Logistics">Humanitarian Logistics</option>
+                <option value="Research & Writing">Research & Writing</option>
+                <option value="Community Outreach">Community Outreach</option>
+                <option value="Creative & Media">Creative & Media</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="General Volunteer Support">General Volunteer Support</option>
+            </select>
+
+            <label for="availability">Availability</label>
+            <textarea id="availability" name="availability" rows="3" required></textarea>
+
+            <label for="motivation">Why do you want to volunteer with WSUA?</label>
+            <textarea id="motivation" name="motivation" rows="4" required></textarea>
+
+            <!-- Hidden fields for routing -->
+            <input type="hidden" name="_to" value="Dominic@wsua.ngo">
+            <input type="hidden" name="_cc" value="info@wsua.ngo">
+            <input type="hidden" name="_subject" value="New Volunteer Application">
+
+            <button type="submit" class="btn-primary">Submit Application</button>
+        </form>
+
+        <hr class="section-divider">
+
+        <p>
+            If you prefer, you may also contact our volunteer coordination team directly at 
+            <a href="mailto:volunteer@wsua.ngo">volunteer@wsua.ngo</a>.
+        </p>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/volunteer.html">Volunteer Overview</a></li>
+                <li><a href="/partnerships.html">Partnerships</a></li>
+                <li><a href="/transparency.html">Transparency</a></li>
+                <li><a href="/donate.html">Donate</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-box">
+            <h3>Need Help?</h3>
+            <p>Our team is here to support you.</p>
+            <a href="mailto:info@wsua.ngo" class="btn-primary">Contact Us</a>
+        </div>
+
+    </aside>
+
+</div>
+
+{% include footer.html %}
+
+</body>
+</html>
