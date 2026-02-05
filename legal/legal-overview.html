@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,23 +19,9 @@
     <div class="watermark"></div>
     <div class="vignette"></div>
 
-    <nav class="navbar fade-in">
-        <div class="nav-left">
-            <img src="../assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
-            <span class="nav-title">WSUA</span>
-        </div>
+    {% include navbar.html %}
 
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="legal-overview.html" class="btn-primary">Legal Overview</a>
-            <a href="../programs/programs.html">Programs</a>
-            <a href="../newsletter.html">Newsletter</a>
-            <a href="../about.html">About</a>
-            <a href="../donate.html">Donate</a>
-            <a href="../transparency.html">Transparency</a>
-        </div>
-    </nav>
-
+    <!-- HERO -->
     <section class="hero small-hero fade-in">
         <div class="hero-bg" style="background-image:url('../assets/images/legal/legaloverview.jpg');"></div>
         <div class="hero-overlay"></div>
@@ -45,6 +34,7 @@
 
     <main class="content fade-in">
 
+        <!-- INTRO -->
         <section class="content-section">
             <h2>Why Legal Work Matters</h2>
             <p>
@@ -54,10 +44,11 @@
             </p>
         </section>
 
+        <!-- RESOURCE CARDS -->
         <section class="content-section">
             <h2>Explore Legal Resources</h2>
 
-            <a href="legal-research.html" class="card-link">
+            <a href="legal-research-hub.html" class="card-link">
                 <div class="card" style="background-image:url('../assets/images/legal/legalresearch.jpg');">
                     <h3>Legal Research Hub</h3>
                     <p>Explore research on reparations, restitution, transitional justice, and property rights.</p>
@@ -86,6 +77,7 @@
             </a>
         </section>
 
+        <!-- THEMES -->
         <section class="content-section">
             <h2>Key Themes</h2>
             <ul>
@@ -98,13 +90,9 @@
 
     </main>
 
-    <footer class="fade-in">
-        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-        <p>© 2026 WSUA. All rights reserved.</p>
-    </footer>
+    {% include footer.html %}
 
     <script src="../assets/js/components.js"></script>
 
 </body>
 </html>
-
