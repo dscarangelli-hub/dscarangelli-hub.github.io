@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,22 +19,7 @@
     <div class="watermark"></div>
     <div class="vignette"></div>
 
-    <nav class="navbar fade-in">
-        <div class="nav-left">
-            <img src="../assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
-            <span class="nav-title">WSUA</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="legal-overview.html">Legal Overview</a>
-            <a href="../programs/programs.html">Programs</a>
-            <a href="../newsletter.html">Newsletter</a>
-            <a href="../about.html">About</a>
-            <a href="../donate.html">Donate</a>
-            <a href="../transparency.html">Transparency</a>
-        </div>
-    </nav>
+    {% include navbar.html %}
 
     <section class="hero small-hero fade-in">
         <div class="hero-bg" style="background-image:url('../assets/images/legal/documentlibrary.jpg');"></div>
@@ -64,76 +52,72 @@
         <section class="content-section">
             <h2>Library</h2>
 
-            <div class="doc-grid" id="docGrid">
-
-                <div class="doc-card" data-category="reparations">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbreparations.jpg');"></div>
-                    <h3>Comparative Reparations Models</h3>
-                    <p>A brief overview of reparations frameworks relevant to Ukraine’s future claims.</p>
-                    <a href="../assets/docs/reparations-brief.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="reparations">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbreparations.jpg');"></div>
-                    <h3>Historical Reparations Mechanisms</h3>
-                    <p>Lessons from past conflicts and international reparations processes.</p>
-                    <a href="../assets/docs/reparations-history.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="property">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbproperty.jpg');"></div>
-                    <h3>Property Restitution Pathways</h3>
-                    <p>Legal options for restoring homes, land, and other property.</p>
-                    <a href="../assets/docs/property-restitution.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="property">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbproperty.jpg');"></div>
-                    <h3>Housing Loss Categories</h3>
-                    <p>Typologies of housing loss to support future claims and mapping.</p>
-                    <a href="../assets/docs/housing-loss-categories.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="transitional">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbtransitional.jpg');"></div>
-                    <h3>Transitional Justice for Ukraine</h3>
-                    <p>Options for truth, accountability, and institutional reform.</p>
-                    <a href="../assets/docs/transitional-justice-ukraine.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="transitional">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbtransitional.jpg');"></div>
-                    <h3>Truth Commissions Overview</h3>
-                    <p>Comparative analysis of truth commissions and their mandates.</p>
-                    <a href="../assets/docs/truth-commissions.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="restitution">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbclaims.jpg');"></div>
-                    <h3>Documenting Losses: Practical Guide</h3>
-                    <p>Step‑by‑step guidance for individuals documenting war‑related losses.</p>
-                    <a href="../assets/docs/documenting-losses.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-                <div class="doc-card" data-category="restitution">
-                    <div class="doc-thumb" style="background-image:url('../assets/images/legal/thumbclaims.jpg');"></div>
-                    <h3>Property Loss Reporting Form</h3>
-                    <p>A structured template for recording property damage and loss.</p>
-                    <a href="../assets/docs/property-loss-form.pdf" target="_blank" class="btn-secondary">Open PDF</a>
-                </div>
-
-            </div>
+            <!-- AUTO‑GENERATED GRID -->
+            <ul class="doc-grid" id="docGrid"></ul>
         </section>
 
     </main>
 
-    <footer class="fade-in">
-        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-        <p>© 2026 WSUA. All rights reserved.</p>
-    </footer>
+    {% include footer.html %}
 
-    <script src="../assets/js/library.js"></script>
-    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/document-loader.js"></script>
+
+    <script>
+        // Use global loader to populate the library
+        loadWSUADocuments({
+            repoOwner: "dscarangelli-hub",
+            repoName: "dscarangelli-hub.github.io",
+            folderPath: "assets/docs",
+            containerId: "docGrid",
+            categories: {
+                "Reparations": "reparations",
+                "Restitution": "restitution",
+                "Transitional Justice": "transitional",
+                "Property Rights": "property"
+            },
+            iconMap: {
+                "pdf": "/assets/icons/pdf-wsua-large.svg",
+                "doc": "/assets/icons/docx-wsua-large.svg",
+                "docx": "/assets/icons/docx-wsua-large.svg",
+                "default": "/assets/icons/file-wsua-large.svg"
+            }
+        });
+
+        // Search + filter logic
+        document.addEventListener("click", function (e) {
+            if (!e.target.classList.contains("filter-btn")) return;
+
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            e.target.classList.add("active");
+
+            const filter = e.target.dataset.filter;
+            const cards = document.querySelectorAll("#docGrid .document");
+
+            cards.forEach(card => {
+                const category = card.dataset.category;
+                if (filter === "all" || category === filter) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+
+        document.getElementById("docSearch").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            const cards = document.querySelectorAll("#docGrid .document");
+
+            cards.forEach(card => {
+                const title = card.querySelector(".doc-title")?.textContent.toLowerCase() || "";
+                const meta = card.querySelector(".doc-meta")?.textContent.toLowerCase() || "";
+                if (title.includes(query) || meta.includes(query)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
