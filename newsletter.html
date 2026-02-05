@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,24 +17,9 @@
 <div class="watermark"></div>
 <div class="vignette"></div>
 
-<nav class="navbar fade-in">
-    <div class="nav-left">
-        <img src="/assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
-        <span class="nav-title">WSUA</span>
-    </div>
+{% include navbar.html %}
 
-    <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/programs/programs.html">Programs</a>
-        <a href="/legal/legal-research.html">Legal Research</a>
-        <a href="/legal/claims-guidance.html">Claims Guidance</a>
-        <a href="/newsletter.html" class="btn-primary">Newsletter</a>
-        <a href="/about.html">About</a>
-        <a href="/donate.html">Donate</a>
-        <a href="/transparency.html">Transparency</a>
-    </div>
-</nav>
-
+<!-- SMALL HERO -->
 <section class="hero small-hero fade-in">
     <div class="hero-bg" style="background-image:url('/assets/images/newsletter/newsletter-hero.jpg');"></div>
     <div class="hero-overlay"></div>
@@ -44,22 +32,36 @@
 
 <main class="content fade-in">
 
-    <h2>Latest Updates</h2>
-    <p>Use this space to post monthly or quarterly updates about WSUA’s work, Ukraine news, and community events.</p>
+    <h2>Newsletter Archive</h2>
+    <p>
+        New newsletters appear automatically when uploaded to 
+        <code>/assets/docs/newsletters/</code>.  
+        The month and year are taken directly from the file name.
+    </p>
 
-    <div style="max-width:800px; margin:2rem auto; text-align:left; line-height:1.7;">
-        <h3>January 2026 Update</h3>
-        <p>
-            WSUA continues to expand its legal research initiatives, deepen partnerships with Ukrainian civil society 
-            groups, and support displaced families across the Western United States.
-        </p>
+    <hr class="section-divider">
 
-        <h3>Featured Story</h3>
-        <p>
-            Our team recently completed a comparative analysis of international reparations models, identifying key 
-            lessons for Ukraine’s future recovery and justice processes.
-        </p>
-    </div>
+    <ul class="newsletter-list">
+    {% assign newsletters = site.static_files 
+        | where_exp: "file", "file.path contains '/assets/docs/newsletters/'" 
+        | sort: "name" 
+        | reverse 
+    %}
+
+    {% for file in newsletters %}
+        {% assign filename = file.name | split: "." | first %}
+        {% assign parts = filename | split: "-" %}
+        {% assign month = parts[1] %}
+        {% assign year = parts[2] %}
+
+        <li>
+            <strong>WSUA Newsletter – {{ month | capitalize }} {{ year }}</strong><br>
+            <a href="{{ file.path }}" target="_blank">Download PDF</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <hr class="section-divider">
 
     <h2>Video Highlights</h2>
     <div class="video-container">
@@ -72,24 +74,9 @@
         </iframe>
     </div>
 
-    <h2>Downloadable Newsletters</h2>
-    <ul style="text-align:left; max-width:800px; margin:2rem auto; line-height:1.8;">
-        <li>
-            <strong>WSUA Newsletter – January 2026</strong><br>
-            <a href="/assets/docs/newsletter-jan-2026.pdf" target="_blank">Download PDF</a>
-        </li>
-        <li>
-            <strong>WSUA Newsletter – December 2025</strong><br>
-            <a href="/assets/docs/newsletter-dec-2025.pdf" target="_blank">Download PDF</a>
-        </li>
-    </ul>
-
 </main>
 
-<footer class="fade-in">
-    <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-    <p>© 2026 WSUA. All rights reserved.</p>
-</footer>
+{% include footer.html %}
 
 </body>
 </html>
