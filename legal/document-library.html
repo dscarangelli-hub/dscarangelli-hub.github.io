@@ -63,18 +63,20 @@
     <script src="../assets/js/document-loader.js"></script>
 
     <script>
-        // Use global loader to populate the library
+        // Load all legal documents dynamically
         loadWSUADocuments({
             repoOwner: "dscarangelli-hub",
             repoName: "dscarangelli-hub.github.io",
-            folderPath: "assets/docs",
+            folderPath: "assets/docs/legal",
             containerId: "docGrid",
+
             categories: {
                 "Reparations": "reparations",
                 "Restitution": "restitution",
                 "Transitional Justice": "transitional",
                 "Property Rights": "property"
             },
+
             iconMap: {
                 "pdf": "/assets/icons/pdf-wsua-large.svg",
                 "doc": "/assets/icons/docx-wsua-large.svg",
@@ -83,7 +85,7 @@
             }
         });
 
-        // Search + filter logic
+        // Category filter
         document.addEventListener("click", function (e) {
             if (!e.target.classList.contains("filter-btn")) return;
 
@@ -95,14 +97,11 @@
 
             cards.forEach(card => {
                 const category = card.dataset.category;
-                if (filter === "all" || category === filter) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = (filter === "all" || category === filter) ? "flex" : "none";
             });
         });
 
+        // Search filter
         document.getElementById("docSearch").addEventListener("input", function () {
             const query = this.value.toLowerCase();
             const cards = document.querySelectorAll("#docGrid .document");
@@ -110,11 +109,7 @@
             cards.forEach(card => {
                 const title = card.querySelector(".doc-title")?.textContent.toLowerCase() || "";
                 const meta = card.querySelector(".doc-meta")?.textContent.toLowerCase() || "";
-                if (title.includes(query) || meta.includes(query)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = (title.includes(query) || meta.includes(query)) ? "flex" : "none";
             });
         });
     </script>
