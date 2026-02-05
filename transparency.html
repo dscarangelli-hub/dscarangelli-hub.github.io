@@ -8,26 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Transparency – WSUA</title>
 
-  <!-- Global Styles -->
   <link rel="stylesheet" href="/assets/css/style.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
-
-  <!-- Page-Specific Styles -->
   <link rel="stylesheet" href="/assets/css/transparency.css" />
-
   <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg" />
 </head>
 
 <body>
 
-  <!-- GLOBAL BACKGROUND -->
   <div class="watermark"></div>
   <div class="vignette"></div>
 
-  <!-- GLOBAL NAVBAR -->
   {% include navbar.html %}
 
-  <!-- HERO -->
   <section class="hero small-hero fade-in">
     <div class="hero-bg" style="background-image:url('/assets/images/hero-bg.jpg');"></div>
     <div class="hero-overlay"></div>
@@ -37,10 +30,8 @@
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
   <main class="content fade-in">
 
-    <!-- TRANSPARENCY VALUES -->
     <section class="content-section wsua-values">
       <h2>Our Commitment to Transparency</h2>
 
@@ -80,7 +71,6 @@
       </div>
     </section>
 
-    <!-- AUTO-GENERATED DOCUMENT LIST -->
     <section class="content-section wsua-section">
       <h2>Documents</h2>
       <ul id="auto-documents" class="document-list"></ul>
@@ -88,111 +78,31 @@
 
   </main>
 
-  <!-- GLOBAL FOOTER -->
   {% include footer.html %}
 
-  <!-- AUTO DOCUMENT SCRIPT -->
+  <script src="/assets/js/document-loader.js"></script>
   <script>
-    async function loadDocuments() {
-      const repoOwner = "dscarangelli-hub";
-      const repoName = "dscarangelli-hub.github.io";
-      const folderPath = "docs";
-
-      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
-      const commitsApi = `https://api.github.com/repos/${repoOwner}/${repoName}/commits?path=${folderPath}`;
-
-      const response = await fetch(apiUrl);
-      const files = await response.json();
-
-      const commitResponse = await fetch(commitsApi);
-      const commits = await commitResponse.json();
-
-      const container = document.getElementById("auto-documents");
-
-      const iconMap = {
+    loadWSUADocuments({
+      repoOwner: "dscarangelli-hub",
+      repoName: "dscarangelli-hub.github.io",
+      folderPath: "docs",
+      containerId: "auto-documents",
+      categories: {
+        "Legal": "policy",
+        "Registration": "registration",
+        "Financial": "financial"
+      },
+      iconMap: {
         "pdf": "/assets/icons/pdf-wsua-large.svg",
         "doc": "/assets/icons/docx-wsua-large.svg",
         "docx": "/assets/icons/docx-wsua-large.svg",
         "xlsx": "/assets/icons/xlsx-wsua-large.svg",
         "xls": "/assets/icons/xlsx-wsua-large.svg",
         "csv": "/assets/icons/csv-wsua-large.svg",
-        "txt": "/assets/icons/file-wsua-large.svg"
-      };
-
-      const categories = {
-        "Legal": [],
-        "Registration": [],
-        "Financial": [],
-        "Other": []
-      };
-
-      const prettyName = (filename) => {
-        return filename
-          .replace(/[-_]/g, " ")
-          .replace(/\.[^/.]+$/, "")
-          .replace(/\b\w/g, c => c.toUpperCase());
-      };
-
-      const categorize = (name) => {
-        const lower = name.toLowerCase();
-        if (lower.includes("article") || lower.includes("bylaw") || lower.includes("policy")) return "Legal";
-        if (lower.includes("charities") || lower.includes("registration") || lower.includes("wa cc")) return "Registration";
-        if (lower.includes("ledger") || lower.includes("financial") || lower.includes("statement")) return "Financial";
-        return "Other";
-      };
-
-      const getLastUpdated = (filename) => {
-        const commit = commits.find(c => c.files?.some(f => f.filename.endsWith(filename)));
-        if (!commit) return "Recently Updated";
-        return new Date(commit.commit.author.date).toLocaleDateString();
-      };
-
-      const formatSize = (bytes) => {
-        if (bytes < 1024) return bytes + " B";
-        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
-        return (bytes / (1024 * 1024)).toFixed(1) + " MB";
-      };
-
-      files.forEach(file => {
-        if (file.type !== "file") return;
-        if (file.name.toLowerCase().includes("placeholder")) return;
-
-        const ext = file.name.split(".").pop().toLowerCase();
-        const icon = iconMap[ext] || "/assets/icons/file-wsua-large.svg";
-
-        const title = prettyName(file.name);
-        const size = formatSize(file.size);
-        const updated = getLastUpdated(file.name);
-        const category = categorize(file.name);
-
-        const item = document.createElement("li");
-        item.className = "document";
-
-        item.innerHTML = `
-          <img src="${icon}" class="doc-icon" alt="File icon">
-          <div class="doc-info">
-            <a href="/docs/${file.name}" class="doc-title">${title}</a>
-            <p class="doc-meta">${ext.toUpperCase()} • ${size} • Updated ${updated}</p>
-          </div>
-        `;
-
-        categories[category].push(item);
-      });
-
-      Object.keys(categories).forEach(cat => {
-        if (categories[cat].length === 0) return;
-
-        const header = document.createElement("h3");
-        header.textContent = cat;
-        header.style.marginTop = "2rem";
-
-        container.appendChild(header);
-
-        categories[cat].forEach(item => container.appendChild(item));
-      });
-    }
-
-    loadDocuments();
+        "txt": "/assets/icons/file-wsua-large.svg",
+        "default": "/assets/icons/file-wsua-large.svg"
+      }
+    });
   </script>
 
 </body>
