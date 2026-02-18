@@ -1,4 +1,4 @@
-/* ============================
+ /* ============================
    RESET
 ============================ */
 
@@ -43,7 +43,7 @@ a {
 }
 
 /* ============================
-   NAVBAR (BLUE WSUA VERSION)
+   NAVBAR
 ============================ */
 
 .navbar {
@@ -80,6 +80,7 @@ a {
   margin-left: 1.5rem;
   font-weight: 600;
   color: white;
+  cursor: pointer;
 }
 
 .nav-links a:hover,
@@ -95,23 +96,21 @@ a {
 }
 
 /* ============================
-   DESKTOP DROPDOWNS
+   DESKTOP DROPDOWNS — FINAL FIX
 ============================ */
 
 .dropdown {
   position: relative;
   display: inline-block;
-  padding-bottom: 0.4rem; /* prevents hover gap */
+}
+
+.dropdown-toggle {
+  padding-bottom: 0.6rem; /* extends hover zone */
 }
 
 .dropdown-menu {
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
   position: absolute;
-  top: 2.2rem; /* closer to toggle for stable hover */
+  top: 100%; /* sits directly under toggle */
   left: 0;
   background: #003566;
   border: 1px solid rgba(255,255,255,0.15);
@@ -119,7 +118,17 @@ a {
   min-width: 200px;
   padding: 0.5rem 0;
   z-index: 20;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-menu a {
@@ -135,14 +144,8 @@ a {
   color: #ffd500;
 }
 
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
 /* ============================
-   MOBILE HAMBURGER MENU
+   MOBILE MENU
 ============================ */
 
 .hamburger {
@@ -159,7 +162,7 @@ a {
   border-radius: 3px;
 }
 
-/* MOBILE MENU PANEL */
+/* MOBILE PANEL */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -183,6 +186,17 @@ a {
   color: white;
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+/* CLOSE BUTTON */
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
 }
 
 /* MOBILE DROPDOWNS */
@@ -215,7 +229,7 @@ a {
 }
 
 /* ============================
-   HERO SECTION
+   HERO
 ============================ */
 
 .hero {
@@ -277,7 +291,7 @@ a {
 }
 
 /* ============================
-   CONTENT SECTIONS
+   CONTENT
 ============================ */
 
 .content {
@@ -292,7 +306,7 @@ a {
 }
 
 /* ============================
-   INDEX PAGE CARDS
+   INDEX CARDS
 ============================ */
 
 .index-grid {
@@ -371,7 +385,7 @@ a {
 }
 
 /* ============================
-   CTA SECTION
+   CTA
 ============================ */
 
 .cta {
@@ -412,7 +426,7 @@ footer {
 }
 
 /* ============================
-   RESPONSIVE FIXES
+   RESPONSIVE
 ============================ */
 
 @media (max-width: 768px) {
