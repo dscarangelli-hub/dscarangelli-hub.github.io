@@ -1,480 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Donate - WSUA</title>
-
-<link rel="stylesheet" href="assets/css/style.css" />
-<link rel="stylesheet" href="assets/css/components.css" />
-<link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg" />
-
-<style>
-/* --- CARD STYLING FOR DONOR TIERS --- */
-.tier-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.tier-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 12px;
-  padding: 25px;
-  width: 300px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease;
-  text-align: center;
-}
-
-.tier-card:hover {
-  transform: translateY(-5px);
-}
-
-.tier-symbol {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.tier-card h3 {
-  margin-bottom: 10px;
-}
-
-.tier-card ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.tier-card ul li {
-  margin-bottom: 8px;
-}
-
-/* --- PROGRESS BARS --- */
-.progress-container {
-  background: #ddd;
-  border-radius: 10px;
-  height: 22px;
-  width: 100%;
-  margin: 15px 0;
-}
-
-.progress-bar {
-  background: #005bbb;
-  height: 100%;
-  border-radius: 10px;
-}
-
-/* --- DONOR WALL CARDS --- */
-.donor-wall {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  margin-top: 20px;
-}
-
-.donor-card {
-  width: 220px;
-  padding: 18px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  backdrop-filter: blur(6px);
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-
-.donor-card:hover {
-  transform: translateY(-5px);
-}
-
-.donor-tier-symbol {
-  font-size: 1.6rem;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.donor-card h3 {
-  margin: 0 0 6px 0;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.donor-name {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 6px 0;
-}
-
-.donor-amount {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* Tier Colors for Donor Wall */
-.supporter {
-  border-left: 6px solid #005bbb; /* Ukrainian blue */
-}
-
-.advocate {
-  border-left: 6px solid #ffd500; /* Ukrainian gold */
-}
-
-.partner {
-  border-left: 6px solid #00a86b; /* strong green for highest tier */
-}
-
-/* --- SUBSCRIPTION CARDS --- */
-.sub-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-}
-
-.sub-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 12px;
-  padding: 25px;
-  width: 300px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-}
-
-.sub-card h3 {
-  margin-bottom: 10px;
-}
-
-.sub-card ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.sub-card ul li {
-  margin-bottom: 8px;
-}
-
-.btn-primary {
-  cursor: pointer;
-}
-</style>
-</head>
-
-<body>
-<div class="watermark"></div>
-<div class="vignette"></div>
-
-<!-- NAVBAR -->
-<nav class="navbar fade-in">
-  <div class="nav-left">
-    <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo" />
-    <span class="nav-title">WSUA</span>
-  </div>
-
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="legal/legal-overview.html">Legal Overview</a>
-    <a href="programs/programs.html">Programs</a>
-    <a href="newsletter.html">Newsletter</a>
-    <a href="about.html">About</a>
-    <a href="donate.html" class="btn-primary">Donate</a>
-    <a href="transparency.html">Transparency</a>
-  </div>
-</nav>
+---
+layout: default
+title: Donate
+---
 
 <!-- HERO -->
 <section class="hero small-hero fade-in">
-  <div class="hero-bg" style="background-image:url('assets/images/hero-bg.jpg');"></div>
+  <div class="hero-bg" style="background-image:url('/assets/images/hero-bg.jpg');"></div>
   <div class="hero-overlay"></div>
 
   <div class="hero-text-wrapper">
-    <h1 class="hero-title">Support WSUA</h1>
-    <p class="hero-subtitle">
-      Strengthening humanitarian resilience and advancing justice for Ukraine.
-    </p>
+    <h1 class="hero-title">Support Ukraine</h1>
+    <p class="hero-subtitle">Humanitarian relief • Legal research • Community resilience</p>
   </div>
 </section>
 
 <main class="content fade-in">
 
-<!-- WHY SUPPORT UKRAINE -->
-<section class="content-section">
-  <h2>Why Your Support Matters</h2>
+  <!-- INTRO -->
+  <section class="content-section">
+    <h2>Your Support Makes a Difference</h2>
+    <p>
+      Every contribution strengthens WSUA’s humanitarian work, legal research, and community‑level support 
+      for Ukrainians affected by the war. Your donation directly fuels relief efforts, resilience programs, 
+      and justice‑focused advocacy.
+    </p>
+  </section>
 
-  <p>
-    Ukraine continues to face immense humanitarian, social, and legal challenges as a result of the ongoing
-    full‑scale invasion. Communities struggle with disrupted infrastructure, displacement, and the long-term
-    consequences of war. Your support helps us stand with Ukrainians in a way that is practical, principled,
-    and grounded in real needs.
-  </p>
+  <!-- GIVEBUTTER EMBED -->
+  <section class="content-section fade-in" style="margin-top: 2rem;">
+    <iframe
+      src="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs?embed=1"
+      width="100%"
+      height="1400"
+      frameborder="0"
+      scrolling="no"
+      allowpaymentrequest
+      style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+    ></iframe>
+  </section>
 
-  <p>WSUA directs donor support toward three core areas:</p>
+  <!-- BANK TRANSFERS -->
+  <section class="content-section fade-in">
+    <h2>Bank Transfer Options</h2>
+    <p>You may also donate via direct bank transfer using the details below.</p>
 
-  <ul>
-    <li><strong>Humanitarian assistance</strong> — providing essential items such as generators and power
-        equipment to help communities endure blackouts and infrastructure attacks.</li>
-
-    <li><strong>Support for Ukrainian organizations</strong> — partnering with trusted groups on the ground to
-        strengthen local resilience and community programs.</li>
-
-    <li><strong>Legal research and advocacy</strong> — advancing rigorous work on reparations, restitution, and
-        mass claims mechanisms, including a comparative research paper and an accessible layperson’s guide.</li>
-  </ul>
-
-  <p>
-    Every contribution — large or small — directly strengthens these efforts and helps build a foundation for
-    justice, recovery, and long-term dignity for Ukraine.
-  </p>
-</section>
-
-<!-- DONORBOX EMBED -->
-<section class="content-section">
-  <h2>Make a Secure Donation</h2>
-
-  <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
-  <iframe src="https://donorbox.org/aid-to-ukraine-904601"
-          height="900px" width="100%"
-          style="max-width: 500px; min-width: 310px; border: none;"
-          scrolling="no" seamless="seamless"
-          name="donorbox" frameborder="0"></iframe>
-</section>
-
-<!-- GIVING TIERS -->
-<section class="content-section">
-  <h2>Giving Tiers</h2>
-  <p><em>Physical gifts are currently limited to donors within the United States.</em></p>
-
-  <div class="tier-cards">
-
-    <div class="tier-card">
-      <span class="tier-symbol">⧉</span>
-      <h3>$30 - Supporter</h3>
-      <ul>
-        <li>Digital Certificate of Solidarity</li>
-        <li>Access to WSUA Premium content when launched</li>
-        <li>One WSUA-branded chocolate bar (U.S. only)</li>
-      </ul>
-      <button class="btn-primary"
-              onclick="window.location.href='https://donorbox.org/aid-to-ukraine-904601?amount=30'">
-        Give $30
-      </button>
+    <!-- UNITED STATES -->
+    <div class="bank-box" style="
+      background:#ffffff;
+      padding:20px;
+      border-radius:12px;
+      border:1px solid #ddd;
+      margin-bottom:25px;
+    ">
+      <h3>🇺🇸 United States (USD)</h3>
+      <p><strong>Bank Name:</strong> Bank of America</p>
+      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+      <p><strong>Routing Number:</strong> 125000024</p>
+      <p><strong>Account Number:</strong> 1234567890</p>
+      <p><strong>Type:</strong> Checking</p>
     </div>
 
-    <div class="tier-card">
-      <span class="tier-symbol">✶</span>
-      <h3>$60 - Advocate</h3>
-      <ul>
-        <li>Printed Certificate of Appreciation (mailed)</li>
-        <li>One bag of WSUA Coffee (U.S. only)</li>
-        <li>One WSUA-branded chocolate bar (U.S. only)</li>
-        <li>Access to all future WSUA Premium content</li>
-      </ul>
-      <button class="btn-primary"
-              onclick="window.location.href='https://donorbox.org/aid-to-ukraine-904601?amount=60'">
-        Give $60
-      </button>
+    <!-- EUROPE / SEPA -->
+    <div class="bank-box" style="
+      background:#ffffff;
+      padding:20px;
+      border-radius:12px;
+      border:1px solid #ddd;
+      margin-bottom:25px;
+    ">
+      <h3>🇪🇺 Eurozone / SEPA (EUR)</h3>
+      <p><strong>Bank Name:</strong> Wise Europe SA</p>
+      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+      <p><strong>IBAN:</strong> BE12 3456 7890 1234</p>
+      <p><strong>BIC/SWIFT:</strong> TRWIBEB1XXX</p>
     </div>
 
-    <div class="tier-card">
-      <span class="tier-symbol">✸</span>
-      <h3>$120+ - Partner</h3>
-      <ul>
-        <li>Framed Certificate of Appreciation (mailed)</li>
-        <li>Thank-You Gift Basket (U.S. only)</li>
-        <li>Access to all future WSUA Premium content</li>
-        <li>Optional recognition on the WSUA Donor Wall</li>
-      </ul>
-      <button class="btn-primary"
-              onclick="window.location.href='https://donorbox.org/aid-to-ukraine-904601?amount=120'">
-        Give $120
-      </button>
+    <!-- UNITED KINGDOM -->
+    <div class="bank-box" style="
+      background:#ffffff;
+      padding:20px;
+      border-radius:12px;
+      border:1px solid #ddd;
+    ">
+      <h3>🇬🇧 United Kingdom (GBP)</h3>
+      <p><strong>Bank Name:</strong> Wise UK</p>
+      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+      <p><strong>Sort Code:</strong> 23-14-70</p>
+      <p><strong>Account Number:</strong> 12345678</p>
+      <p><strong>SWIFT:</strong> TRWIGB2L</p>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- PROGRESS BARS -->
-<section class="content-section">
-  <h2>Campaign Progress</h2>
-  <p>
-    WSUA’s first fundraising target is divided into two essential initiatives.  
-    Each progress bar tracks a separate part of our mission.
-  </p>
-
-  <!-- INITIATIVE 1 -->
-  <h3>Phase 1 Goal: Generators & Legal Research Launch</h3>
-  <p>
-    Our initial goal of <strong>$1,000</strong> will fund WSUA’s first two initiatives:
-  </p>
-
-  <ul>
-    <li><strong>Providing generators</strong> to Ukrainian communities affected by power outages.</li>
-    <li><strong>Conducting legal research</strong> on reparations and mass claims mechanisms, including a
-        comparative research paper and a layperson’s guide.</li>
-  </ul>
-
-  <div class="progress-container">
-    <div class="progress-bar" style="width: 10.3%;"></div>
-  </div>
-  <p><strong>$103 raised</strong> of <strong>$1,000 goal</strong></p>
-
-  <hr style="margin: 40px 0; opacity: 0.3;">
-
-  <!-- INITIATIVE 2 -->
-  <h3>First‑Year Impact Goal: $10,000</h3>
-  <p>
-    This broader goal supports WSUA’s humanitarian expansion, deeper legal research, partnerships with
-    Ukrainian organizations, and operational stability throughout our first year.
-  </p>
-
-  <div class="progress-container">
-    <div class="progress-bar" style="width: 1.03%;"></div>
-  </div>
-  <p><strong>$103 raised</strong> of <strong>$10,000 goal</strong></p>
-</section>
-
-<!-- DONOR WALL -->
-<section class="content-section">
-  <h2>Donor Wall</h2>
-  <p>We honor the supporters who make our work possible. Donors giving $30 or more are recognized below.</p>
-
-  <div class="donor-wall">
-    <!-- ✏️ SUPPORTER TIER ($30–$59) -->
-    <!-- Example:
-    <div class="donor-card supporter">
-      <span class="donor-tier-symbol">⧉</span>
-      <h3>Supporter</h3>
-      <p class="donor-name">Jane Doe</p>
-      <p class="donor-amount">$30</p>
-    </div>
-    -->
-
-    <!-- ✏️ ADVOCATE TIER ($60–$119) -->
-    <!-- Example:
-    <div class="donor-card advocate">
-      <span class="donor-tier-symbol">✶</span>
-      <h3>Advocate</h3>
-      <p class="donor-name">John Smith</p>
-      <p class="donor-amount">$60</p>
-    </div>
-    -->
-
-    <!-- ✏️ PARTNER TIER ($120+) -->
-    <!-- Example:
-    <div class="donor-card partner">
-      <span class="donor-tier-symbol">✸</span>
-      <h3>Partner</h3>
-      <p class="donor-name">Emily R.</p>
-      <p class="donor-amount">$150</p>
-    </div>
-    -->
-
-  </div>
-</section>
-
-<!-- SUBSCRIPTIONS -->
-<section class="content-section">
-  <h2>WSUA Subscription Programs</h2>
-  <p>Become a sustaining supporter with one of our monthly subscription options.</p>
-
-  <div class="sub-cards">
-
-    <div class="sub-card">
-      <h3>WSUA Premium - $15/mo</h3>
-      <ul>
-        <li>Access to premium reports & updates</li>
-        <li>Digital Certificate</li>
-        <li>Exclusive behind-the-scenes content</li>
-      </ul>
-    </div>
-
-    <div class="sub-card">
-      <h3>Coffee & Chocolate Club - $40/mo</h3>
-      <ul>
-        <li>1 bag WSUA Coffee</li>
-        <li>1 WSUA Chocolate Bar</li>
-        <li>Premium content access</li>
-      </ul>
-    </div>
-
-    <div class="sub-card">
-      <h3>Partner Box - $75/mo</h3>
-      <ul>
-        <li>2 bags WSUA Coffee</li>
-        <li>2 chocolate bars</li>
-        <li>Quarterly physical gift</li>
-        <li>Premium content access</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- BANK DETAILS -->
-<section class="content-section">
-  <h2>Other Ways to Give</h2>
-
-  <h3>United States Bank Transfer (USD)</h3>
-  <ul>
-    <li><strong>Account Number:</strong> 219453356202</li>
-    <li><strong>Routing Number:</strong> 101019628</li>
-    <li><strong>SWIFT:</strong> TRWIUS35XXX</li>
-    <li><strong>Bank:</strong> Wise US Inc</li>
-    <li><strong>Address:</strong> 108 W 13th St, Wilmington, DE 19801</li>
-  </ul>
-
-  <h3>Eurozone / SEPA Transfer (EUR)</h3>
-  <ul>
-    <li><strong>IBAN:</strong> BE82 9675 3381 0968</li>
-    <li><strong>SWIFT:</strong> TRWIBEB1XXX</li>
-    <li><strong>Bank:</strong> Wise</li>
-    <li><strong>Address:</strong> Rue du Trône 100, Brussels</li>
-  </ul>
-
-  <h3>United Kingdom Bank Transfer (GBP)</h3>
-  <ul>
-    <li><strong>Account Number:</strong> 47116852</li>
-    <li><strong>Sort Code:</strong> 60-84-64</li>
-    <li><strong>IBAN:</strong> GB48 TRWI 6084 6447 1168 52</li>
-    <li><strong>SWIFT:</strong> TRWIGB2LXXX</li>
-    <li><strong>Bank:</strong> Wise Payments Limited</li>
-  </ul>
-</section>
-
-<!-- ORG STATUS -->
-<section class="content-section">
-  <h2>Organizational Status</h2>
-
-  <p>
-    <strong>WSUA - Western Solidarity With Ukraine Alliance</strong> is a
-    registered nonprofit organization in the State of Washington.
-  </p>
-
-  <p>
-    <em>WSUA is not yet a 501(c)(3) tax-exempt organization. We are actively
-    preparing our IRS application and will update donors immediately once
-    approved.</em>
-  </p>
-
-  <p>
-    At this time, donations may not be tax-deductible for U.S. federal income tax
-    purposes.
-  </p>
-</section>
+  <!-- IMPACT -->
+  <section class="content-section fade-in">
+    <h2>Where Your Donation Goes</h2>
+    <ul>
+      <li><strong>Humanitarian Aid:</strong> generators, medical supplies, emergency support for displaced families.</li>
+      <li><strong>Community Resilience:</strong> micro‑grants, local partnerships, and long‑term recovery programs.</li>
+      <li><strong>Legal Research:</strong> restitution, reparations, and mass claims documentation support.</li>
+    </ul>
+  </section>
 
 </main>
 
-<footer class="fade-in">
-  <p><strong>WSUA - Western Solidarity With Ukraine Alliance</strong></p>
-  <p>© 2026 WSUA. All rights reserved.</p>
-</footer>
-
-</body>
-          </html>
