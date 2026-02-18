@@ -1,0 +1,40 @@
+name: Generate PDF Thumbnails
+
+on:
+  push:
+    paths:
+      - "assets/docs/newsletters/*.pdf"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install poppler-utils
+        run: sudo apt-get install -y poppler-utils
+
+      - name: Create preview directory if missing
+        run: mkdir -p assets/images/newsletter/previews
+
+      - name: Generate thumbnails
+        run: |
+          for pdf in assets/docs/newsletters/*.pdf; do
+            filename=$(basename "$pdf" .pdf)
+            output="assets/images/newsletter/previews/${filename}.png"
+            pdftoppm -png -f 1 -singlefile "$pdf" "assets/images/newsletter/previews/${filename}"
+          done
+
+      - name: Commit thumbnails
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add assets/images/newsletter/previews/*.png
+          git commit -m "Auto-generated newsletter thumbnails" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
