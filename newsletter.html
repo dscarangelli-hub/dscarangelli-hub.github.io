@@ -1,65 +1,45 @@
 ---
+layout: default
+title: WSUA Newsletter
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newsletter – WSUA</title>
+<!-- HERO -->
+<section class="hero small-hero fade-in">
+  <div class="hero-bg" style="background-image:url('/assets/images/newsletter/newsletter-hero.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text-wrapper">
+    <h1 class="hero-title">WSUA Newsletter</h1>
+    <p class="hero-subtitle">Monthly updates, stories, and insights.</p>
+  </div>
+</section>
 
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg" />
-</head>
+<main class="content fade-in">
 
-<body>
+  <section class="content-section">
+    <h2>Newsletter Archive</h2>
+    <p>
+      Upload any newsletter PDF to 
+      <code>/assets/docs/newsletters/</code> 
+      and it will appear here automatically.
+    </p>
 
-  <div class="watermark"></div>
-  <div class="vignette"></div>
-
-  {% include navbar.html %}
-
-  <section class="hero small-hero fade-in">
-    <div class="hero-bg" style="background-image:url('/assets/images/newsletter/newsletter-hero.jpg');"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-text-wrapper">
-      <h1 class="hero-title">WSUA Newsletter</h1>
-      <p class="hero-subtitle">Monthly updates, stories, and insights.</p>
-    </div>
+    <ul id="newsletter-list" class="document-list"></ul>
   </section>
 
-  <main class="content fade-in">
+</main>
 
-    <section class="content-section">
-      <h2>Newsletter Archive</h2>
-      <p>
-        Upload any newsletter PDF to <code>/assets/docs/newsletters/</code> and it will appear here automatically.
-      </p>
-
-      <ul id="newsletter-list" class="document-list"></ul>
-    </section>
-
-  </main>
-
-  {% include footer.html %}
-
-  <script src="/assets/js/document-loader.js"></script>
-  <script>
-    loadWSUADocuments({
-      repoOwner: "dscarangelli-hub",
-      repoName: "dscarangelli-hub.github.io",
-      folderPath: "assets/docs/newsletters",
-      containerId: "newsletter-list",
-      categories: null,
-      iconMap: {
-        "pdf": "/assets/icons/pdf-wsua-large.svg",
-        "default": "/assets/icons/file-wsua-large.svg"
-      }
-    });
-  </script>
-
-</body>
-</html>
-
-
+<!-- DOCUMENT LOADER -->
+<script src="/assets/js/document-loader.js"></script>
+<script>
+  loadWSUADocuments({
+    repoOwner: "dscarangelli-hub",
+    repoName: "dscarangelli-hub.github.io",
+    folderPath: "assets/docs/newsletters",
+    containerId: "newsletter-list",
+    categories: null,
+    iconMap: {
+      "pdf": "/assets/icons/pdf-wsua-large.svg",
+      "default": "/assets/icons/file-wsua-large.svg"
+    }
+  });
+</script>
