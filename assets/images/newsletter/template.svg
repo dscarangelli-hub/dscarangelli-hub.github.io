@@ -6,15 +6,26 @@
       <stop offset="0%" stop-color="#005BBB"/>
       <stop offset="100%" stop-color="#FFD500"/>
     </linearGradient>
+
+    <!-- Embroidery pattern (red/black vyshyvanka diamonds) -->
+    <pattern id="embroidery" patternUnits="userSpaceOnUse" width="120" height="120">
+      <rect width="120" height="120" fill="none"/>
+      <polygon points="60,10 110,60 60,110 10,60" fill="#C1121F" opacity="0.85"/>
+      <polygon points="60,30 90,60 60,90 30,60" fill="#000000" opacity="0.9"/>
+    </pattern>
   </defs>
 
+  <!-- Background -->
   <rect width="1200" height="1600" fill="url(#wsuaGradient)" />
 
-  <!-- Emblem -->
+  <!-- Embroidery band -->
+  <rect x="0" y="1150" width="1200" height="200" fill="url(#embroidery)" opacity="0.9"/>
+
+  <!-- Emblem watermark -->
   <image href="/assets/images/emblem.svg"
-         x="450" y="180"
-         width="300" height="300"
-         opacity="0.25" />
+         x="420" y="180"
+         width="360" height="360"
+         opacity="0.22" />
 
   <!-- Title -->
   <text x="600" y="650"
@@ -47,3 +58,4 @@
   </text>
 
 </svg>
+
