@@ -4,6 +4,13 @@
         <span class="nav-title">WSUA</span>
     </div>
 
+    <!-- HAMBURGER -->
+    <div class="hamburger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="nav-links">
 
         <a href="/index.html">Home</a>
@@ -46,3 +53,47 @@
 
     </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html">Home</a>
+    <a href="/newsletter.html">Newsletter</a>
+
+    <div class="mobile-dropdown">
+        <span>Legal ▾</span>
+        <div class="mobile-dropdown-menu">
+            <a href="/legal/legal-overview.html">Legal Overview</a>
+            <a href="/legal/claims-guidance.html">Claims Guidance</a>
+            <a href="/legal/legal-research-hub.html">Legal Research Hub</a>
+            <a href="/legal/document-library.html">Document Library</a>
+            <a href="/legal/research-archive.html">Research Archive</a>
+        </div>
+    </div>
+
+    <div class="mobile-dropdown">
+        <span>About ▾</span>
+        <div class="mobile-dropdown-menu">
+            <a href="/about/team.html">Our Team</a>
+            <a href="/transparency.html">Transparency</a>
+            <a href="/partnerships.html">Partnerships</a>
+        </div>
+    </div>
+
+    <div class="mobile-dropdown">
+        <span>Solidarity Shop ▾</span>
+        <div class="mobile-dropdown-menu">
+            <a href="/coffee/roasts.html">Coffee Roasts</a>
+            <a href="/merch/apparel.html">Apparel (Coming Soon)</a>
+            <a href="/merch/gifts.html">Donor Gifts (Coming Soon)</a>
+        </div>
+    </div>
+
+    <a href="/volunteer-apply.html">Volunteer</a>
+    <a href="/donate.html" class="donate-btn">Donate</a>
+</div>
+
+<script>
+function toggleMobileMenu() {
+    document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
