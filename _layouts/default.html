@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} – WSUA</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
+
+    <!-- Search scripts -->
+    <script src="/assets/js/fuse.min.js"></script>
+    <script src="/assets/js/search-index.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+</head>
+
+<body>
+
+<div class="watermark"></div>
+<div class="vignette"></div>
+
+{% include navbar.html %}
+
+<!-- GLOBAL SEARCH BAR -->
+<div id="search-container" class="search-container">
+    <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+    <div id="search-results" class="search-results"></div>
+</div>
+
+<!-- PAGE CONTENT -->
+{{ content }}
+
+{% include footer.html %}
+
+<!-- Navbar behavior -->
+<script src="/assets/js/navbar.js"></script>
+
+</body>
+</html>
