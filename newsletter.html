@@ -15,6 +15,20 @@ title: WSUA Newsletter
 
 <main class="content fade-in">
 
+  <!-- CURRENT ISSUE -->
+  <section class="content-section">
+    <h2>Current Issue</h2>
+    <div id="current-issue" class="current-issue-box" style="
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      border:1px solid #ddd;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      display:none;
+    "></div>
+  </section>
+
+  <!-- ARCHIVE -->
   <section class="content-section">
     <h2>Newsletter Archive</h2>
     <p>
@@ -23,7 +37,12 @@ title: WSUA Newsletter
       and it will appear here automatically.
     </p>
 
-    <ul id="newsletter-list" class="document-list"></ul>
+    <div id="newsletter-grid" class="newsletter-grid" style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:1.5rem;
+      margin-top:1.5rem;
+    "></div>
   </section>
 
 </main>
@@ -35,11 +54,12 @@ title: WSUA Newsletter
     repoOwner: "dscarangelli-hub",
     repoName: "dscarangelli-hub.github.io",
     folderPath: "assets/docs/newsletters",
-    containerId: "newsletter-list",
-    categories: null,
+    containerId: "newsletter-grid",
+    currentIssueId: "current-issue",
     iconMap: {
       "pdf": "/assets/icons/pdf-wsua-large.svg",
       "default": "/assets/icons/file-wsua-large.svg"
-    }
+    },
+    enablePreviews: true
   });
 </script>
