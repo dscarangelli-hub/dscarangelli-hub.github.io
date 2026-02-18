@@ -38,16 +38,21 @@ async function loadWSUADocuments(config) {
     .filter(f => f.type === "file")
     .sort((a, b) => b.name.localeCompare(a.name));
 
-  // Detect newest file for "Current Issue"
+  // CURRENT ISSUE
   if (currentIssueBox && sorted.length > 0) {
     const newest = sorted[0];
     const newestTitle = prettyName(newest.name);
+    const baseName = newest.name.replace(".pdf", "");
+
+    const previewPath = `/assets/images/newsletter/previews/${baseName}.png`;
+    const fallbackPath = `/assets/images/newsletter/template-embroidery.svg`;
 
     currentIssueBox.style.display = "block";
     currentIssueBox.innerHTML = `
       <h3>${newestTitle}</h3>
       ${enablePreviews ? `
-        <img src="/assets/images/newsletter/preview-placeholder.png"
+        <img src="${previewPath}"
+             onerror="this.src='${fallbackPath}'"
              alt="Preview"
              style="width:100%; border-radius:8px; margin:10px 0;">
       ` : ""}
@@ -55,7 +60,7 @@ async function loadWSUADocuments(config) {
     `;
   }
 
-  // If grid mode is enabled, clear container for card layout
+  // GRID MODE (Newsletter)
   if (gridMode) {
     container.innerHTML = "";
     container.style.display = "grid";
@@ -63,12 +68,13 @@ async function loadWSUADocuments(config) {
     container.style.gap = "1.5rem";
   }
 
-  // Build archive items
+  // ARCHIVE ITEMS
   sorted.forEach(file => {
     const ext = file.name.split(".").pop().toLowerCase();
     const icon = iconMap[ext] || iconMap["default"];
     const title = prettyName(file.name);
     const size = formatSize(file.size);
+    const baseName = file.name.replace(".pdf", "");
 
     // Newsletter card mode
     if (gridMode) {
@@ -82,8 +88,12 @@ async function loadWSUADocuments(config) {
         box-shadow:0 4px 12px rgba(0,0,0,0.08);
       `;
 
+      const previewPath = `/assets/images/newsletter/previews/${baseName}.png`;
+      const fallbackPath = `/assets/images/newsletter/template-embroidery.svg`;
+
       const preview = enablePreviews
-        ? `<img src="/assets/images/newsletter/preview-placeholder.png"
+        ? `<img src="${previewPath}"
+                 onerror="this.src='${fallbackPath}'"
                  alt="Preview"
                  style="width:100%; border-radius:8px; margin-bottom:10px;">`
         : `<img src="${icon}" class="doc-icon" style="width:48px; margin-bottom:10px;">`;
@@ -143,3 +153,4 @@ async function loadWSUADocuments(config) {
     }
   });
 }
+
