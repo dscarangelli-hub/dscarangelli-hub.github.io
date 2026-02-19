@@ -1,4 +1,4 @@
- /* ============================
+/* ============================
    RESET
 ============================ */
 
@@ -105,12 +105,12 @@ a {
 }
 
 .dropdown-toggle {
-  padding-bottom: 0.6rem; /* extends hover zone */
+  padding-bottom: 0.6rem;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%; /* sits directly under toggle */
+  top: 100%;
   left: 0;
   background: #003566;
   border: 1px solid rgba(255,255,255,0.15);
@@ -162,7 +162,6 @@ a {
   border-radius: 3px;
 }
 
-/* MOBILE PANEL */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -188,7 +187,6 @@ a {
   font-weight: 600;
 }
 
-/* CLOSE BUTTON */
 .mobile-close {
   position: absolute;
   top: 20px;
@@ -199,7 +197,6 @@ a {
   font-weight: 700;
 }
 
-/* MOBILE DROPDOWNS */
 .mobile-dropdown span {
   color: white;
   font-size: 1.3rem;
@@ -218,7 +215,6 @@ a {
   display: flex;
 }
 
-/* SHOW HAMBURGER ON MOBILE */
 @media (max-width: 900px) {
   .nav-links {
     display: none;
@@ -423,6 +419,24 @@ footer {
 
 @keyframes fadeIn {
   to { opacity: 1; }
+}
+
+/* ============================
+   DONATE PAGE FIX
+============================ */
+
+/* Prevent empty tab containers from rendering grey boxes */
+.way-section {
+  background: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Hide empty containers entirely */
+.way-section:empty {
+  display: none !important;
 }
 
 /* ============================
