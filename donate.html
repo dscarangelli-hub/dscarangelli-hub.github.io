@@ -26,34 +26,126 @@ title: Donate
     </p>
   </section>
 
-  <!-- GIVEBUTTER EMBED -->
-  <section class="content-section fade-in" style="margin-top: 2rem;">
-    <iframe
-      src="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs?embed=1"
-      width="100%"
-      height="1400"
-      frameborder="0"
-      scrolling="no"
-      allowpaymentrequest
-      style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
-    ></iframe>
-  </section>
-
-  <!-- QR CODE SECTION -->
+  <!-- WAYS TO GIVE TABS -->
   <section class="content-section fade-in">
-    <h2>Donate by Scanning</h2>
-    <p>Scan the QR code below to open our Givebutter donation page instantly.</p>
+    <h2>Ways to Give</h2>
 
-    <div style="
-      display:flex;
-      justify-content:center;
-      margin-top:20px;
-    ">
-      <img 
-        src="/assets/images/qr/givebutter-qr.png" 
-        alt="Givebutter QR Code"
-        style="width:220px; height:220px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);"
-      >
+    <div class="ways-tabs" style="display:flex; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+      <button class="ways-tab active" onclick="showWay('online')" style="padding:10px 18px; border-radius:8px; border:1px solid #003566; background:#003566; color:white; cursor:pointer;">💳 Online</button>
+      <button class="ways-tab" onclick="showWay('bank')" style="padding:10px 18px; border-radius:8px; border:1px solid #003566; background:white; color:#003566; cursor:pointer;">🏦 Bank Transfer</button>
+      <button class="ways-tab" onclick="showWay('qr')" style="padding:10px 18px; border-radius:8px; border:1px solid #003566; background:white; color:#003566; cursor:pointer;">📱 QR Code</button>
+      <button class="ways-tab" onclick="showWay('monthly')" style="padding:10px 18px; border-radius:8px; border:1px solid #003566; background:white; color:#003566; cursor:pointer;">🔁 Monthly</button>
+    </div>
+
+    <!-- ONLINE DONATION -->
+    <div id="way-online" class="way-section" style="display:block;">
+      <iframe
+        src="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs?embed=1"
+        width="100%"
+        height="1400"
+        frameborder="0"
+        scrolling="no"
+        allowpaymentrequest
+        style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+      ></iframe>
+    </div>
+
+    <!-- BANK TRANSFER -->
+    <div id="way-bank" class="way-section" style="display:none;">
+      <h3>Bank Transfer Options</h3>
+      <p>You may also donate via direct bank transfer using the details below.</p>
+
+      <!-- UNITED STATES -->
+      <div class="bank-box" style="
+        background:#ffffff;
+        padding:20px;
+        border-radius:12px;
+        border:1px solid #ddd;
+        margin-bottom:25px;
+      ">
+        <h3>🇺🇸 United States (USD)</h3>
+        <p><strong>Bank Name:</strong> Bank of America</p>
+        <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+        <p><strong>Routing Number:</strong> 125000024</p>
+        <p><strong>Account Number:</strong> 1234567890</p>
+        <p><strong>Type:</strong> Checking</p>
+      </div>
+
+      <!-- EUROPE / SEPA -->
+      <div class="bank-box" style="
+        background:#ffffff;
+        padding:20px;
+        border-radius:12px;
+        border:1px solid #ddd;
+        margin-bottom:25px;
+      ">
+        <h3>🇪🇺 Eurozone / SEPA (EUR)</h3>
+        <p><strong>Bank Name:</strong> Wise Europe SA</p>
+        <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+        <p><strong>IBAN:</strong> BE12 3456 7890 1234</p>
+        <p><strong>BIC/SWIFT:</strong> TRWIBEB1XXX</p>
+      </div>
+
+      <!-- UNITED KINGDOM -->
+      <div class="bank-box" style="
+        background:#ffffff;
+        padding:20px;
+        border-radius:12px;
+        border:1px solid #ddd;
+      ">
+        <h3>🇬🇧 United Kingdom (GBP)</h3>
+        <p><strong>Bank Name:</strong> Wise UK</p>
+        <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
+        <p><strong>Sort Code:</strong> 23-14-70</p>
+        <p><strong>Account Number:</strong> 12345678</p>
+        <p><strong>SWIFT:</strong> TRWIGB2L</p>
+      </div>
+    </div>
+
+    <!-- QR CODE -->
+    <div id="way-qr" class="way-section" style="display:none;">
+      <h3>Donate by Scanning</h3>
+      <p>Scan the QR code below to open our Givebutter donation page instantly.</p>
+
+      <div style="display:flex; justify-content:center; margin-top:20px;">
+        <img 
+          src="/assets/images/qr/givebutter-qr.png" 
+          alt="Givebutter QR Code"
+          style="width:220px; height:220px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </div>
+    </div>
+
+    <!-- MONTHLY GIVING -->
+    <div id="way-monthly" class="way-section" style="display:none;">
+      <h3>Become a Monthly Supporter</h3>
+      <p>
+        Monthly donors provide stable, predictable support that strengthens humanitarian aid, legal research, 
+        and long‑term recovery programs.
+      </p>
+
+      <div style="
+        background:white;
+        padding:20px;
+        border-radius:12px;
+        border:1px solid #ddd;
+        box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        margin-top:1rem;
+      ">
+        <h4>🌟 Monthly Giving Levels</h4>
+        <ul>
+          <li><strong>$10/mo</strong> — Supports essential supplies</li>
+          <li><strong>$25/mo</strong> — Funds legal research and documentation</li>
+          <li><strong>$50/mo</strong> — Powers community resilience programs</li>
+          <li><strong>$100/mo</strong> — Provides sustained humanitarian relief</li>
+        </ul>
+
+        <a href="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs" 
+           class="btn-primary" 
+           style="margin-top:10px; display:inline-block;">
+          Become a Monthly Donor
+        </a>
+      </div>
     </div>
   </section>
 
@@ -102,69 +194,3 @@ title: Donate
       ">
         <h3 style="margin-bottom:0.3rem;">✸ Partner Donor</h3>
         <p style="color:#003566; font-weight:600;">$150</p>
-        <p style="font-size:0.9rem; color:#555;">“For community resilience.”</p>
-      </div>
-
-    </div>
-
-    <p style="margin-top:1rem;">
-      <a href="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs" 
-         style="color:#003566; font-weight:600; text-decoration:underline;">
-        View full donor wall →
-      </a>
-    </p>
-  </section>
-
-  <!-- BANK TRANSFERS -->
-  <section class="content-section fade-in">
-    <h2>Bank Transfer Options</h2>
-    <p>You may also donate via direct bank transfer using the details below.</p>
-
-    <!-- UNITED STATES -->
-    <div class="bank-box" style="
-      background:#ffffff;
-      padding:20px;
-      border-radius:12px;
-      border:1px solid #ddd;
-      margin-bottom:25px;
-    ">
-      <h3>🇺🇸 United States (USD)</h3>
-      <p><strong>Bank Name:</strong> Bank of America</p>
-      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
-      <p><strong>Routing Number:</strong> 125000024</p>
-      <p><strong>Account Number:</strong> 1234567890</p>
-      <p><strong>Type:</strong> Checking</p>
-    </div>
-
-    <!-- EUROPE / SEPA -->
-    <div class="bank-box" style="
-      background:#ffffff;
-      padding:20px;
-      border-radius:12px;
-      border:1px solid #ddd;
-      margin-bottom:25px;
-    ">
-      <h3>🇪🇺 Eurozone / SEPA (EUR)</h3>
-      <p><strong>Bank Name:</strong> Wise Europe SA</p>
-      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
-      <p><strong>IBAN:</strong> BE12 3456 7890 1234</p>
-      <p><strong>BIC/SWIFT:</strong> TRWIBEB1XXX</p>
-    </div>
-
-    <!-- UNITED KINGDOM -->
-    <div class="bank-box" style="
-      background:#ffffff;
-      padding:20px;
-      border-radius:12px;
-      border:1px solid #ddd;
-    ">
-      <h3>🇬🇧 United Kingdom (GBP)</h3>
-      <p><strong>Bank Name:</strong> Wise UK</p>
-      <p><strong>Account Name:</strong> Western Solidarity With Ukraine Alliance</p>
-      <p><strong>Sort Code:</strong> 23-14-70</p>
-      <p><strong>Account Number:</strong> 12345678</p>
-      <p><strong>SWIFT:</strong> TRWIGB2L</p>
-    </div>
-  </section>
-
-</main>
