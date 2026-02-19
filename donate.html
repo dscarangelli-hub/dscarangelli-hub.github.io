@@ -194,3 +194,45 @@ title: Donate
       ">
         <h3 style="margin-bottom:0.3rem;">✸ Partner Donor</h3>
         <p style="color:#003566; font-weight:600;">$150</p>
+        <p style="font-size:0.9rem; color:#555;">“For community resilience.”</p>
+      </div>
+
+    </div>
+
+    <p style="margin-top:1rem;">
+      <a href="https://givebutter.com/humanitarian-and-legal-assistance-for-ukraine-yrjogs" 
+         style="color:#003566; font-weight:600; text-decoration:underline;">
+        View full donor wall →
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<!-- FIXED TAB SCRIPT -->
+<script>
+function showWay(id) {
+  // Hide all sections
+  document.querySelectorAll('.way-section').forEach(s => s.style.display = 'none');
+
+  // Reset all tabs
+  document.querySelectorAll('.ways-tab').forEach(t => {
+    t.classList.remove('active');
+    t.style.background = 'white';
+    t.style.color = '#003566';
+  });
+
+  // Show selected section
+  document.getElementById('way-' + id).style.display = 'block';
+
+  // Highlight correct tab by matching onclick argument
+  const activeTab = [...document.querySelectorAll('.ways-tab')]
+    .find(t => t.getAttribute('onclick').includes("'" + id + "'"));
+
+  if (activeTab) {
+    activeTab.classList.add('active');
+    activeTab.style.background = '#003566';
+    activeTab.style.color = 'white';
+  }
+}
+                                                    </script>
