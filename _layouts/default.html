@@ -3,7 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} – WSUA</title>
+
+    <!-- Dynamic Title -->
+    <title>
+        {% if page.title %}
+            {{ page.title }} – WSUA – Western Solidarity with Ukraine Alliance
+        {% else %}
+            WSUA – Western Solidarity with Ukraine Alliance
+        {% endif %}
+    </title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://westernsolidarityua.org{{ page.url }}">
+
+    <!-- Meta Description -->
+    <meta name="description" content="{{ page.description | default: 'Western Solidarity with Ukraine Alliance (WSUA) supports Ukraine through legal research, humanitarian aid, and community action.' }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.title | default: 'WSUA – Western Solidarity with Ukraine Alliance' }}">
+    <meta property="og:description" content="{{ page.description | default: 'Supporting Ukraine through legal research and humanitarian aid.' }}">
+    <meta property="og:url" content="https://westernsolidarityua.org{{ page.url }}">
+    <meta property="og:type" content="website">
+
+    <!-- Hero image as social preview -->
+    {% assign hero_image = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
+    <meta property="og:image" content="https://westernsolidarityua.org{{ hero_image }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: 'WSUA – Western Solidarity with Ukraine Alliance' }}">
+    <meta name="twitter:description" content="{{ page.description | default: 'Supporting Ukraine through legal research and humanitarian aid.' }}">
+    <meta name="twitter:image" content="https://westernsolidarityua.org{{ hero_image }}">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Western Solidarity with Ukraine Alliance",
+      "alternateName": "WSUA",
+      "url": "https://westernsolidarityua.org",
+      "logo": "https://westernsolidarityua.org/assets/images/emblem.svg",
+      "sameAs": [
+        "https://westernsolidarityua.org"
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
@@ -21,18 +66,58 @@
 
 {% include navbar.html %}
 
+<!-- ANNOUNCEMENT BAR (optional, controlled via _config.yml) -->
+{% if site.announcement %}
+<div class="announcement-bar">
+    {{ site.announcement }}
+</div>
+{% endif %}
+
 <!-- GLOBAL SEARCH BAR -->
 <div id="search-container" class="search-container">
     <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
     <div id="search-results" class="search-results"></div>
 </div>
 
-<!-- PAGE CONTENT -->
-{{ content }}
+<!-- GLOBAL HERO SYSTEM -->
+{% assign hero_path = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
+{% assign fallback_hero = "/assets/images/heroes/default.jpg" %}
+{% assign final_hero = hero_path %}
+
+<section class="hero {% if page.url == '/' %}full-hero{% else %}small-hero{% endif %}"
+         style="background-image: url('{{ final_hero }}');">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text-wrapper">
+        <h1 class="hero-title">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="hero-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- BREADCRUMBS -->
+<nav class="breadcrumbs">
+    <a href="/">Home</a>
+    {% assign segments = page.url | split: '/' %}
+    {% assign path = "" %}
+    {% for segment in segments %}
+        {% if segment != "" and segment contains ".html" == false %}
+            {% assign path = path | append: "/" | append: segment %}
+            › <a href="{{ path }}/">{{ segment | replace: '-', ' ' | capitalize }}</a>
+        {% endif %}
+    {% endfor %}
+</nav>
+
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
+    {{ content }}
+</div>
 
 {% include footer.html %}
 
-<!-- FLOATING DONATE BUTTON -->
+<!-- FLOATING DONATE BUTTON (can be disabled per page) -->
+{% unless page.hide_donate %}
 <style>
   #floating-donate {
     position: fixed;
@@ -53,7 +138,6 @@
     box-shadow: 0 8px 22px rgba(0,0,0,0.3);
   }
 
-  /* POPUP OVERLAY */
   #donate-modal {
     display: none;
     position: fixed;
@@ -68,41 +152,4 @@
   #donate-modal iframe {
     width: 100%;
     max-width: 480px;
-    height: 80vh;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
-
-  #close-donate {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 32px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-  }
-</style>
-
-<div id="floating-donate" onclick="openDonate()">Donate</div>
-
-<div id="donate-modal">
-  <div id="close-donate" onclick="closeDonate()">×</div>
-  <iframe src="https://givebutter.com/wsua"></iframe>
-</div>
-
-<script>
-  function openDonate() {
-    document.getElementById('donate-modal').style.display = 'flex';
-  }
-  function closeDonate() {
-    document.getElementById('donate-modal').style.display = 'none';
-  }
-</script>
-
-<!-- Navbar behavior -->
-<script src="/assets/js/navbar.js"></script>
-
-</body>
-</html>
+    height:
