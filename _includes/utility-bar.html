@@ -1,0 +1,58 @@
+<div class="utility-bar">
+
+  <!-- LEFT: UA TIME -->
+  <div class="utility-left">
+    <span id="ua-time" class="utility-time">UA 00:00</span>
+  </div>
+
+  <!-- CENTER: MAP + ROTATING TEXT -->
+  <div class="utility-center">
+
+    <!-- Map Silhouette -->
+    <div class="utility-map">
+      <svg
+        width="18"
+        height="12"
+        viewBox="0 0 180 120"
+        xmlns="http://www.w3.org/2000/svg"
+        class="wsua-map"
+        aria-hidden="true"
+      >
+        <style>
+          .wsua-map-base { fill: #3A4A63; }
+          .wsua-region { fill: #3A4A63; transition: fill 250ms ease-in-out; }
+          .wsua-region--active { fill: #F2C94C; }
+        </style>
+
+        <!-- Base silhouette -->
+        <path
+          class="wsua-map-base"
+          d="M12 52 L28 32 L60 20 L100 26 L132 22 L160 38
+             L150 62 L160 86 L136 104 L98 110 L62 104 L32 90 L16 70 Z"
+        />
+
+        <!-- Highlight regions -->
+        <circle id="wsua-region-kyiv"         class="wsua-region" cx="88" cy="55" r="10"/>
+        <circle id="wsua-region-lviv"         class="wsua-region" cx="42" cy="55" r="10"/>
+        <circle id="wsua-region-kharkiv"      class="wsua-region" cx="128" cy="55" r="10"/>
+        <circle id="wsua-region-mykolaiv"     class="wsua-region" cx="88" cy="85" r="10"/>
+        <circle id="wsua-region-odesa"        class="wsua-region" cx="58" cy="85" r="10"/>
+        <circle id="wsua-region-zaporizhzhia" class="wsua-region" cx="118" cy="85" r="10"/>
+      </svg>
+    </div>
+
+    <!-- Rotating Text -->
+    <div class="utility-rotator">
+      <span id="utility-rotating-text">Loading…</span>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: LANGUAGE + CTA -->
+  <div class="utility-right">
+    <button class="utility-lang" data-lang="en">EN</button>
+    <button class="utility-lang" data-lang="ua">UA</button>
+    <a href="/donate" class="utility-cta">Support Mykolaiv →</a>
+  </div>
+
+</div>
