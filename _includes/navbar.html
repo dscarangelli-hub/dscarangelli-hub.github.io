@@ -14,7 +14,18 @@
     <div class="nav-links">
 
         <a href="/index.html">Home</a>
-        <a href="/newsletter.html">Newsletter</a>
+
+        <!-- NEWS & UPDATES DROPDOWN -->
+        <div class="dropdown">
+            <a href="/news.html" class="dropdown-toggle">News & Updates ▾</a>
+            <div class="dropdown-menu">
+                <a href="/newsletter.html">Newsletter</a>
+                <a href="/support-ukraine.html">How to Support Ukraine</a>
+                <a href="/donate-to-ukraine.html">Where to Donate to Ukraine</a>
+                <a href="/humanitarian-aid.html">Humanitarian Aid Explained</a>
+                <a href="/legal-research.html">Why Legal Research Matters</a>
+            </div>
+        </div>
 
         <!-- LEGAL DROPDOWN -->
         <div class="dropdown">
@@ -28,10 +39,11 @@
             </div>
         </div>
 
-        <!-- ABOUT DROPDOWN -->
+        <!-- ABOUT DROPDOWN (now clickable) -->
         <div class="dropdown">
-            <a class="dropdown-toggle">About ▾</a>
+            <a href="/about.html" class="dropdown-toggle">About ▾</a>
             <div class="dropdown-menu">
+                <a href="/about.html">About WSUA</a>
                 <a href="/about/team.html">Our Team</a>
                 <a href="/transparency.html">Transparency</a>
                 <a href="/partnerships.html">Partnerships</a>
@@ -57,7 +69,17 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="/index.html">Home</a>
-    <a href="/newsletter.html">Newsletter</a>
+
+    <div class="mobile-dropdown">
+        <span>News & Updates ▾</span>
+        <div class="mobile-dropdown-menu">
+            <a href="/newsletter.html">Newsletter</a>
+            <a href="/support-ukraine.html">How to Support Ukraine</a>
+            <a href="/donate-to-ukraine.html">Where to Donate to Ukraine</a>
+            <a href="/humanitarian-aid.html">Humanitarian Aid Explained</a>
+            <a href="/legal-research.html">Why Legal Research Matters</a>
+        </div>
+    </div>
 
     <div class="mobile-dropdown">
         <span>Legal ▾</span>
@@ -73,11 +95,31 @@
     <div class="mobile-dropdown">
         <span>About ▾</span>
         <div class="mobile-dropdown-menu">
+            <a href="/about.html">About WSUA</a>
             <a href="/about/team.html">Our Team</a>
             <a href="/transparency.html">Transparency</a>
             <a href="/partnerships.html">Partnerships</a>
         </div>
     </div>
+
+    <div class="mobile-dropdown">
+        <span>Solidarity Shop ▾</span>
+        <div class="mobile-dropdown-menu">
+            <a href="/coffee/roasts.html">Coffee Roasts</a>
+            <a href="/merch/apparel.html">Apparel (Coming Soon)</a>
+            <a href="/merch/gifts.html">Donor Gifts (Coming Soon)</a>
+        </div>
+    </div>
+
+    <a href="/volunteer-apply.html">Volunteer</a>
+    <a href="/donate.html" class="donate-btn">Donate</a>
+</div>
+
+<script>
+function toggleMobileMenu() {
+    document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
 
     <div class="mobile-dropdown">
         <span>Solidarity Shop ▾</span>
