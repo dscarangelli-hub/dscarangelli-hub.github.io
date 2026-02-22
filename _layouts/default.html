@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Dynamic Title -->
     <title>
         {% if page.title %}
             {{ page.title }} – WSUA – Western Solidarity with Ukraine Alliance
@@ -13,29 +12,23 @@
         {% endif %}
     </title>
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://westernsolidarityua.org{{ page.url }}">
 
-    <!-- Meta Description -->
     <meta name="description" content="{{ page.description | default: 'Western Solidarity with Ukraine Alliance (WSUA) supports Ukraine through legal research, humanitarian aid, and community action.' }}">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="{{ page.title | default: 'WSUA – Western Solidarity with Ukraine Alliance' }}">
     <meta property="og:description" content="{{ page.description | default: 'Supporting Ukraine through legal research and humanitarian aid.' }}">
     <meta property="og:url" content="https://westernsolidarityua.org{{ page.url }}">
     <meta property="og:type" content="website">
 
-    <!-- Hero image as social preview -->
     {% assign hero_image = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
     <meta property="og:image" content="https://westernsolidarityua.org{{ hero_image }}">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title | default: 'WSUA – Western Solidarity with Ukraine Alliance' }}">
     <meta name="twitter:description" content="{{ page.description | default: 'Supporting Ukraine through legal research and humanitarian aid.' }}">
     <meta name="twitter:image" content="https://westernsolidarityua.org{{ hero_image }}">
 
-    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,7 +44,6 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
 
-    <!-- Search scripts -->
     <script src="/assets/js/fuse.min.js"></script>
     <script src="/assets/js/search-index.js" defer></script>
     <script src="/assets/js/search.js" defer></script>
@@ -62,40 +54,42 @@
 <div class="watermark"></div>
 <div class="vignette"></div>
 
-<!-- UTILITY BAR -->
 {% include utility-bar.html %}
-
-<!-- NAVBAR -->
 {% include navbar.html %}
 
-<!-- ANNOUNCEMENT BAR -->
 {% if site.announcement %}
 <div class="announcement-bar">
     {{ site.announcement }}
 </div>
 {% endif %}
 
-<!-- SEARCH BAR -->
 <div id="search-container" class="search-container">
     <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
     <div id="search-results" class="search-results"></div>
 </div>
 
-<!-- HERO -->
-{% assign hero_path = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}<section class="hero {% if page.url == '/' %}home-hero{% else %}small-hero{% endif %}"
- <section class="hero {% if page.url == '/' %}full-hero{% else %}small-hero{% endif %}"
- style="background-image: url('{{ hero_path }}');">
+{% assign hero_path = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
+<section class="hero {% if page.url == '/' %}home-hero{% else %}small-hero{% endif %}"
+         style="background-image: url('{{ hero_path }}');">
     <div class="hero-overlay"></div>
 
     <div class="hero-text-wrapper">
-        <h1 class="hero-title">{{ page.title }}</h1>
-        {% if page.subtitle %}
-        <p class="hero-subtitle">{{ page.subtitle }}</p>
+        <h1 class="hero-title">
+            {{ page.hero_title | default: page.title }}
+        </h1>
+
+        {% if page.hero_subtitle %}
+            <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
+        {% endif %}
+
+        {% if page.hero_cta_text and page.hero_cta_link %}
+            <a href="{{ page.hero_cta_link }}" class="btn-primary">
+                {{ page.hero_cta_text }}
+            </a>
         {% endif %}
     </div>
 </section>
 
-<!-- BREADCRUMBS -->
 <nav class="breadcrumbs">
     <a href="/">Home</a>
     {% assign segments = page.url | split: '/' %}
@@ -108,15 +102,12 @@
     {% endfor %}
 </nav>
 
-<!-- PAGE CONTENT -->
 <div class="page-wrapper">
     {{ content }}
 </div>
 
-<!-- FOOTER -->
 {% include footer.html %}
 
-<!-- DONATE BUTTON -->
 {% unless page.hide_donate %}
 <style>
   #floating-donate {
@@ -179,7 +170,6 @@
 </div>
 {% endunless %}
 
-<!-- UTILITY BAR SCRIPT -->
 <script src="/assets/js/utility-bar.js"></script>
 
 </body>
