@@ -57,6 +57,9 @@
     <script src="/assets/js/fuse.min.js"></script>
     <script src="/assets/js/search-index.js" defer></script>
     <script src="/assets/js/search.js" defer></script>
+
+    <!-- Utility Bar Script -->
+    <script src="/assets/js/utility-bar.js" defer></script>
 </head>
 
 <body>
@@ -64,6 +67,10 @@
 <div class="watermark"></div>
 <div class="vignette"></div>
 
+<!-- ⭐ NEW: UTILITY BAR -->
+{% include utility-bar.html %}
+
+<!-- NAVBAR -->
 {% include navbar.html %}
 
 <!-- ANNOUNCEMENT BAR (optional, controlled via _config.yml) -->
@@ -152,4 +159,32 @@
   #donate-modal iframe {
     width: 100%;
     max-width: 480px;
-    height:
+    height: 80vh;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  #close-donate {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+
+<div id="floating-donate" onclick="document.getElementById('donate-modal').style.display='flex'">
+  Donate
+</div>
+
+<div id="donate-modal" onclick="this.style.display='none'">
+  <span id="close-donate">&times;</span>
+  <iframe src="https://givebutter.com/embed/wsua" loading="lazy"></iframe>
+</div>
+{% endunless %}
+
+</body>
+</html>
