@@ -28,7 +28,22 @@ a {
   color: inherit;
   transition: color 0.2s ease;
 }
+/* ============================
+   GLOBAL HEADER HEIGHT
+============================ */
 
+:root {
+  --header-height: 120px; /* utility bar + navbar + breathing room */
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f7f7f7;
+  color: #222;
+  line-height: 1.65;
+  overflow-x: hidden;
+  padding-top: var(--header-height);
+}
 /* ============================
    UTILITY BAR (NEW)
 ============================ */
