@@ -32,6 +32,75 @@
 
 {% include footer.html %}
 
+<!-- FLOATING DONATE BUTTON -->
+<style>
+  #floating-donate {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #003566;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #floating-donate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+  }
+
+  /* POPUP OVERLAY */
+  #donate-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  #donate-modal iframe {
+    width: 100%;
+    max-width: 480px;
+    height: 80vh;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  #close-donate {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+
+<div id="floating-donate" onclick="openDonate()">Donate</div>
+
+<div id="donate-modal">
+  <div id="close-donate" onclick="closeDonate()">×</div>
+  <iframe src="https://givebutter.com/wsua"></iframe>
+</div>
+
+<script>
+  function openDonate() {
+    document.getElementById('donate-modal').style.display = 'flex';
+  }
+  function closeDonate() {
+    document.getElementById('donate-modal').style.display = 'none';
+  }
+</script>
+
 <!-- Navbar behavior -->
 <script src="/assets/js/navbar.js"></script>
 
