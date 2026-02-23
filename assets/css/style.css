@@ -430,7 +430,15 @@ body {
 .small-hero {
   height: 45vh;
 }
-
+/* Homepage hero (full height, full image) */
+.home-hero {
+  height: 75vh; /* adjust to 80vh if you want more image */
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .hero-overlay {
   position: absolute;
   inset: 0;
