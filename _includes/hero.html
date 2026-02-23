@@ -1,0 +1,23 @@
+{% assign hero_path = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
+
+<section class="hero {% if page.url == '/' or page.url == '/index.html' %}home-hero{% else %}small-hero{% endif %}"
+         style="background-image: url('{{ hero_path }}');">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text-wrapper">
+        <h1 class="hero-title">
+            {{ page.hero_title | default: page.title }}
+        </h1>
+
+        {% if page.hero_subtitle %}
+            <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
+        {% endif %}
+
+        {% if page.hero_cta_text and page.hero_cta_link %}
+            <a href="{{ page.hero_cta_link }}" class="btn-primary">
+                {{ page.hero_cta_text }}
+            </a>
+        {% endif %}
+    </div>
+</section>
