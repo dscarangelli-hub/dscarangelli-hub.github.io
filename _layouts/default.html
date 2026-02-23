@@ -69,8 +69,9 @@
 </div>
 
 {% assign hero_path = "/assets/images/heroes/" | append: page.name | append: ".jpg" %}
-<section class="hero {% if page.url == '/' %}home-hero{% else %}small-hero{% endif %}"
+<section class="hero {% if page.url == '/' or page.url == '/index.html' %}home-hero{% else %}small-hero{% endif %}"
          style="background-image: url('{{ hero_path }}');">
+
     <div class="hero-overlay"></div>
 
     <div class="hero-text-wrapper">
