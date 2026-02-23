@@ -28,24 +28,21 @@ a {
   color: inherit;
   transition: color 0.2s ease;
 }
+
 /* ============================
    GLOBAL HEADER HEIGHT
 ============================ */
 
 :root {
-  --header-height: 120px; /* utility bar + navbar + breathing room */
+  --header-height: 120px;
 }
 
 body {
-  font-family: 'Inter', Arial, sans-serif;
-  background: #f7f7f7;
-  color: #222;
-  line-height: 1.65;
-  overflow-x: hidden;
   padding-top: var(--header-height);
 }
+
 /* ============================
-   UTILITY BAR (NEW)
+   UTILITY BAR
 ============================ */
 
 .utility-bar {
@@ -65,16 +62,9 @@ body {
   z-index: 50;
 }
 
-/* Left: UA Time */
-.utility-left {
-  flex: 0 0 auto;
-}
+.utility-left { flex: 0 0 auto; }
+.utility-time { opacity: 0.9; }
 
-.utility-time {
-  opacity: 0.9;
-}
-
-/* Center: Map + Rotating Text */
 .utility-center {
   flex: 1 1 auto;
   display: flex;
@@ -85,18 +75,8 @@ body {
   min-width: 0;
 }
 
-.utility-map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.utility-rotator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
-}
+.utility-map { display: flex; align-items: center; justify-content: center; }
+.utility-rotator { display: flex; align-items: center; justify-content: center; min-width: 120px; }
 
 #utility-rotating-text {
   white-space: nowrap;
@@ -104,18 +84,14 @@ body {
   transition: opacity 250ms ease-in-out;
 }
 
-.utility-fade-out {
-  opacity: 0;
-}
+.utility-fade-out { opacity: 0; }
 
-/* Map silhouette sizing */
 .wsua-map {
   width: 22px;
   height: auto;
   display: block;
 }
 
-/* Right: Language + CTA */
 .utility-right {
   flex: 0 0 auto;
   display: flex;
@@ -149,44 +125,20 @@ body {
   transition: background 150ms ease-in-out;
 }
 
-.utility-cta:hover {
-  background: #ffdf33;
-}
+.utility-cta:hover { background: #ffdf33; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .utility-bar {
-    font-size: 0.78rem;
-    padding: 6px 10px;
-  }
-
-  .wsua-map {
-    width: 18px;
-  }
-
-  .utility-cta {
-    padding: 3px 8px;
-  }
+  .utility-bar { font-size: 0.78rem; padding: 6px 10px; }
+  .wsua-map { width: 18px; }
+  .utility-cta { padding: 3px 8px; }
 }
 
 @media (max-width: 480px) {
-  .utility-bar {
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px 10px;
-  }
-
-  .utility-center {
-    order: 1;
-  }
-
-  .utility-left {
-    order: 0;
-  }
-
-  .utility-right {
-    order: 2;
-  }
+  .utility-bar { flex-direction: column; gap: 4px; padding: 8px 10px; }
+  .utility-center { order: 1; }
+  .utility-left { order: 0; }
+  .utility-right { order: 2; }
 }
 
 /* ============================
@@ -241,22 +193,9 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.nav-logo {
-  width: 40px;
-  height: 40px;
-}
-
-.nav-title {
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
+.nav-left { display: flex; align-items: center; gap: 0.7rem; }
+.nav-logo { width: 40px; height: 40px; }
+.nav-title { font-size: 1.45rem; font-weight: 700; letter-spacing: 0.3px; }
 
 .nav-links a,
 .dropdown-toggle {
@@ -268,9 +207,7 @@ body {
 }
 
 .nav-links a:hover,
-.dropdown-toggle:hover {
-  color: #ffd500;
-}
+.dropdown-toggle:hover { color: #ffd500; }
 
 .donate-btn {
   background: #ffd500;
@@ -281,17 +218,11 @@ body {
 }
 
 /* ============================
-   DESKTOP DROPDOWNS
+   DROPDOWNS
 ============================ */
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  padding-bottom: 0.6rem;
-}
+.dropdown { position: relative; display: inline-block; }
+.dropdown-toggle { padding-bottom: 0.6rem; }
 
 .dropdown-menu {
   position: absolute;
@@ -302,7 +233,6 @@ body {
   min-width: 220px;
   padding: 0.6rem 0;
   z-index: 30;
-
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
@@ -364,9 +294,7 @@ body {
   box-shadow: -4px 0 14px rgba(0,0,0,0.3);
 }
 
-.mobile-menu.open {
-  right: 0;
-}
+.mobile-menu.open { right: 0; }
 
 .mobile-menu a {
   color: white;
@@ -398,26 +326,19 @@ body {
   margin-top: 10px;
 }
 
-.mobile-dropdown:hover .mobile-dropdown-menu {
-  display: flex;
-}
+.mobile-dropdown:hover .mobile-dropdown-menu { display: flex; }
 
 @media (max-width: 900px) {
-  .nav-links {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
 }
 
 /* ============================
-   HERO
+   HERO (FINAL PARALLAX VERSION)
 ============================ */
 
 .hero {
   position: relative;
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -427,28 +348,37 @@ body {
   padding: 0 20px;
 }
 
-.small-hero {
-  height: 45vh;
-}
-/* Homepage hero (full height, full image) */
+/* Homepage hero — tall, parallax */
 .home-hero {
-  height: 75vh; /* adjust to 80vh if you want more image */
+  height: 95vh;
   background-size: cover;
-  background-position: center center;
+  background-position: center top;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+/* Other pages */
+.small-hero {
+  height: 45vh;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Overlay for readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.55);
   z-index: -1;
 }
 
+/* Text */
 .hero-text-wrapper {
   max-width: 900px;
   padding: 0 20px;
+  z-index: 2;
 }
 
 .hero-title {
@@ -456,15 +386,21 @@ body {
   font-size: 3.2rem;
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.6);
 }
 
 .hero-subtitle {
   font-size: 1.35rem;
   margin-bottom: 1.5rem;
   opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
 @media (max-width: 768px) {
+  .home-hero {
+    height: 85vh;
+    background-attachment: scroll;
+  }
   .hero-title { font-size: 2.4rem; }
   .hero-subtitle { font-size: 1.15rem; }
 }
@@ -484,9 +420,7 @@ body {
   font-weight: 600;
 }
 
-.breadcrumbs a:hover {
-  text-decoration: underline;
-}
+.breadcrumbs a:hover { text-decoration: underline; }
 
 /* ============================
    PAGE WRAPPER
@@ -502,14 +436,8 @@ body {
    HEADINGS
 ============================ */
 
-h1, h2 {
-  font-family: 'Merriweather', serif;
-}
-
-h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-}
+h1, h2 { font-family: 'Merriweather', serif; }
+h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
 
 /* ============================
    INDEX CARDS
@@ -552,7 +480,7 @@ h3, h4, h5, h6 {
 }
 
 /* ============================
-   TEAM / SHOP CARDS
+   TEAM CARDS
 ============================ */
 
 .team-grid {
@@ -700,9 +628,7 @@ footer {
   border: none !important;
 }
 
-.way-section:empty {
-  display: none !important;
-}
+.way-section:empty { display: none !important; }
 
 /* ============================
    RESPONSIVE
