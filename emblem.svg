@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" aria-label="WSUA emblem">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4a84b"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield outline (no black fill; transparent background) -->
+  <path fill="none" stroke="#1d6b6d" stroke-width="2" stroke-linejoin="round"
+        d="M60 8 L108 28 L108 75 Q108 130 60 142 Q12 130 12 75 L12 28 Z"/>
+  <!-- Top band / mountains base -->
+  <path fill="#1d6b6d" d="M12 28 L60 12 L108 28 L108 38 L12 38 Z"/>
+  <!-- WSUA text -->
+  <text x="60" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#fff">WSUA</text>
+  <!-- Three mountains -->
+  <path fill="#2e852b" d="M25 38 L45 55 L35 38 Z"/>
+  <path fill="#3b9e3b" d="M40 38 L60 50 L80 38 Z"/>
+  <path fill="#2e852b" d="M75 38 L95 55 L85 38 Z"/>
+  <!-- Center landscape: left tree (Washington side) - simplified pine -->
+  <path fill="#1d6b6d" d="M28 58 L32 58 L30 85 L28 58 Z"/>
+  <path fill="#1d6b6d" d="M26 65 L34 65 L30 85 Z"/>
+  <!-- Right berry bush (Ukraine side) -->
+  <path fill="#1d6b6d" d="M85 70 L95 75 L90 88 L80 88 Z"/>
+  <circle fill="#c0392b" cx="88" cy="72" r="4"/>
+  <circle fill="#c0392b" cx="92" cy="74" r="3.5"/>
+  <!-- Gold ground / roots area -->
+  <path fill="url(#ground)" d="M18 88 L102 88 L102 138 Q60 145 18 138 Z"/>
+  <!-- Simplified roots -->
+  <path fill="none" stroke="#1d6b6d" stroke-width="1.5" stroke-linecap="round"
+        d="M30 88 Q25 105 20 125 M45 88 Q42 110 38 132 M60 88 Q58 115 60 138 M75 88 Q78 110 82 132 M90 88 Q95 105 100 125"/>
+</svg>
