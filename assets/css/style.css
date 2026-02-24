@@ -148,9 +148,9 @@ body {
 
 .utility-header-wrapper {
   width: 100%;
-  background: #0057b7;
-  color: #fff;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  background: #e5edf7; /* light slate so Ukraine silhouette pops */
+  color: #003566;
+  border-bottom: 2px solid rgba(0, 53, 102, 0.12);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -169,15 +169,23 @@ body {
   min-height: 72px;
 }
 
-.utility-col-map { flex: 0 0 auto; }
+.utility-col-map { flex: 0 0 260px; }
 .utility-col-times { flex: 0 0 auto; }
 .utility-col-city { flex: 1 1 200px; min-width: 0; }
 .utility-col-cta { flex: 0 0 auto; }
 
 .utility-map-wrapper {
   position: relative;
-  width: 80px;
-  height: 50px;
+  width: 260px;
+  height: 162px;
+}
+
+@media (max-width: 768px) {
+  .utility-map-wrapper {
+    width: 200px;
+    height: 125px;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .utility-header .ukraine-map {
@@ -189,7 +197,7 @@ body {
 /* Ukrainian blue base, gold highlight */
 .utility-header .oblast {
   fill: #0057b7;
-  stroke: rgba(255, 255, 255, 0.4);
+  stroke: rgba(0, 0, 0, 0.25);
   stroke-width: 0.5;
   transition: fill 0.2s ease;
   cursor: pointer;
