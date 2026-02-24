@@ -2,7 +2,7 @@
 layout: default
 title: Donate
 hero_title: Support Ukraine
-hero_subtitle: Humanitarian relief • Legal research • Community resilience
+hero_subtitle: Humanitarian relief • Legal research • Energy Maidan Project
 hero_cta_text: Give Online
 hero_cta_link: https://givebutter.com/wsua
 ---
@@ -17,6 +17,8 @@ hero_cta_link: https://givebutter.com/wsua
       for Ukrainians affected by the war. Your donation directly fuels relief efforts, resilience programs, 
       and justice‑focused advocacy.
     </p>
+    <p><strong>WSUA is pursuing 501(c)(3) tax‑exempt status.</strong> Donations are not yet tax‑deductible under U.S. federal law. We report transparently and will update this page when status is granted.</p>
+    <p class="donate-ein-ubi">EIN 41-359-3491 · Washington UBI 606-029-374</p>
   </section>
 
   <!-- WAYS TO GIVE TABS -->
@@ -117,15 +119,21 @@ function showWay(id) {
     t.style.color = '#003566';
   });
 
-  document.getElementById('way-' + id).style.display = 'block';
+  var el = document.getElementById('way-' + id);
+  if (el) el.style.display = 'block';
 
-  const activeTab = [...document.querySelectorAll('.ways-tab')]
-    .find(t => t.getAttribute('onclick').includes("'" + id + "'"));
-
+  var activeTab = Array.prototype.find.call(document.querySelectorAll('.ways-tab'), function(t) {
+    return t.getAttribute('onclick') && t.getAttribute('onclick').indexOf("'" + id + "'") !== -1;
+  });
   if (activeTab) {
     activeTab.classList.add('active');
     activeTab.style.background = '#003566';
     activeTab.style.color = 'white';
   }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var hash = location.hash;
+  if (hash === '#way-bank' || hash === '#way-qr') showWay(hash.replace('#way-', ''));
+});
 </script>
