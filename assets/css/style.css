@@ -142,8 +142,209 @@ body {
 }
 
 /* ============================
-   WATERMARK + VIGNETTE
+   UTILITY HEADER (1000px bar: map, times, CTA, fact, news)
+   Ukrainian blue #0057b7 / gold #ffd700
 ============================ */
+
+.utility-header-wrapper {
+  width: 100%;
+  background: #0057b7;
+  color: #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.utility-header {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.utility-header-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 72px;
+}
+
+.utility-col-map { flex: 0 0 auto; }
+.utility-col-times { flex: 0 0 auto; }
+.utility-col-city { flex: 1 1 200px; min-width: 0; }
+.utility-col-cta { flex: 0 0 auto; }
+
+.utility-map-wrapper {
+  position: relative;
+  width: 80px;
+  height: 50px;
+}
+
+.utility-header .ukraine-map {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Ukrainian blue base, gold highlight */
+.utility-header .oblast {
+  fill: #0057b7;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 0.5;
+  transition: fill 0.2s ease;
+  cursor: pointer;
+}
+
+.utility-header .oblast:hover {
+  fill: #1a6bc9;
+}
+
+.utility-header .oblast.oblast-active {
+  fill: #ffd700;
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+.map-tooltip {
+  position: fixed;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+}
+
+/* Times: Kyiv | Bremerton */
+.utility-times {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.utility-time-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.utility-time-label {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.utility-time-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.utility-time-sep {
+  opacity: 0.5;
+  margin: 0 0.25rem;
+}
+
+/* City spotlight */
+.city-spotlight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.utility-city-photo {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.city-spotlight-text {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CTA button */
+.utility-bar-cta {
+  display: inline-block;
+  background: #ffd700;
+  color: #003566;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.utility-bar-cta:hover {
+  background: #ffe033;
+  transform: translateY(-1px);
+}
+
+/* Bottom row: fact + news */
+.utility-header-bottom {
+  padding: 0.4rem 0 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.utility-bottom-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  opacity: 0.95;
+}
+
+.fact-of-day a,
+.news-snippet a {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+.fact-of-day a:hover,
+.news-snippet a:hover {
+  color: #ffe033;
+}
+
+.fact-label,
+.news-label {
+  font-weight: 600;
+  opacity: 0.95;
+  margin-right: 0.25rem;
+}
+
+.utility-news-sep {
+  opacity: 0.5;
+}
+
+.news-snippet {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .utility-header-top { gap: 0.75rem; }
+  .utility-map-wrapper { width: 60px; height: 38px; }
+}
+
+@media (max-width: 768px) {
+  .utility-header-top { flex-direction: column; align-items: stretch; min-height: auto; }
+  .utility-col-city { order: 1; }
+  .utility-col-times { order: 0; }
+  .utility-col-map { order: 0; }
+  .utility-col-cta { order: 2; }
+  .utility-bottom-inner { flex-direction: column; align-items: flex-start; }
+  .utility-news-sep { display: none; }
+}
 
 .watermark {
   position: fixed;
@@ -459,6 +660,42 @@ body {
   margin: auto;
 }
 
+/* Nonprofit polish: section spacing and mission intro */
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.content-section:last-child {
+  margin-bottom: 0;
+}
+
+.mission-intro {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mission-lead {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.trust-line {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.content-list {
+  text-align: left;
+  max-width: 700px;
+  margin: 2rem auto;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+}
+
 /* ============================
    HEADINGS
 ============================ */
@@ -567,13 +804,257 @@ h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
    FOOTER
 ============================ */
 
-footer {
+footer,
+.wsua-footer {
   background: #003566;
   color: white;
   text-align: center;
-  padding: 1.7rem;
+  padding: 1.25rem 1.5rem;
   margin-top: 3rem;
+  font-size: 0.9rem;
+  min-height: 200px;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  width: 48px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  opacity: 0.95;
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.footer-status,
+.footer-ein-ubi {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+}
+
+.footer-time-weather {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin: 1.25rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-loc-label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.footer-time {
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.5rem;
+}
+
+.footer-weather {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-weather-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.footer-weather-emoji {
+  font-style: normal;
+}
+
+.footer-meta {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.footer-weather-attribution {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.footer-weather-attribution a {
+  color: rgba(255,255,255,0.85);
+}
+
+.footer-weather-attribution a:hover {
+  color: #fff;
+}
+
+.donate-ein-ubi {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.95;
+}
+
+/* ============================
+   NEWSLETTER – ANTIQUE PAPER / NEWSPAPER
+============================ */
+
+.newsletter-page {
+  background: #e8dcc4;
+  background-image:
+    linear-gradient(rgba(180, 160, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 160, 120, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 2rem 1.5rem;
+  margin: 0 -2rem;
+  padding-left: calc(1.5rem + 2rem);
+  padding-right: calc(1.5rem + 2rem);
+}
+
+.newsletter-page .content-section {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-headline {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  color: #3d3520;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #8b7355;
+}
+
+.newsletter-intro {
+  font-family: Georgia, serif;
+  color: #4a4235;
   font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.newsletter-intro code {
+  background: rgba(139, 115, 85, 0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.newspaper-box,
+.current-issue-box {
+  background: #f4e9d4;
+  padding: 1.75rem;
+  border: 1px solid #b8a078;
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 8px rgba(80, 60, 40, 0.15),
+    0 0 0 1px rgba(139, 115, 85, 0.2);
+  font-family: Georgia, serif;
+  color: #3d3520;
+}
+
+.current-issue-box h3 {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  color: #2c2518;
+  margin-bottom: 1rem;
+}
+
+.current-issue-box img {
+  border: 1px solid #c4b090;
+}
+
+.current-issue-box .btn-primary {
+  margin-top: 1rem;
+  background: #5c4a32;
+  color: #f4e9d4;
+  border: 1px solid #3d3520;
+}
+
+.current-issue-box .btn-primary:hover {
+  background: #3d3520;
+  color: #f4e9d4;
+}
+
+.newsletter-loading {
+  font-style: italic;
+  color: #6b5d45;
+  margin: 0;
+}
+
+.newsletter-archive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.newsletter-archive-list .document {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f4e9d4;
+  border: 1px solid #b8a078;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(80, 60, 40, 0.08);
+  font-family: Georgia, serif;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newsletter-archive-list .document:hover {
+  background: #ebe0c8;
+  box-shadow: 0 2px 6px rgba(80, 60, 40, 0.12);
+}
+
+.newsletter-archive-list .doc-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.newsletter-archive-list .doc-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.newsletter-archive-list .doc-title {
+  font-weight: 600;
+  color: #3d3520;
+}
+
+.newsletter-archive-list .doc-title:hover {
+  color: #2c2518;
+  text-decoration: underline;
+}
+
+.newsletter-archive-list .doc-meta {
+  font-size: 0.85rem;
+  color: #6b5d45;
+  margin-top: 0.2rem;
 }
 
 /* ============================
