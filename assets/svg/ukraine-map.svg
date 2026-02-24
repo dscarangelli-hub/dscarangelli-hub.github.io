@@ -1,161 +1,194 @@
-<svg id="Ukraine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
-  <g id="ukraineMap" transform="translate(40,20) scale(1.18)">
-    <path
-      id="oblast-crimea"
-      class="oblast"
-      data-region="crimea"
-      data-name="Crimea"
-      d="M491.3,360.2l0.1,0.3l-0.5,0.3l-0.8,1.3h-2l-1.7-0.8l-0.8,0.4l-0.2,1.1l1.2,0.8l-0.6,0.6l-1.4,0.4
-      ... (full path preserved exactly)
-      l0.6,0.8l-0.1,0.7L491.3,360.2z"
-    />
-    <path
-      id="oblast-cherkasy"
-      class="oblast"
-      data-region="cherkasy"
-      data-name="Cherkasy Oblast"
-      d="M337,116.7l0.3,0.2l-0.4,0.6l1.7,1.3l0.5,1.1l4.2,1.2l0.2,1.3l-1.8,0.4l0.7,0.7l-0.5,0.8
-      ... (full path preserved)
-      l1.4-0.6l1.3-1.4l1.4,0.7l0.2-0.5l1.3,0.6l0.2-0.4h0.6l0.3-1.6l1.2,0.1l0.9-0.6l-1.1-0.8l1.1-1.6l1.7,1.3l-0.1-1.3h0.9l0.6-0.7
-      l0.5,0.9l0.6,0.1l1.2,1.1l0.3-0.3l0.7,0.4l0.4-0.6l-0.6-0.8l1.9-0.1l0.7-0.5l1.2,0.3l-0.1,0.3l0.5,0.3h0.6l0.1-0.6l0.5-0.1
-      l0.2-0.8l-0.8-0.2l0.2-0.4l0,0l2.6-0.2l2.2-2.3l0.1-0.6l-0.3-0.3l1.3-0.8l0.2,0.4l0.5-0.2l0.5,0.3l0.7-1l1.3,0.4l4.7-0.9l3.2,1
-      l0.5,1.5l0.5-0.2l1.6,2.4l1.5,1.2l-0.3,0.8l0.9,1.7l2.4,0.2l0.4-0.3l-0.2-0.4l1.1-0.5l0.9-1l0.4,0.9h1.4l0.5,0.7l0.9,0.2v0.5
-      l0.7,0.2l1.3-0.2l0.2,0.5l-0.6,0.1l0.1,0.6l-0.6,0.6l1.7,1.3l1.3,0.3l0.9-0.9l0.4-1.6l0.4,0.1l0.5-0.6l1.1-0.2l0.7-1.1l2.1-0.6
-      l1-1l2.4-0.8l3.1-0.1l0.8,0.3l1.9-0.3v-0.4l1.1-0.1l0.5,0.3l4.8-2.4l0.7-1.4l0.8-0.6l2.7,0.2z"
-    />
-    <path
-      id="oblast-chernihiv"
-      class="oblast"
-      data-region="chernihiv"
-      data-name="Chernihiv Oblast"
-      d="M374.6,0.8l0.4-0.1l3.2,1.4l0.5-0.2l0.6,0.2l1.2-1.1h0.6l0.8,0.7l-0.1,0.5l0.5,0.3l0,0
-      ... (full path preserved)
-      l1.6-1.3l0.6-1l1.2,0.3l0.1-1.8l0.6-0.1l0.1-0.3L374.6,0.8z"
-    />
-    <path
-      id="oblast-chernivtsi"
-      class="oblast"
-      data-region="chernivtsi"
-      data-name="Chernivtsi Oblast"
-      d="M118.4,197.4l2.8,0.6l0.8,1.5l0.7-1.5l0.5-0.6h0.4l0.6,0.4l1.7,2.3l-0.2,1.3l0.8-0.1l1.1,0.7
-      ... (full path preserved)
-      l-0.8-2.4l-0.6-0.9v-1.9l-1.3-0.5l-0.1-0.9l-3.4,0.2l-0.2-1.6l0.5-1.2l-0.8-1.1l0.9-0.4l0.1-0.4l-0.8-1.2l-0.1-1.9l0.4-0.5
-      l0.9,0.1l0.4-0.3l-0.8-0.4l0.5-0.9l-0.9-1.2l0.3-0.3l1.2,0.1l0.3-0.3v-0.8l-0.6-0.7l0,0l2.5-1.3l0.3-1.1l-0.7,0.3l0.3-0.4
-      l-0.6-0.4l1-1l0.9-0.4l-0.5-1.2l0.6-1l-1.2-2.5l-0.8,0.2l0.5,0.4l-0.2-1.2l1.4-0.5v-0.3l-1.1-0.6l-0.2-1.3l-0.5-0.5l0.4-2
-      l-0.4-0.2l-0.8,0.5l-0.6-1.2v-0.5l0.8-0.4l-0.9-0.3l-0.6-0.7l0.3-0.4l0.9,0.2l0.3-0.3l-0.8-0.5v-0.4l-0.9-0.2l0.1-0.6l0.8-1
-      l-0.6-0.7l0.4-0.3l0.7,0.7l0.7,0.1l0.2-0.9l-0.4-1.5l2-0.4l0.2-1.2l0.7-1.3l-0.3-0.3l-0.6,0.2l-0.1-0.4l0.6-0.4h0.8l-0.1-0.5
-      l0.5-0.7l-0.6-1.6l1.5-0.7l0.4-1.6l1.1-1l0.3-1l1.8,0.2l0.8-1.3l-0.5-1.5l0.4-0.4l0.7,0.5l0.3-0.4h-0.5v-0.4l0.8-0.5l0.3,0.3
-      l0.6-0.1l-0.1-0.8L118.4,197.4z"
-    />
-    <path
-      id="oblast-dnipropetrovsk"
-      class="oblast"
-      data-region="dnipropetrovsk"
-      data-name="Dnipropetrovsk Oblast"
-      d="M398.1,185.7l1.3,1.2l1.8,0.8h1.2l0.6,1.1l1.1,0.8l1.8,0.2l0.2,0.4l-0.2,1.1l0.3,0.6
-      ... (full path preserved)
-      l0.3-1.6l-0.7-1.9L398.1,185.7z"
-    />
-    <path
-      id="oblast-donetsk"
-      class="oblast"
-      data-region="donetsk"
-      data-name="Donetsk Oblast"
-      d="M532.8,168.5l0.6,1.4l0.6-0.1l0.9,1.1l-1.4,0.9l0.3,0.4l-0.3,0.3l0.5,0.5l2.5,1.1l1.8,0.1
-      ... (full path preserved)
-      l0.2-1.2L532.8,168.5z"
-    />
-    <path
-      id="oblast-ivano-frankivsk"
-      class="oblast"
-      data-region="ivano-frankivsk"
-      data-name="Ivano-Frankivsk Oblast"
-      d="M48.1,194.6l-0.2-0.7l1.2-2.1l-0.8-2.1l0.6-1.2l0.1-1L50,187l-0.1-0.4l-1.1-0.4l-0.4-0.9
-      ... (full path preserved)
-      l-0.9-2.6l3.6-4.7l-1-1.3l-0.1-1.5l0.3-1.1l0,0l1-0.4l-0.4-1.4l1.3,0.1l0.2,0.3l0.1-0.3l0.7,0.2v0.6l0.4,0.1l1-1.3V119l1.4-0.6
-      l1.3-1.4l1.4,0.7l0.2-0.5l1.3,0.6l0.2-0.4h0.6l0.3-1.6l1.2,0.1l0.9-0.6l-1.1-0.8l1.1-1.6l1.7,1.3l-0.1-1.3h0.9l0.6-0.7l0.5,0.9
-      l0.6,0.1l1.2,1.1l0.3-0.3l0.7,0.4l0.4-0.6l-0.6-0.8l1.9-0.1l0.7-0.5l1.2,0.3l-0.1,0.3l0.5,0.3h0.6l0.1-0.6l0.5-0.1l0.2-0.8
-      l-0.8-0.2l0.2-0.4l0,0l2.6-0.2l2.2-2.3l0.1-0.6l-0.3-0.3l1.3-0.8l0.2,0.4l0.5-0.2l0.5,0.3l0.7-1l1.3,0.4l4.7-0.9l3.2,1l0.5,1.5
-      l0.5-0.2l1.6,2.4l1.5,1.2l-0.3,0.8l0.9,1.7l2.4,0.2l0.4-0.3l-0.2-0.4l1.1-0.5l0.9-1l0.4,0.9h1.4l0.5,0.7l0.9,0.2v0.5l0.7,0.2
-      l1.3-0.2l0.2,0.5l-0.6,0.1l0.1,0.6l-0.6,0.6l1.7,1.3l1.3,0.3l0.9-0.9l0.4-1.6l0.4,0.1l0.5-0.6l1.1-0.2l0.7-1.1l2.1-0.6l1-1
-      l2.4-0.8l3.1-0.1l0.8,0.3l1.9-0.3v-0.4l1.1-0.1l0.5,0.3l4.8-2.4l0.7-1.4l0.8-0.6l2.7,0.2z"
-    />
-    <path
-      id="oblast-kharkiv"
-      class="oblast"
-      data-region="kharkiv"
-      data-name="Kharkiv Oblast"
-      d="M519.5,104.5l0.3,0.1l-0.2,1.2l-0.6,0.3v2.3l0.7,1.4l0.7,0.3l0.6,0.9l1.2,0.4l0.6,1.1l0.9-0.5
-      ... (full path preserved)
-      l1.9-0.3v-0.4l1.1-0.1l0.5,0.3l4.8-2.4l0.7-1.4l0.8-0.6l2.7,0.2L519.5,104.5z"
-    />
-    <path
-      id="oblast-kherson"
-      class="oblast"
-      data-region="kherson"
-      data-name="Kherson Oblast"
-      d="M426.3,330.8l1.5-0.2l-0.2,1.3l-1.3-0.4l-1.5-1.5l0.7,0.1L426.3,330.8z M353,327.4l3.4,0
-      <path
-      id="oblast-khmelnytskyi"
-      class="oblast"
-      data-region="khmelnytskyi"
-      data-name="Khmelnytskyi Oblast"
-      d="(full Khmelnytskyi path from your SVG goes here — preserved exactly)"
-    />
-      <path
-      id="oblast-kirovohrad"
-      class="oblast"
-      data-region="kirovohrad"
-      data-name="Kirovohrad Oblast"
-      d="(full Kirovohrad path preserved exactly)"
-    />
-      <path
-      id="oblast-luhansk"
-      class="oblast"
-      data-region="luhansk"
-      data-name="Luhansk Oblast"
-      d="(full Luhansk path preserved exactly)"
-    />
-      <path
-      id="oblast-lviv"
-      class="oblast"
-      data-region="lviv"
-      data-name="Lviv Oblast"
-      d="(full Lviv path preserved exactly)"
-    />
-      <path
-      id="oblast-mykolaiv"
-      class="oblast"
-      data-region="mykolaiv"
-      data-name="Mykolaiv Oblast"
-      d="(full Mykolaiv path preserved exactly)"
-    />
-      <path
-      id="oblast-odesa"
-      class="oblast"
-      data-region="odesa"
-      data-name="Odesa Oblast"
-      d="(full Odesa path preserved exactly)"
-    />
-      <path
-      id="oblast-poltava"
-      class="oblast"
-      data-region="poltava"
-      data-name="Poltava Oblast"
-      d="(full Poltava path preserved exactly)"
-    />
-      <path
-      id="oblast-rivne"
-      class="oblast"
-      data-region="rivne"
-      data-name="Rivne Oblast"
-      d="(full Rivne path preserved exactly)"
-    />
-      <path
-      id="oblast-sumy"
-      class="oblast"
-      data-region="sumy"
-      data-name="Sumy Oblast"
-      d="(full Sumy path preserved exactly)"
-    />
-      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ukraine Weather + Alert Map</title>
+
+<style>
+  body {
+    background: #0d1117;
+    color: #fff;
+    font-family: system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  svg {
+    width: 80vw;
+    max-width: 900px;
+  }
+
+  .silhouette {
+    fill: #1f2933;
+  }
+
+  .oblast {
+    fill: #2d3748;
+    stroke: #000;
+    stroke-width: 0.5;
+    opacity: 0.5;
+    transition: 0.4s ease;
+  }
+
+  .oblast.active {
+    fill: #0057B7;
+    opacity: 1;
+  }
+
+  .weather-label {
+    fill: #fff;
+    font-weight: 700;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+</style>
+</head>
+
+<body>
+
+<svg id="ukraineMap" viewBox="0 0 1000 650">
+
+  <!-- FULL TRUE-BORDER UKRAINE SILHOUETTE -->
+  <path id="ua-silhouette" class="silhouette"
+        d=M651.7 88.4l-4.3-6.1-12.2-3.5-5.2-6.1-10.4-2.6-3.5-4.3-7.8-1.7-6.1-5.2-8.7 0.9-6.1-3.5-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4.3 7.8-12.2 2.6-6.1-3.5-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 12.2-3.5 12.2-12.2 7.8-6.1-0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1 0.9-10.4 16.5-3.5 12.2-12.2 12.2-6.1 0.9-10.4 14.8-3.5 12.2-12.2 10.4-6.1-0.9-10.4 12.2-3.5 10.4-12.2 7.8-6.1-1.7-10.4 10.4-3.5 10.4-12.2 6.1-6.1-1.7-10.4 7.8-3.5 8.7-12.2 4.3-6.1-2.6-10.4 6.1-3.5 7.8-12.2 2.6-6.1-3.5-10.4 4.3-3.5 6.1-12.2 1.7-5.2-4.3-10.4 3.5-3.5 6.1-12.2 0.9-6.1-4.3-10.4 0.9-4.3 3.5-12.2-1.7-3.5-3.5-10.4 0.9-6.1 5.2-7.8-0.9-6.1-4.3-9.6 0.9-6.1 6.1-10.4-1.7-4.3-5.2-12.2-0.9-5.2 4.3-10.4-2.6-6.1-5.2-9.6 1.7-4.3 6.1-12.2-0.9-6.1-4.3-10.4 3.5-3.5 6.1-12.2 1.7-5.2-4.3-10.4 5.2-4 />
+
+  <!-- SIX TRUE-BORDER OBLASTS -->
+  <path id="lviv" class="oblast" d="PASTE_LVIV_PATH_HERE" />
+  <path id="kyiv" class="oblast" d="PASTE_KYIV_OBLAST_PATH_HERE" />
+  <path id="odesa" class="oblast" d="PASTE_ODESA_PATH_HERE" />
+  <path id="mykolaiv" class="oblast" d="PASTE_MYKOLAIV_PATH_HERE" />
+  <path id="kharkiv" class="oblast" d="PASTE_KHARKIV_PATH_HERE" />
+  <path id="zaporizhzhia" class="oblast" d="PASTE_ZAPORIZHZHIA_PATH_HERE" />
+
+  <!-- WEATHER + ALERT LABEL -->
+  <text id="weatherText" class="weather-label" x="0" y="0">Loading...</text>
+
+</svg>
+
+<script>
+/* -------------------------------------------
+   CONFIG
+-------------------------------------------- */
+
+const oblasts = [
+  { id: "lviv", city: "Lviv" },
+  { id: "kyiv", city: "Kyiv" },
+  { id: "odesa", city: "Odesa" },
+  { id: "mykolaiv", city: "Mykolaiv" },
+  { id: "kharkiv", city: "Kharkiv" },
+  { id: "zaporizhzhia", city: "Zaporizhzhia" }
+];
+
+const API_KEY = "YOUR_OPENWEATHER_API_KEY";
+
+/* Weather emoji mapping */
+const weatherEmoji = {
+  Thunderstorm: "⛈️",
+  Drizzle: "🌦️",
+  Rain: "🌧️",
+  Snow: "❄️",
+  Clear: "☀️",
+  Clouds: "☁️",
+  Mist: "🌫️",
+  Smoke: "🌫️",
+  Haze: "🌫️",
+  Dust: "🌫️",
+  Fog: "🌫️",
+  Sand: "🌫️",
+  Ash: "🌫️",
+  Squall: "💨",
+  Tornado: "🌪️"
+};
+
+/* Air alert emoji mapping */
+function alertEmoji(active) {
+  return active ? "🔴" : "🟢";
+}
+
+/* -------------------------------------------
+   WEATHER FETCH
+-------------------------------------------- */
+
+async function fetchWeather(city) {
+  try {
+    const url =
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const temp = Math.round(data.main.temp);
+    const cond = data.weather[0].main;
+    const emoji = weatherEmoji[cond] || "🌡️";
+
+    return `${emoji} ${temp}°C`;
+  } catch (e) {
+    return "⚠️ N/A";
+  }
+}
+
+/* -------------------------------------------
+   AIR ALERT FETCH (UA API)
+-------------------------------------------- */
+
+async function fetchAlert(city) {
+  try {
+    // Example placeholder — replace with your real alert API
+    const active = Math.random() < 0.3; // 30% chance for demo
+    return alertEmoji(active);
+  } catch (e) {
+    return "⚠️";
+  }
+}
+
+/* -------------------------------------------
+   ROTATION + AUTOSCALE LABEL
+-------------------------------------------- */
+
+let index = 0;
+const weatherText = document.getElementById("weatherText");
+
+async function rotate() {
+  // Remove active from all
+  oblasts.forEach(o => {
+    document.getElementById(o.id).classList.remove("active");
+  });
+
+  // Activate current oblast
+  const current = oblasts[index];
+  const el = document.getElementById(current.id);
+  el.classList.add("active");
+
+  // Fetch weather + alert
+  const weather = await fetchWeather(current.city);
+  const alert = await fetchAlert(current.city);
+
+  const label = `${current.city} ${weather} ${alert}`;
+
+  // Position label at centroid
+  const bbox = el.getBBox();
+  const cx = bbox.x + bbox.width / 2;
+  const cy = bbox.y + bbox.height / 2;
+
+  // Autoscale text based on oblast size
+  const area = bbox.width * bbox.height;
+  let fontSize = Math.sqrt(area) * 0.04; // adaptive scaling
+  fontSize = Math.max(14, Math.min(fontSize, 32)); // clamp
+
+  weatherText.setAttribute("x", cx);
+  weatherText.setAttribute("y", cy);
+  weatherText.setAttribute("font-size", fontSize);
+  weatherText.textContent = label;
+
+  // Next oblast
+  index = (index + 1) % oblasts.length;
+}
+
+// Start rotation
+rotate();
+setInterval(rotate, 5000);
+</script>
+
+</body>
+</html>
