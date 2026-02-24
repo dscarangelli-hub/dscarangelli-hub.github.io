@@ -1,0 +1,12 @@
+{
+  "name": "wsua-news-fetch",
+  "private": true,
+  "description": "Fetch Ukraine news from RSS and write JSON for utility bar (2026)",
+  "type": "module",
+  "scripts": {
+    "fetch-news": "node fetch-news.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
+}

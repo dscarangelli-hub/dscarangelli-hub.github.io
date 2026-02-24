@@ -4,12 +4,73 @@
     <div class="footer-brand">
       <img src="/assets/images/emblem.svg" alt="WSUA Emblem" class="footer-logo">
       <p class="footer-title">Western Solidarity with Ukraine Alliance</p>
+      <p class="footer-status">Pursuing 501(c)(3) status · Donations are not yet tax‑deductible</p>
+      <p class="footer-ein-ubi">EIN 41-359-3491 · Washington UBI 606-029-374</p>
+    </div>
+
+    <div class="footer-time-weather">
+      <div class="footer-location">
+        <span class="footer-loc-label">Seattle</span>
+        <time id="footer-time-seattle" class="footer-time" datetime="">--:--</time>
+        <span id="footer-weather-seattle" class="footer-weather"><span id="footer-weather-icon-seattle" class="footer-weather-emoji" aria-hidden="true">🌤️</span> <span id="footer-temp-seattle">—°C</span></span>
+      </div>
+      <div class="footer-location">
+        <span class="footer-loc-label">Kyiv</span>
+        <time id="footer-time-kyiv" class="footer-time" datetime="">--:--</time>
+        <span id="footer-weather-kyiv" class="footer-weather"><span id="footer-weather-icon-kyiv" class="footer-weather-emoji" aria-hidden="true">☁️</span> <span id="footer-temp-kyiv">—°C</span></span>
+      </div>
     </div>
 
     <div class="footer-meta">
       <p>© {{ "now" | date: "%Y" }} Western Solidarity with Ukraine Alliance</p>
-      <p id="footer-weather" class="footer-extra">Loading weather…</p>
+      <p class="footer-weather-attribution"><a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather by Open-Meteo.com</a></p>
     </div>
 
   </div>
 </footer>
+<script>
+(function() {
+  var opts = { hour: '2-digit', minute: '2-digit', hour12: false };
+  function updateTime() {
+    var now = new Date();
+    var seattle = now.toLocaleTimeString('en-GB', Object.assign({}, opts, { timeZone: 'America/Los_Angeles' }));
+    var kyiv = now.toLocaleTimeString('en-GB', Object.assign({}, opts, { timeZone: 'Europe/Kyiv' }));
+    var s = document.getElementById('footer-time-seattle');
+    var k = document.getElementById('footer-time-kyiv');
+    if (s) { s.textContent = seattle; s.setAttribute('datetime', now.toISOString()); }
+    if (k) { k.textContent = kyiv; k.setAttribute('datetime', now.toISOString()); }
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  function weatherEmoji(code) {
+    if (code === 0) return '☀️';
+    if (code <= 3) return '🌤️';
+    if (code <= 49) return '🌫️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '❄️';
+    if (code <= 82) return '🌧️';
+    if (code <= 86) return '❄️';
+    if (code <= 99) return '⛈️';
+    return '☁️';
+  }
+
+  function fetchWeather(lat, lon, tempId, iconId) {
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=temperature_2m,weather_code';
+    fetch(url)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.current) {
+          var tempEl = document.getElementById(tempId);
+          var iconEl = document.getElementById(iconId);
+          if (tempEl) tempEl.textContent = Math.round(data.current.temperature_2m) + '°C';
+          if (iconEl) iconEl.textContent = weatherEmoji(data.current.weather_code);
+        }
+      })
+      .catch(function() {});
+  }
+
+  fetchWeather(47.6062, -122.3321, 'footer-temp-seattle', 'footer-weather-icon-seattle');
+  fetchWeather(50.4501, 30.5234, 'footer-temp-kyiv', 'footer-weather-icon-kyiv');
+})();
+</script>
