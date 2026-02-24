@@ -1,0 +1,113 @@
+/* --- TRANSPARENCY PAGE ONLY --- */
+
+/* Use global hero system, only override background */
+.transparency-hero {
+    background-image: url('/assets/hero/transparency-hero.jpg');
+}
+
+/* Values Section */
+.wsua-values {
+    background: #ffffff;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 1px solid #d9e1ec;
+    border-radius: 8px;
+}
+
+.wsua-values h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #0057b7;
+    padding-left: 0.75rem;
+}
+
+.wsua-values h3 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    border-left: 4px solid #0057b7;
+    padding-left: 0.5rem;
+}
+
+.values-list {
+    margin: 1rem 0 1.5rem;
+    padding-left: 1.2rem;
+}
+
+.values-list li {
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+/* Disclaimer Box */
+.wsua-disclaimer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #fff4d6;
+    border-left: 6px solid #e6a100;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Section Titles */
+.wsua-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #0057b7;
+    padding-left: 0.75rem;
+}
+
+/* Document List */
+.document-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+}
+
+.document {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #d9e1ec;
+}
+
+.doc-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.doc-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.doc-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.doc-title:hover {
+    text-decoration: underline;
+}
+
+.doc-meta {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.25rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .doc-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .doc-title {
+        font-size: 1rem;
+    }
+}

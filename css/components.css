@@ -1,0 +1,75 @@
+/* ===========================
+   COMPONENTS.CSS
+   Shared UI Elements
+   =========================== */
+
+/* Pagination (Minimal Academic Style) */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.pagination a {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #005bbb;
+    color: #005bbb;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.pagination a.active {
+    background: #005bbb;
+    color: white;
+}
+
+.pagination a:hover {
+    background: #e6f0ff;
+}
+
+/* Form Elements (Elegant Academic Style) */
+.form-section {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.form-section h3 {
+    margin-bottom: 1rem;
+}
+
+.form-section label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.form-section input,
+.form-section textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+    background: white;
+}
+
+.form-section button {
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.2rem;
+    background: #005bbb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-section button:hover {
+    background: #004a99;
+}
