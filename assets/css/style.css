@@ -178,6 +178,10 @@ body {
   position: relative;
   width: 260px;
   height: 162px;
+  background-image: url('/assets/images/ua-map.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 768px) {
