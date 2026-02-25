@@ -5,33 +5,10 @@
     <!-- TOP ROW -->
     <div class="utility-header-top">
 
-      <!-- LEFT: MAP -->
+      <!-- LEFT: MAP (loaded from assets/svg/ukraine-map.svg by utility-bar.js) -->
       <div class="utility-col utility-col-map">
-        <div class="utility-map-wrapper">
-          <svg id="ukraine-map" viewBox="0 0 800 500" class="ukraine-map" aria-label="Map of Ukraine with live oblast alerts">
-            <g id="oblasts">
-              <path id="oblast-kyiv-city" class="oblast" data-region="kyiv-city" data-name="Kyiv City"
-                d="M100,100 L140,100 L140,140 L100,140 Z" />
-              <path id="oblast-lviv" class="oblast" data-region="lviv" data-name="Lviv Oblast"
-                d="M40,160 L90,160 L90,210 L40,210 Z" />
-              <path id="oblast-kharkiv" class="oblast" data-region="kharkiv" data-name="Kharkiv Oblast"
-                d="M520,120 L580,120 L580,180 L520,180 Z" />
-              <path id="oblast-odesa" class="oblast" data-region="odesa" data-name="Odesa Oblast"
-                d="M200,260 L260,260 L260,320 L200,320 Z" />
-              <path id="oblast-mykolaiv" class="oblast" data-region="mykolaiv" data-name="Mykolaiv Oblast"
-                d="M240,300 L300,300 L300,360 L240,360 Z" />
-              <path id="oblast-dnipropetrovsk" class="oblast" data-region="dnipropetrovsk" data-name="Dnipropetrovsk Oblast"
-                d="M420,220 L480,220 L480,280 L420,280 Z" />
-              <path id="oblast-zaporizhzhia" class="oblast" data-region="zaporizhzhia" data-name="Zaporizhzhia Oblast"
-                d="M460,280 L520,280 L520,340 L460,340 Z" />
-              <path class="oblast" data-region="other-1" data-name="Ukraine Region"
-                d="M140,140 L220,140 L220,200 L140,200 Z" />
-              <path class="oblast" data-region="other-2" data-name="Ukraine Region"
-                d="M260,160 L340,160 L340,220 L260,220 Z" />
-              <path class="oblast" data-region="other-3" data-name="Ukraine Region"
-                d="M340,200 L420,200 L420,260 L340,260 Z" />
-            </g>
-          </svg>
+        <div class="utility-map-wrapper" id="utility-map-container">
+          <span class="utility-map-placeholder" aria-hidden="true">Ukraine</span>
           <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
         </div>
       </div>
@@ -51,11 +28,37 @@
         </div>
       </div>
 
-      <!-- CITY SPOTLIGHT: oblast name, weather, alert -->
+      <!-- FOUR ROWS: North, South, East, West — 6 cities rotate (1+2+2+1 per region) -->
       <div class="utility-col utility-col-city">
-        <div class="city-spotlight">
-          <img id="city-photo" class="utility-city-photo" src="" alt="">
-          <div class="city-spotlight-text" id="city-spotlight-text"></div>
+        <div class="utility-regions" id="utility-regions">
+          <div class="utility-region utility-region-north" data-region="north">
+            <span class="utility-region-label">North</span>
+            <div class="city-spotlight">
+              <img class="utility-city-photo region-photo" src="" alt="" data-region="north">
+              <span class="city-spotlight-text region-text" data-region="north"></span>
+            </div>
+          </div>
+          <div class="utility-region utility-region-south" data-region="south">
+            <span class="utility-region-label">South</span>
+            <div class="city-spotlight">
+              <img class="utility-city-photo region-photo" src="" alt="" data-region="south">
+              <span class="city-spotlight-text region-text" data-region="south"></span>
+            </div>
+          </div>
+          <div class="utility-region utility-region-east" data-region="east">
+            <span class="utility-region-label">East</span>
+            <div class="city-spotlight">
+              <img class="utility-city-photo region-photo" src="" alt="" data-region="east">
+              <span class="city-spotlight-text region-text" data-region="east"></span>
+            </div>
+          </div>
+          <div class="utility-region utility-region-west" data-region="west">
+            <span class="utility-region-label">West</span>
+            <div class="city-spotlight">
+              <img class="utility-city-photo region-photo" src="" alt="" data-region="west">
+              <span class="city-spotlight-text region-text" data-region="west"></span>
+            </div>
+          </div>
         </div>
       </div>
 
