@@ -178,10 +178,6 @@ body {
   position: relative;
   width: 260px;
   height: 162px;
-  background-image: url('/assets/images/ukraine-map.svg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 @media (max-width: 768px) {
@@ -192,13 +188,25 @@ body {
   }
 }
 
-.utility-header .ukraine-map {
+.utility-map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0057b7;
+  opacity: 0.6;
+}
+.utility-map-wrapper .ukraine-map {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Ukrainian blue base, gold highlight */
+/* Ukrainian blue base, gold highlight (paths inside .oblast for CodePen map) */
+.utility-header .oblast path,
 .utility-header .oblast {
   fill: #0057b7;
   stroke: rgba(0, 0, 0, 0.25);
@@ -207,14 +215,20 @@ body {
   cursor: pointer;
 }
 
+.utility-header .oblast:hover path,
 .utility-header .oblast:hover {
   fill: #1a6bc9;
 }
 
+.utility-header .oblast.oblast-active path,
 .utility-header .oblast.oblast-active {
   fill: #ffd700;
   stroke: #fff;
   stroke-width: 1;
+}
+
+.utility-map-wrapper .cityName {
+  display: none;
 }
 
 .map-tooltip {
@@ -260,27 +274,55 @@ body {
   margin: 0 0.25rem;
 }
 
-/* City spotlight */
-.city-spotlight {
+/* Four rows: North, South, East, West — 6 cities rotate */
+.utility-regions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.utility-region {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
 }
 
-.utility-city-photo {
-  width: 36px;
-  height: 36px;
+.utility-region-label {
+  flex: 0 0 3.2em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.utility-region .city-spotlight {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.utility-city-photo,
+.utility-region .region-photo {
+  width: 28px;
+  height: 28px;
   object-fit: cover;
   border-radius: 4px;
   flex-shrink: 0;
 }
 
-.city-spotlight-text {
+.city-spotlight-text,
+.utility-region .region-text {
+  font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
 /* CTA button */
@@ -354,8 +396,36 @@ body {
   .utility-col-times { order: 0; }
   .utility-col-map { order: 0; }
   .utility-col-cta { order: 2; }
+  .utility-regions { gap: 0.25rem; }
+  .utility-region .region-text { font-size: 0.7rem; }
   .utility-bottom-inner { flex-direction: column; align-items: flex-start; }
   .utility-news-sep { display: none; }
+}
+
+/* Mobile: collapse bar when scrolled so it doesn’t cover content; tap to expand */
+@media (max-width: 768px) {
+  .utility-header-wrapper.utility-bar-collapsed .utility-header-bottom {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-header-top {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 48px;
+    gap: 0.5rem;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-city {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-map {
+    flex: 0 0 44px;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-map-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .utility-header-wrapper.utility-bar-collapsed {
+    cursor: pointer;
+  }
 }
 
 .watermark {
