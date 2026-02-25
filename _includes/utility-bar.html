@@ -5,11 +5,23 @@
     <!-- TOP ROW -->
     <div class="utility-header-top">
 
-      <!-- LEFT: MAP (loaded from assets/svg/ukraine-map.svg by utility-bar.js) -->
+      <!-- LEFT: Interactive map + Air raid map (same SVG; air raid style = alert levels) -->
       <div class="utility-col utility-col-map">
-        <div class="utility-map-wrapper" id="utility-map-container">
-          <span class="utility-map-placeholder" aria-hidden="true">Ukraine</span>
-          <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
+        <div class="utility-maps-row">
+          <div class="utility-map-wrapper" id="utility-map-container">
+            <span class="utility-map-placeholder" aria-hidden="true">Ukraine</span>
+            <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
+          </div>
+          <div class="utility-airraid-wrapper" id="utility-airraid-container" aria-label="Air raid alert map">
+            <span class="utility-map-placeholder" aria-hidden="true">Alerts</span>
+            <div class="airraid-legend" aria-hidden="true">
+              <span class="airraid-legend-dot airraid-alert-none"></span> None
+              <span class="airraid-legend-dot airraid-alert-elevated"></span> Elevated
+              <span class="airraid-legend-dot airraid-alert-high"></span> High
+              <span class="airraid-legend-dot airraid-alert-critical"></span> Critical
+              <span id="airraid-last-update" class="airraid-last-update"></span>
+            </div>
+          </div>
         </div>
       </div>
 
