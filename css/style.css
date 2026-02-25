@@ -148,9 +148,9 @@ body {
 
 .utility-header-wrapper {
   width: 100%;
-  background: #0057b7;
-  color: #fff;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  background: #e5edf7; /* light slate so Ukraine silhouette pops */
+  color: #003566;
+  border-bottom: 2px solid rgba(0, 53, 102, 0.12);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -169,40 +169,152 @@ body {
   min-height: 72px;
 }
 
-.utility-col-map { flex: 0 0 auto; }
+.utility-col-map { flex: 0 0 520px; }
 .utility-col-times { flex: 0 0 auto; }
 .utility-col-city { flex: 1 1 200px; min-width: 0; }
 .utility-col-cta { flex: 0 0 auto; }
 
-.utility-map-wrapper {
-  position: relative;
-  width: 200px;
-  height: 125px;
+.utility-maps-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
 }
 
-.utility-header .ukraine-map {
+.utility-map-wrapper {
+  position: relative;
+  width: 260px;
+  height: 162px;
+  flex-shrink: 0;
+}
+
+.utility-airraid-wrapper {
+  position: relative;
+  width: 260px;
+  height: 162px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.utility-airraid-wrapper .ukraine-map {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Ukrainian blue base, gold highlight */
+/* Air raid map: color by alert level (app-style) */
+.utility-airraid-wrapper .airraid-map path {
+  stroke: rgba(0, 0, 0, 0.3);
+  stroke-width: 0.5;
+  transition: fill 0.2s ease;
+}
+.utility-airraid-wrapper .airraid-alert-none { fill: #22c55e; }
+.utility-airraid-wrapper .airraid-alert-elevated { fill: #eab308; }
+.utility-airraid-wrapper .airraid-alert-high { fill: #f97316; }
+.utility-airraid-wrapper .airraid-alert-critical { fill: #dc2626; }
+
+.utility-airraid-wrapper .cityName,
+.utility-airraid-wrapper text {
+  display: none !important;
+}
+
+.airraid-legend {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  font-size: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.airraid-legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.airraid-legend-dot.airraid-alert-none { background: #22c55e; }
+.airraid-legend-dot.airraid-alert-elevated { background: #eab308; }
+.airraid-legend-dot.airraid-alert-high { background: #f97316; }
+.airraid-legend-dot.airraid-alert-critical { background: #dc2626; }
+
+.airraid-last-update {
+  width: 100%;
+  font-size: 0.55rem;
+  opacity: 0.85;
+  margin-top: 1px;
+}
+
+@media (max-width: 768px) {
+  .utility-map-wrapper {
+    width: 200px;
+    height: 125px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.utility-map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0057b7;
+  opacity: 0.6;
+}
+.utility-map-wrapper .ukraine-map {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Ukrainian blue base, gold highlight (paths inside .oblast for CodePen map) */
+.utility-header .oblast path,
 .utility-header .oblast {
   fill: #0057b7;
-  stroke: rgba(255, 255, 255, 0.4);
+  stroke: rgba(0, 0, 0, 0.25);
   stroke-width: 0.5;
   transition: fill 0.2s ease;
   cursor: pointer;
 }
 
+.utility-header .oblast:hover path,
 .utility-header .oblast:hover {
   fill: #1a6bc9;
 }
 
+.utility-header .oblast.oblast-active path,
 .utility-header .oblast.oblast-active {
   fill: #ffd700;
   stroke: #fff;
   stroke-width: 1;
+}
+
+/* Force highlight when inside map container (in case SVG is namespaced) */
+#utility-map-container .oblast.oblast-active path {
+  fill: #ffd700 !important;
+  stroke: #fff !important;
+  stroke-width: 1;
+}
+
+/* Remove all wording/labels from the Ukraine map */
+#utility-map-container .cityName,
+#utility-map-container text {
+  display: none !important;
+}
+.utility-map-wrapper .cityName,
+.utility-map-wrapper text {
+  display: none !important;
 }
 
 .map-tooltip {
@@ -216,6 +328,27 @@ body {
   opacity: 0;
   transition: opacity 0.15s ease;
   z-index: 9999;
+}
+
+.map-tooltip-with-img {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 8px;
+  max-width: 160px;
+}
+
+.map-tooltip-img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.map-tooltip-label {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 /* Times: Kyiv | Bremerton */
@@ -248,27 +381,61 @@ body {
   margin: 0 0.25rem;
 }
 
-/* City spotlight */
-.city-spotlight {
+/* Four rows: North, South, East, West — 6 cities rotate */
+.utility-regions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  min-height: 8rem;
+}
+
+.utility-region {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
+  min-height: 1.6rem;
 }
 
-.utility-city-photo {
-  width: 36px;
-  height: 36px;
+.utility-region-empty .region-text {
+  color: rgba(0, 53, 102, 0.5);
+}
+
+.utility-region-label {
+  flex: 0 0 3.2em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.utility-region .city-spotlight {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.utility-city-photo,
+.utility-region .region-photo {
+  width: 28px;
+  height: 28px;
   object-fit: cover;
   border-radius: 4px;
   flex-shrink: 0;
 }
 
-.city-spotlight-text {
+.city-spotlight-text,
+.utility-region .region-text {
+  font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
 /* CTA button */
@@ -333,17 +500,59 @@ body {
 
 @media (max-width: 1024px) {
   .utility-header-top { gap: 0.75rem; }
+  .utility-col-map { flex: 0 0 140px; }
+  .utility-maps-row { gap: 4px; }
   .utility-map-wrapper { width: 60px; height: 38px; }
+  .utility-airraid-wrapper { width: 60px; height: 38px; }
+  .airraid-legend { font-size: 0.5rem; gap: 2px 4px; padding: 1px 3px; }
+  .airraid-legend-dot { width: 5px; height: 5px; }
 }
 
 @media (max-width: 768px) {
   .utility-header-top { flex-direction: column; align-items: stretch; min-height: auto; }
   .utility-col-city { order: 1; }
   .utility-col-times { order: 0; }
-  .utility-col-map { order: 0; }
+  .utility-col-map { order: 0; flex: 0 0 auto; }
   .utility-col-cta { order: 2; }
+  .utility-maps-row { flex-wrap: wrap; }
+  .utility-map-wrapper { width: 200px; height: 125px; }
+  .utility-airraid-wrapper { width: 200px; height: 125px; }
+  .utility-regions { gap: 0.25rem; }
+  .utility-region .region-text { font-size: 0.7rem; }
   .utility-bottom-inner { flex-direction: column; align-items: flex-start; }
   .utility-news-sep { display: none; }
+}
+
+/* Mobile: collapse bar when scrolled so it doesn’t cover content; tap to expand */
+@media (max-width: 768px) {
+  .utility-header-wrapper.utility-bar-collapsed .utility-header-bottom {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-header-top {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 48px;
+    gap: 0.5rem;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-city {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-map {
+    flex: 0 0 44px;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-maps-row {
+    gap: 0;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-map-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-airraid-wrapper {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed {
+    cursor: pointer;
+  }
 }
 
 .watermark {
