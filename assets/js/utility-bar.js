@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Air raid map: real data from assets/data/ukraine-alerts.json (from alerts.com.ua API). Fallback: city.alert text. */
   let alertData = { last_update: null, regions: {} };
 
+  /* Per-oblast weather: real data from assets/data/ukraine-weather.json (capital cities via fetch-weather.js). */
+  let weatherData = { last_update: null, oblasti: {} };
+
   function getOblastAlertLevel(oblastId) {
     if (alertData.regions && oblastId in alertData.regions) {
       return alertData.regions[oblastId] ? 'critical' : 'none';
@@ -196,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /** For a region, get the display object for the currently selected oblast (city data if we have it, else name + key-feature image). */
+  /** For a region, get the display object for the currently selected oblast (city data if we have it, else name + key-feature image + per-oblast or region weather). */
   function getDisplayForRegion(regionKey) {
     const r = REGIONS[regionKey];
     if (!r || !r.oblastIds.length) return null;
@@ -206,10 +209,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (city) return { ...city, oblastId };
     const level = getOblastAlertLevel(oblastId);
     const alertText = level === 'critical' ? '🔴 Critical' : level === 'high' ? '🟠 High Risk' : level === 'elevated' ? '🟡 Elevated Risk' : '🟢 None';
+    // Prefer real per-oblast weather from backend JSON (capital city of this oblast).
+    const w = weatherData.oblasti && weatherData.oblasti[oblastId];
+    const sampleCity = cities.find(c => r.oblastIds.includes(c.oblastId));
+    const fallbackTemp = sampleCity ? sampleCity.temp : '—';
+    const fallbackWeather = sampleCity ? sampleCity.weather : '—';
+    const tempText =
+      w && typeof w.tempC === 'number' ? `${Math.round(w.tempC)}°C` : fallbackTemp;
+    const weatherText =
+      w && w.weather ? w.weather : fallbackWeather;
     return {
       city: formatOblastName(oblastId),
-      temp: '—',
-      weather: '—',
+      temp: tempText,
+      weather: weatherText,
       alert: alertText,
       photo: oblastImagePath(oblastId) || '',
       oblastId
@@ -357,6 +369,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     .catch(() => { /* use fallback getOblastAlertLevel from cities */ });
+
+  /* Per-oblast weather: load temperatures/conditions for each oblast capital (from scripts/fetch-weather.js) */
+  fetch('/assets/data/ukraine-weather.json')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      if (data && typeof data.oblasti === 'object') {
+        weatherData = {
+          last_update: data.last_update || null,
+          oblasti: data.oblasti || {}
+        };
+        // Immediately refresh region rows so temps/weather reflect real data.
+        updateRegionRows();
+      }
+    })
+    .catch(() => { /* keep fallback weather from cities[] */ });
 
   fetch('/assets/data/ukraine-news.json')
     .then(r => r.ok ? r.json() : Promise.reject())
