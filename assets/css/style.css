@@ -328,9 +328,9 @@ body {
   display: block;
 }
 
-/* Ukrainian blue base, gold highlight (paths inside .oblast for CodePen map) */
-.utility-header .oblast path,
-.utility-header .oblast {
+/* Ukrainian blue base, gold highlight (paths inside .oblast for main map only) */
+#utility-map-container .oblast path,
+#utility-map-container .oblast {
   fill: #0057b7;
   stroke: rgba(0, 0, 0, 0.25);
   stroke-width: 0.5;
