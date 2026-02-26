@@ -1,32 +1,19 @@
-<!-- UTILITY BAR: 1000px, Ukrainian blue/gold -->
+<!-- UTILITY BAR: spread layout — map left, regions + weather, CTA/fact/news, air raid right -->
 <section class="utility-header-wrapper" aria-label="Live Ukraine updates">
-  <div class="utility-header" style="max-width: 1000px; margin: 0 auto;">
+  <div class="utility-header">
 
-    <!-- TOP ROW -->
     <div class="utility-header-top">
 
-      <!-- LEFT: Interactive map + Air raid map (same SVG; air raid style = alert levels) -->
-      <div class="utility-col utility-col-map">
-        <div class="utility-maps-row">
-          <div class="utility-map-wrapper" id="utility-map-container">
-            <span class="utility-map-placeholder" aria-hidden="true">Ukraine</span>
-            <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
-          </div>
-          <div class="utility-airraid-wrapper" id="utility-airraid-container" aria-label="Air raid alert map">
-            <span class="utility-map-placeholder" aria-hidden="true">Alerts</span>
-            <div class="airraid-legend" aria-hidden="true">
-              <span class="airraid-legend-dot airraid-alert-none"></span> None
-              <span class="airraid-legend-dot airraid-alert-elevated"></span> Elevated
-              <span class="airraid-legend-dot airraid-alert-high"></span> High
-              <span class="airraid-legend-dot airraid-alert-critical"></span> Critical
-              <span id="airraid-last-update" class="airraid-last-update"></span>
-            </div>
-          </div>
+      <!-- LEFT: Interactive Ukraine map (larger) -->
+      <div class="utility-col utility-col-map-left">
+        <div class="utility-map-wrapper" id="utility-map-container">
+          <span class="utility-map-placeholder" aria-hidden="true">Ukraine</span>
+          <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
         </div>
       </div>
 
-      <!-- TIMES: Kyiv + Bremerton -->
-      <div class="utility-col utility-col-times">
+      <!-- COLUMN: Times + North/South/East/West rows with rotating oblast name, weather, risk -->
+      <div class="utility-col utility-col-regions">
         <div class="utility-times">
           <div class="utility-time-block">
             <span class="utility-time-label">Kyiv</span>
@@ -38,10 +25,6 @@
             <time id="time-bremerton" class="utility-time-value" datetime="">--:--</time>
           </div>
         </div>
-      </div>
-
-      <!-- FOUR ROWS: North, South, East, West — 6 cities rotate (1+2+2+1 per region) -->
-      <div class="utility-col utility-col-city">
         <div class="utility-regions" id="utility-regions">
           <div class="utility-region utility-region-north" data-region="north">
             <span class="utility-region-label">North</span>
@@ -74,19 +57,30 @@
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="utility-col utility-col-cta">
+      <!-- CTA + Daily fact + News (own block) -->
+      <div class="utility-col utility-col-cta-block">
         <a id="rotation-cta" href="/donate" class="utility-bar-cta">How You Can Help Today</a>
+        <div class="utility-cta-block-bottom">
+          <div id="fact-of-day" class="fact-of-day"></div>
+          <span class="utility-news-sep">·</span>
+          <div id="news-snippet" class="news-snippet"></div>
+        </div>
       </div>
-    </div>
 
-    <!-- BOTTOM ROW: Daily fact + News snippet -->
-    <div class="utility-header-bottom">
-      <div class="utility-bottom-inner">
-        <div id="fact-of-day" class="fact-of-day"></div>
-        <span class="utility-news-sep">·</span>
-        <div id="news-snippet" class="news-snippet"></div>
+      <!-- RIGHT: Air raid map -->
+      <div class="utility-col utility-col-airraid">
+        <div class="utility-airraid-wrapper" id="utility-airraid-container" aria-label="Air raid alert map">
+          <span class="utility-map-placeholder" aria-hidden="true">Alerts</span>
+          <div class="airraid-legend" aria-hidden="true">
+            <span class="airraid-legend-dot airraid-alert-none"></span> None
+            <span class="airraid-legend-dot airraid-alert-elevated"></span> Elevated
+            <span class="airraid-legend-dot airraid-alert-high"></span> High
+            <span class="airraid-legend-dot airraid-alert-critical"></span> Critical
+            <span id="airraid-last-update" class="airraid-last-update"></span>
+          </div>
+        </div>
       </div>
+
     </div>
 
   </div>
