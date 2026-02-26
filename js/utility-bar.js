@@ -11,29 +11,40 @@ document.addEventListener('DOMContentLoaded', () => {
     { city: "Zaporizhzhia", temp: "1°C", weather: "🌤️ Partly Cloudy", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/zaporizhzhia.jpg", oblastId: "Zaporizhia" }
   ];
 
-  /* All 24 oblasts + Kyiv + Sevastopol/Crimea, grouped North / South / East / West. 6 cities rotate across 4 rows. */
+  /* All 24 oblasts + Kyiv + Sevastopol/Crimea, grouped North / South / East / West. All oblasts in each region rotate. */
   const REGIONS = {
     north: {
       label: "North",
-      oblastIds: ["Chernihiv", "Kiev", "KyivCity", "Poltava", "Sumu", "Zhytomyr"],
-      cityIndices: [0]
+      oblastIds: ["Chernihiv", "Kiev", "KyivCity", "Poltava", "Sumu", "Zhytomyr"]
     },
     south: {
       label: "South",
-      oblastIds: ["Crimea", "Kherson", "Mykolaiv", "Odessa", "SevastopolCity"],
-      cityIndices: [3, 4]
+      oblastIds: ["Crimea", "Kherson", "Mykolaiv", "Odessa", "SevastopolCity"]
     },
     east: {
       label: "East",
-      oblastIds: ["Dnipropetrovsk", "Donetsk", "Kharkiv", "Luhansk", "Zaporizhia"],
-      cityIndices: [2, 5]
+      oblastIds: ["Dnipropetrovsk", "Donetsk", "Kharkiv", "Luhansk", "Zaporizhia"]
     },
     west: {
       label: "West",
-      oblastIds: ["Cherkasy", "Chernivtsi", "Ivano-Frankivsk", "Khmelnytskyi", "Kirovohrad", "Lviv", "Rivne", "Ternopil", "Vinnytsia", "Volyn", "Zakarpattia"],
-      cityIndices: [1]
+      oblastIds: ["Cherkasy", "Chernivtsi", "Ivano-Frankivsk", "Khmelnytskyi", "Kirovohrad", "Lviv", "Rivne", "Ternopil", "Vinnytsia", "Volyn", "Zakarpattia"]
     }
   };
+
+  /* Ukrainian spelling for display (map IDs stay as in SVG: Kiev, Odessa, etc.) */
+  const UKRAINIAN_DISPLAY_NAMES = {
+    Kiev: 'Kyiv',
+    Odessa: 'Odesa',
+    Sumu: 'Sumy',
+    Dnipropetrovsk: 'Dnipro',
+    Zaporizhia: 'Zaporizhzhia'
+  };
+
+  function formatOblastName(oblastId) {
+    if (!oblastId) return '';
+    if (UKRAINIAN_DISPLAY_NAMES[oblastId]) return UKRAINIAN_DISPLAY_NAMES[oblastId];
+    return oblastId.replace(/([A-Z])/g, ' $1').trim().replace(/^ /, '').replace(/City$/, '').trim();
+  }
 
   /* Oblast id → image path for key-feature tooltip (files in assets/images/oblasts/{slug}.jpg) */
   function oblastImagePath(oblastId) {
@@ -44,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Air raid map: real data from assets/data/ukraine-alerts.json (from alerts.com.ua API). Fallback: city.alert text. */
   let alertData = { last_update: null, regions: {} };
+
+  /* Per-oblast weather: real data from assets/data/ukraine-weather.json (capital cities via fetch-weather.js). */
+  let weatherData = { last_update: null, oblasti: {} };
 
   function getOblastAlertLevel(oblastId) {
     if (alertData.regions && oblastId in alertData.regions) {
@@ -164,10 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateClocks();
   setInterval(updateClocks, 1000);
 
-  /* ---------- FOUR ROWS (North/South/East/West) + 6 CITIES ROTATE + MAP HIGHLIGHT ---------- */
+  /* ---------- FOUR ROWS (North/South/East/West) + ALL OBLASTS ROTATE + MAP HIGHLIGHT ---------- */
 
-  let southIndex = 0;
-  let eastIndex = 0;
+  let northIndex = 0, southIndex = 0, eastIndex = 0, westIndex = 0;
 
   function setActiveOblasts(oblastIds) {
     oblastEls.forEach(o => {
@@ -177,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     if (!Array.isArray(oblastIds)) oblastIds = [oblastIds];
     oblastIds.forEach(id => {
-      const el = document.getElementById(id);
+      const el = mapContainer && mapContainer.querySelector('[id="' + id.replace(/"/g, '\\"') + '"]');
       if (el) {
         el.classList.add('oblast-active');
         const path = el.querySelector('path');
@@ -186,26 +199,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function getCityForRegion(regionKey) {
+  /** For a region, get the display object for the currently selected oblast (city data if we have it, else name + key-feature image + per-oblast or region weather). */
+  function getDisplayForRegion(regionKey) {
     const r = REGIONS[regionKey];
-    if (!r || !r.cityIndices.length) return null;
-    const idx = regionKey === "south" ? southIndex : regionKey === "east" ? eastIndex : 0;
-    const cityIndex = r.cityIndices[idx % r.cityIndices.length];
-    return cities[cityIndex];
+    if (!r || !r.oblastIds.length) return null;
+    const idx = { north: northIndex, south: southIndex, east: eastIndex, west: westIndex }[regionKey];
+    const oblastId = r.oblastIds[idx % r.oblastIds.length];
+    const city = cities.find(c => c.oblastId === oblastId);
+    if (city) return { ...city, oblastId };
+    const level = getOblastAlertLevel(oblastId);
+    const alertText = level === 'critical' ? '🔴 Critical' : level === 'high' ? '🟠 High Risk' : level === 'elevated' ? '🟡 Elevated Risk' : '🟢 None';
+    // Prefer real per-oblast weather from backend JSON (capital city of this oblast).
+    const w = weatherData.oblasti && weatherData.oblasti[oblastId];
+    const sampleCity = cities.find(c => r.oblastIds.includes(c.oblastId));
+    const fallbackTemp = sampleCity ? sampleCity.temp : '—';
+    const fallbackWeather = sampleCity ? sampleCity.weather : '—';
+    const tempText =
+      w && typeof w.tempC === 'number' ? `${Math.round(w.tempC)}°C` : fallbackTemp;
+    const weatherText =
+      w && w.weather ? w.weather : fallbackWeather;
+    return {
+      city: formatOblastName(oblastId),
+      temp: tempText,
+      weather: weatherText,
+      alert: alertText,
+      photo: oblastImagePath(oblastId) || '',
+      oblastId
+    };
+  }
+
+  function getCurrentOblastId(regionKey) {
+    const d = getDisplayForRegion(regionKey);
+    return d ? d.oblastId : null;
   }
 
   function updateRegionRows() {
     const regionKeys = ["north", "south", "east", "west"];
     regionKeys.forEach(regionKey => {
-      const city = getCityForRegion(regionKey);
+      const display = getDisplayForRegion(regionKey);
       const photoEl = document.querySelector(`.region-photo[data-region="${regionKey}"]`);
       const textEl = document.querySelector(`.region-text[data-region="${regionKey}"]`);
       if (photoEl && textEl) {
-        if (city) {
-          photoEl.src = city.photo;
-          photoEl.alt = city.city + " photo";
-          textEl.textContent = `${city.city} — ${city.temp} • ${city.weather} • ${city.alert}`;
+        if (display) {
+          photoEl.src = display.photo || '';
+          photoEl.alt = display.city + " photo";
+          const temp = display.temp !== undefined ? display.temp : '—';
+          const weather = display.weather !== undefined ? display.weather : '—';
+          textEl.textContent = `${display.city} — ${temp} · ${weather} · ${display.alert}`;
           photoEl.closest('.utility-region').classList.remove('utility-region-empty');
+          photoEl.onerror = function() { this.style.display = display.photo ? 'none' : ''; };
         } else {
           photoEl.removeAttribute('src');
           textEl.textContent = '';
@@ -213,13 +255,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-    const ids = regionKeys.map(k => getCityForRegion(k)).filter(Boolean).map(c => c.oblastId);
+    const ids = regionKeys.map(k => getCurrentOblastId(k)).filter(Boolean);
     if (oblastEls.length) setActiveOblasts(ids);
   }
 
   function rotateRegionCity() {
-    southIndex = (southIndex + 1) % Math.max(1, REGIONS.south.cityIndices.length);
-    eastIndex = (eastIndex + 1) % Math.max(1, REGIONS.east.cityIndices.length);
+    const rn = REGIONS.north.oblastIds.length;
+    const rs = REGIONS.south.oblastIds.length;
+    const re = REGIONS.east.oblastIds.length;
+    const rw = REGIONS.west.oblastIds.length;
+    northIndex = (northIndex + 1) % Math.max(1, rn);
+    southIndex = (southIndex + 1) % Math.max(1, rs);
+    eastIndex = (eastIndex + 1) % Math.max(1, re);
+    westIndex = (westIndex + 1) % Math.max(1, rw);
     updateRegionRows();
   }
 
@@ -230,15 +278,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return null;
   }
 
-  function setRegionToCity(regionKey, city) {
+  function setRegionToOblast(regionKey, oblastId) {
     const r = REGIONS[regionKey];
-    if (!r || !r.cityIndices.length) return;
-    const i = cities.findIndex(c => c.oblastId === city.oblastId);
-    if (i === -1) return;
-    const pos = r.cityIndices.indexOf(i);
-    if (pos === -1) return;
-    if (regionKey === "south") southIndex = pos;
-    if (regionKey === "east") eastIndex = pos;
+    if (!r || !r.oblastIds.includes(oblastId)) return;
+    const pos = r.oblastIds.indexOf(oblastId);
+    if (regionKey === 'north') northIndex = pos;
+    if (regionKey === 'south') southIndex = pos;
+    if (regionKey === 'east') eastIndex = pos;
+    if (regionKey === 'west') westIndex = pos;
     updateRegionRows();
   }
 
@@ -323,6 +370,21 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(() => { /* use fallback getOblastAlertLevel from cities */ });
 
+  /* Per-oblast weather: load temperatures/conditions for each oblast capital (from scripts/fetch-weather.js) */
+  fetch('/assets/data/ukraine-weather.json')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      if (data && typeof data.oblasti === 'object') {
+        weatherData = {
+          last_update: data.last_update || null,
+          oblasti: data.oblasti || {}
+        };
+        // Immediately refresh region rows so temps/weather reflect real data.
+        updateRegionRows();
+      }
+    })
+    .catch(() => { /* keep fallback weather from cities[] */ });
+
   fetch('/assets/data/ukraine-news.json')
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(data => {
@@ -351,10 +413,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const id = oblast.id || oblast.dataset.region;
           if (!id) return;
           e.preventDefault();
-          const city = cities.find(c => c.oblastId === id);
-          if (city) {
-            const regionKey = findRegionByOblastId(id);
-            if (regionKey) setRegionToCity(regionKey, city);
+          const regionKey = findRegionByOblastId(id);
+          if (regionKey) {
+            setRegionToOblast(regionKey, id);
           } else {
             window.location.href = '/programs/humanitarian';
           }
@@ -390,8 +451,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const airraidContainer = document.getElementById('utility-airraid-container');
 
   if (mapContainer) {
-    fetch('/assets/svg/ukraine-map.svg')
-      .then(r => r.ok ? r.text() : Promise.reject(new Error('Map load failed')))
+    function loadMapSvg(url) {
+      return fetch(url).then(r => r.ok ? r.text() : Promise.reject(new Error('Map load failed')));
+    }
+    (loadMapSvg('/assets/svg/ukraine-map.svg').catch(() => loadMapSvg('assets/svg/ukraine-map.svg')))
       .then(svgText => {
         const wrap = document.createElement('div');
         wrap.innerHTML = svgText.trim();
@@ -410,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.removeAttribute('target');
             const id = a.getAttribute('id') || '';
             a.setAttribute('data-region', id.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, ''));
-            a.setAttribute('data-name', id.replace(/([A-Z])/g, ' $1').trim() + ' Oblast');
+            a.setAttribute('data-name', formatOblastName(id) + ' Oblast');
           });
           initMap();
 
