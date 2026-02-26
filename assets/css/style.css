@@ -251,16 +251,17 @@ body {
   display: block;
 }
 
-/* Air raid map: color by alert level (app-style) */
+/* Air raid map: grey base + alert colors (similar to alerts.in.ua) */
 .utility-airraid-wrapper .airraid-map path {
-  stroke: rgba(0, 0, 0, 0.3);
+  fill: #9ca3af; /* grey when no class is applied */
+  stroke: rgba(0, 0, 0, 0.35);
   stroke-width: 0.5;
   transition: fill 0.2s ease;
 }
-.utility-airraid-wrapper .airraid-alert-none { fill: #22c55e; }
-.utility-airraid-wrapper .airraid-alert-elevated { fill: #eab308; }
-.utility-airraid-wrapper .airraid-alert-high { fill: #f97316; }
-.utility-airraid-wrapper .airraid-alert-critical { fill: #dc2626; }
+.utility-airraid-wrapper .airraid-alert-none { fill: #9ca3af; }          /* grey */
+.utility-airraid-wrapper .airraid-alert-elevated { fill: #facc15; }      /* yellow */
+.utility-airraid-wrapper .airraid-alert-high { fill: #fb923c; }          /* orange / red-orange */
+.utility-airraid-wrapper .airraid-alert-critical { fill: #dc2626; }      /* red */
 
 .utility-airraid-wrapper .cityName,
 .utility-airraid-wrapper text {
@@ -290,10 +291,10 @@ body {
   border-radius: 50%;
   flex-shrink: 0;
 }
-.airraid-legend-dot.airraid-alert-none { background: #22c55e; }
-.airraid-legend-dot.airraid-alert-elevated { background: #eab308; }
-.airraid-legend-dot.airraid-alert-high { background: #f97316; }
-.airraid-legend-dot.airraid-alert-critical { background: #dc2626; }
+.airraid-legend-dot.airraid-alert-none { background: #9ca3af; }      /* grey */
+.airraid-legend-dot.airraid-alert-elevated { background: #facc15; }  /* yellow */
+.airraid-legend-dot.airraid-alert-high { background: #fb923c; }      /* orange / red-orange */
+.airraid-legend-dot.airraid-alert-critical { background: #dc2626; }  /* red */
 
 .airraid-last-update {
   width: 100%;
