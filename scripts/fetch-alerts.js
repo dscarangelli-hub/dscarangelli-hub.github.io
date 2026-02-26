@@ -6,7 +6,7 @@
  * Request a key: email a@dun.ai or Telegram @andunai with "#api".
  *
  * Usage:
- *   ALERTS_API_KEY=yourKey node scripts/fetch-alerts.js
+ *   ALERTS_API_KEY=https://alerts.com.ua/api/states node scripts/fetch-alerts.js
  *   # or set ALERTS_API_URL to override (default https://alerts.com.ua/api/states)
  *
  * Run on a schedule (e.g. every 1–2 min) or in CI to keep the map updated.
