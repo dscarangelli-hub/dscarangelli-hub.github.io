@@ -1,0 +1,27 @@
+{
+  "updated_at": "2026-02-24T00:00:00.000Z",
+  "year": 2026,
+  "items": [
+    {
+      "title_en": "Local NGOs deliver heating equipment to families in Lviv oblast.",
+      "title_uk": "Місцеві НУО доставляють опалювальне обладнання сім’ям у Львівській області.",
+      "url": "/programs/humanitarian",
+      "category": "humanitarian",
+      "source": "WSUA"
+    },
+    {
+      "title_en": "Ukrainian volunteers run community kitchens in Odesa.",
+      "title_uk": "Українські волонтери організовують громадські кухні в Одесі.",
+      "url": "/programs/humanitarian",
+      "category": "civil-society",
+      "source": "WSUA"
+    },
+    {
+      "title_en": "Mental health support expands for displaced children in Kyiv region.",
+      "title_uk": "Розширюється підтримка психологічного здоров’я для переміщених дітей у Київському регіоні.",
+      "url": "/programs/resilience",
+      "category": "humanitarian",
+      "source": "WSUA"
+    }
+  ]
+}
