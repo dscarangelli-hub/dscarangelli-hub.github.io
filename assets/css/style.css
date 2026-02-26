@@ -157,27 +157,149 @@ body {
 }
 
 .utility-header {
-  padding: 0.5rem 1rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
   font-size: 0.85rem;
 }
 
 .utility-header-top {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  min-height: 72px;
+  min-height: 80px;
 }
 
-.utility-col-map { flex: 0 0 260px; }
-.utility-col-times { flex: 0 0 auto; }
-.utility-col-city { flex: 1 1 200px; min-width: 0; }
-.utility-col-cta { flex: 0 0 auto; }
+/* Left: interactive map (bigger) */
+.utility-col-map-left {
+  flex: 0 0 340px;
+  display: flex;
+  align-items: center;
+}
+.utility-col-map-left .utility-map-wrapper {
+  width: 100%;
+  max-width: 340px;
+  height: 212px;
+}
+
+/* Column: times + N/S/E/W regions */
+.utility-col-regions {
+  flex: 1 1 240px;
+  min-width: 200px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* CTA + fact + news block */
+.utility-col-cta-block {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.utility-cta-block-bottom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  opacity: 0.95;
+}
+.utility-cta-block-bottom .fact-of-day,
+.utility-cta-block-bottom .news-snippet {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right: air raid map */
+.utility-col-airraid {
+  flex: 0 0 280px;
+  display: flex;
+  align-items: center;
+}
+.utility-col-airraid .utility-airraid-wrapper {
+  width: 100%;
+  max-width: 280px;
+  height: 212px;
+}
 
 .utility-map-wrapper {
   position: relative;
-  width: 260px;
-  height: 162px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0, 87, 183, 0.08);
+}
+
+.utility-airraid-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.utility-airraid-wrapper .ukraine-map {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Air raid map: color by alert level (app-style) */
+.utility-airraid-wrapper .airraid-map path {
+  stroke: rgba(0, 0, 0, 0.3);
+  stroke-width: 0.5;
+  transition: fill 0.2s ease;
+}
+.utility-airraid-wrapper .airraid-alert-none { fill: #22c55e; }
+.utility-airraid-wrapper .airraid-alert-elevated { fill: #eab308; }
+.utility-airraid-wrapper .airraid-alert-high { fill: #f97316; }
+.utility-airraid-wrapper .airraid-alert-critical { fill: #dc2626; }
+
+.utility-airraid-wrapper .cityName,
+.utility-airraid-wrapper text {
+  display: none !important;
+}
+
+.airraid-legend {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  font-size: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.airraid-legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.airraid-legend-dot.airraid-alert-none { background: #22c55e; }
+.airraid-legend-dot.airraid-alert-elevated { background: #eab308; }
+.airraid-legend-dot.airraid-alert-high { background: #f97316; }
+.airraid-legend-dot.airraid-alert-critical { background: #dc2626; }
+
+.airraid-last-update {
+  width: 100%;
+  font-size: 0.55rem;
+  opacity: 0.85;
+  margin-top: 1px;
 }
 
 @media (max-width: 768px) {
@@ -227,8 +349,21 @@ body {
   stroke-width: 1;
 }
 
-.utility-map-wrapper .cityName {
-  display: none;
+/* Force highlight when inside map container (in case SVG is namespaced) */
+#utility-map-container .oblast.oblast-active path {
+  fill: #ffd700 !important;
+  stroke: #fff !important;
+  stroke-width: 1;
+}
+
+/* Remove all wording/labels from the Ukraine map */
+#utility-map-container .cityName,
+#utility-map-container text {
+  display: none !important;
+}
+.utility-map-wrapper .cityName,
+.utility-map-wrapper text {
+  display: none !important;
 }
 
 .map-tooltip {
@@ -242,6 +377,27 @@ body {
   opacity: 0;
   transition: opacity 0.15s ease;
   z-index: 9999;
+}
+
+.map-tooltip-with-img {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 8px;
+  max-width: 160px;
+}
+
+.map-tooltip-img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.map-tooltip-label {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 /* Times: Kyiv | Bremerton */
@@ -280,6 +436,7 @@ body {
   flex-direction: column;
   gap: 0.35rem;
   min-width: 0;
+  min-height: 8rem;
 }
 
 .utility-region {
@@ -287,6 +444,11 @@ body {
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
+  min-height: 1.6rem;
+}
+
+.utility-region-empty .region-text {
+  color: rgba(0, 53, 102, 0.5);
 }
 
 .utility-region-label {
@@ -342,20 +504,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Bottom row: fact + news */
-.utility-header-bottom {
-  padding: 0.4rem 0 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.utility-bottom-inner {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  font-size: 0.8rem;
-  opacity: 0.95;
-}
 
 .fact-of-day a,
 .news-snippet a {
@@ -385,43 +533,70 @@ body {
   text-overflow: ellipsis;
 }
 
-@media (max-width: 1024px) {
-  .utility-header-top { gap: 0.75rem; }
-  .utility-map-wrapper { width: 60px; height: 38px; }
+@media (max-width: 1200px) {
+  .utility-header-top { justify-content: flex-start; gap: 1rem; }
+  .utility-col-map-left { flex: 0 0 260px; }
+  .utility-col-map-left .utility-map-wrapper { max-width: 260px; height: 162px; }
+  .utility-col-airraid { flex: 0 0 220px; }
+  .utility-col-airraid .utility-airraid-wrapper { max-width: 220px; height: 162px; }
+  .airraid-legend { font-size: 0.55rem; }
 }
 
 @media (max-width: 768px) {
-  .utility-header-top { flex-direction: column; align-items: stretch; min-height: auto; }
-  .utility-col-city { order: 1; }
-  .utility-col-times { order: 0; }
-  .utility-col-map { order: 0; }
-  .utility-col-cta { order: 2; }
+  .utility-header { padding: 0.75rem 1rem; }
+  .utility-header-top {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    gap: 1rem;
+  }
+  .utility-col-map-left,
+  .utility-col-regions,
+  .utility-col-cta-block,
+  .utility-col-airraid {
+    max-width: none;
+    flex: 0 0 auto;
+  }
+  .utility-col-map-left .utility-map-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+  }
+  .utility-col-airraid .utility-airraid-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+  }
+  .utility-cta-block-bottom { flex-direction: column; align-items: flex-start; }
+  .utility-news-sep { display: none; }
   .utility-regions { gap: 0.25rem; }
   .utility-region .region-text { font-size: 0.7rem; }
-  .utility-bottom-inner { flex-direction: column; align-items: flex-start; }
-  .utility-news-sep { display: none; }
 }
 
-/* Mobile: collapse bar when scrolled so it doesn’t cover content; tap to expand */
+/* Mobile: collapse bar when scrolled; tap to expand */
 @media (max-width: 768px) {
-  .utility-header-wrapper.utility-bar-collapsed .utility-header-bottom {
-    display: none;
-  }
   .utility-header-wrapper.utility-bar-collapsed .utility-header-top {
     flex-direction: row;
     flex-wrap: nowrap;
     min-height: 48px;
     gap: 0.5rem;
   }
-  .utility-header-wrapper.utility-bar-collapsed .utility-col-city {
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-regions {
     display: none;
   }
-  .utility-header-wrapper.utility-bar-collapsed .utility-col-map {
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-cta-block {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-airraid {
+    display: none;
+  }
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-map-left {
     flex: 0 0 44px;
   }
-  .utility-header-wrapper.utility-bar-collapsed .utility-map-wrapper {
+  .utility-header-wrapper.utility-bar-collapsed .utility-col-map-left .utility-map-wrapper {
     width: 44px;
     height: 44px;
+    max-width: 44px;
   }
   .utility-header-wrapper.utility-bar-collapsed {
     cursor: pointer;
