@@ -31,6 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  /* Ukrainian spelling for display (map IDs stay as in SVG: Kiev, Odessa, etc.) */
+  const UKRAINIAN_DISPLAY_NAMES = {
+    Kiev: 'Kyiv',
+    Odessa: 'Odesa',
+    Sumu: 'Sumy',
+    Dnipropetrovsk: 'Dnipro',
+    Zaporizhia: 'Zaporizhzhia'
+  };
+
+  function formatOblastName(oblastId) {
+    if (!oblastId) return '';
+    if (UKRAINIAN_DISPLAY_NAMES[oblastId]) return UKRAINIAN_DISPLAY_NAMES[oblastId];
+    return oblastId.replace(/([A-Z])/g, ' $1').trim().replace(/^ /, '').replace(/City$/, '').trim();
+  }
+
   /* Oblast id → image path for key-feature tooltip (files in assets/images/oblasts/{slug}.jpg) */
   function oblastImagePath(oblastId) {
     if (!oblastId) return null;
@@ -181,11 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function formatOblastName(oblastId) {
-    if (!oblastId) return '';
-    return oblastId.replace(/([A-Z])/g, ' $1').trim().replace(/^ /, '').replace(/City$/, '').trim();
-  }
-
   /** For a region, get the display object for the currently selected oblast (city data if we have it, else name + key-feature image). */
   function getDisplayForRegion(regionKey) {
     const r = REGIONS[regionKey];
@@ -221,11 +231,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (display) {
           photoEl.src = display.photo || '';
           photoEl.alt = display.city + " photo";
-          if (display.temp !== '—' && display.weather !== '—') {
-            textEl.textContent = `${display.city} — ${display.temp} • ${display.weather} • ${display.alert}`;
-          } else {
-            textEl.textContent = `${display.city} — ${display.alert}`;
-          }
+          const temp = display.temp !== undefined ? display.temp : '—';
+          const weather = display.weather !== undefined ? display.weather : '—';
+          textEl.textContent = `${display.city} — ${temp} · ${weather} · ${display.alert}`;
           photoEl.closest('.utility-region').classList.remove('utility-region-empty');
           photoEl.onerror = function() { this.style.display = display.photo ? 'none' : ''; };
         } else {
@@ -438,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.removeAttribute('target');
             const id = a.getAttribute('id') || '';
             a.setAttribute('data-region', id.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, ''));
-            a.setAttribute('data-name', id.replace(/([A-Z])/g, ' $1').trim() + ' Oblast');
+            a.setAttribute('data-name', formatOblastName(id) + ' Oblast');
           });
           initMap();
 
