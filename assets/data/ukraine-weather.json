@@ -1,113 +1,113 @@
 {
-  "last_update": "2026-03-26T16:53:10.355Z",
+  "last_update": "2026-03-26T17:17:09.634Z",
   "source": "Open-Meteo",
   "oblasti": {
     "Vinnytsia": {
-      "tempC": 11.5,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Volyn": {
-      "tempC": 12.1,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Dnipropetrovsk": {
-      "tempC": 13.4,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Donetsk": {
-      "tempC": 10.2,
-      "weather": "☁️ Overcast"
-    },
-    "Zhytomyr": {
-      "tempC": 11.4,
-      "weather": "☁️ Overcast"
-    },
-    "Zakarpattia": {
-      "tempC": 14.2,
-      "weather": "☁️ Overcast"
-    },
-    "Zaporizhia": {
-      "tempC": 13.4,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Ivano-Frankivsk": {
-      "tempC": 13.4,
-      "weather": "☁️ Overcast"
-    },
-    "Kiev": {
-      "tempC": 11.4,
-      "weather": "⛅ Partly cloudy"
-    },
-    "KyivCity": {
-      "tempC": 11.4,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Kirovohrad": {
-      "tempC": 11.1,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Luhansk": {
-      "tempC": 9.9,
-      "weather": "🌧️ Rain"
-    },
-    "Lviv": {
-      "tempC": 14,
-      "weather": "☁️ Overcast"
-    },
-    "Mykolaiv": {
-      "tempC": 12.1,
-      "weather": "🌤️ Mainly clear"
-    },
-    "Poltava": {
-      "tempC": 12.4,
-      "weather": "🌤️ Mainly clear"
-    },
-    "Rivne": {
-      "tempC": 12.8,
-      "weather": "☁️ Overcast"
-    },
-    "Sumu": {
-      "tempC": 11.3,
-      "weather": "☀️ Clear"
-    },
-    "Ternopil": {
-      "tempC": 11.8,
-      "weather": "☁️ Overcast"
-    },
-    "Kharkiv": {
-      "tempC": 12.6,
-      "weather": "☁️ Overcast"
-    },
-    "Kherson": {
-      "tempC": 11.9,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Khmelnytskyi": {
-      "tempC": 12.7,
-      "weather": "☁️ Overcast"
-    },
-    "Cherkasy": {
-      "tempC": 8.6,
-      "weather": "☁️ Overcast"
-    },
-    "Chernivtsi": {
-      "tempC": 13.1,
-      "weather": "☁️ Overcast"
-    },
-    "Chernihiv": {
-      "tempC": 9,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Odessa": {
-      "tempC": 8.3,
-      "weather": "⛅ Partly cloudy"
-    },
-    "Crimea": {
       "tempC": 10.5,
       "weather": "⛅ Partly cloudy"
     },
+    "Volyn": {
+      "tempC": 11.2,
+      "weather": "🌤️ Mainly clear"
+    },
+    "Dnipropetrovsk": {
+      "tempC": 12.9,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Donetsk": {
+      "tempC": 9.9,
+      "weather": "☁️ Overcast"
+    },
+    "Zhytomyr": {
+      "tempC": 10.4,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Zakarpattia": {
+      "tempC": 13.8,
+      "weather": "☁️ Overcast"
+    },
+    "Zaporizhia": {
+      "tempC": 12.8,
+      "weather": "🌤️ Mainly clear"
+    },
+    "Ivano-Frankivsk": {
+      "tempC": 12.7,
+      "weather": "☁️ Overcast"
+    },
+    "Kiev": {
+      "tempC": 10.8,
+      "weather": "⛅ Partly cloudy"
+    },
+    "KyivCity": {
+      "tempC": 10.8,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Kirovohrad": {
+      "tempC": 10.6,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Luhansk": {
+      "tempC": 9.8,
+      "weather": "☁️ Overcast"
+    },
+    "Lviv": {
+      "tempC": 13.5,
+      "weather": "☁️ Overcast"
+    },
+    "Mykolaiv": {
+      "tempC": 11.5,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Poltava": {
+      "tempC": 11.7,
+      "weather": "☀️ Clear"
+    },
+    "Rivne": {
+      "tempC": 12.1,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Sumu": {
+      "tempC": 10.4,
+      "weather": "☀️ Clear"
+    },
+    "Ternopil": {
+      "tempC": 10.9,
+      "weather": "☁️ Overcast"
+    },
+    "Kharkiv": {
+      "tempC": 12,
+      "weather": "☁️ Overcast"
+    },
+    "Kherson": {
+      "tempC": 10.9,
+      "weather": "🌤️ Mainly clear"
+    },
+    "Khmelnytskyi": {
+      "tempC": 12.1,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Cherkasy": {
+      "tempC": 8.4,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Chernivtsi": {
+      "tempC": 12.4,
+      "weather": "☁️ Overcast"
+    },
+    "Chernihiv": {
+      "tempC": 8.6,
+      "weather": "⛅ Partly cloudy"
+    },
+    "Odessa": {
+      "tempC": 7.9,
+      "weather": "🌤️ Mainly clear"
+    },
+    "Crimea": {
+      "tempC": 10,
+      "weather": "⛅ Partly cloudy"
+    },
     "SevastopolCity": {
-      "tempC": 9.2,
+      "tempC": 9,
       "weather": "⛅ Partly cloudy"
     }
   }
