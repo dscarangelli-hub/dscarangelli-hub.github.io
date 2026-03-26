@@ -75,10 +75,15 @@
         </div>
       </div>
 
-      <!-- RIGHT: Air alert map (clean local rendering) -->
+      <!-- RIGHT: Official embedded air alert map -->
       <div class="utility-col utility-col-airraid">
-        <div class="utility-airraid-wrapper" id="utility-airraid-container" aria-label="Air raid alert map">
-          <span class="utility-map-placeholder" aria-hidden="true">Alerts map</span>
+        <div class="utility-airraid-embed" aria-label="Official Ukraine Air Alert map">
+          <iframe
+            class="utility-airraid-iframe"
+            src="https://map.ukrainealarm.com/"
+            title="Official Ukraine Air Alert Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
