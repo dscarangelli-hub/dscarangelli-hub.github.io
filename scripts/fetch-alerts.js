@@ -1,15 +1,12 @@
 /**
- * Fetch Ukraine air raid alert status by region from alerts.com.ua API
- * and write assets/data/ukraine-alerts.json for the utility bar air raid map.
+ * Fetch Ukraine air raid alert status by region and write assets/data/ukraine-alerts.json.
  *
- * API: https://alerts.com.ua (or https://raid.fly.dev) — requires X-API-Key.
- * Request a key: email a@dun.ai or Telegram @andunai with "#api".
+ * Supports two providers:
+ * 1) alerts.in.ua (recommended): set ALERTS_IN_UA_TOKEN
+ *    - API docs: https://devs.alerts.in.ua/
+ * 2) alerts.com.ua / raid.fly.dev: set ALERTS_API_KEY
  *
- * Usage:
- *   ALERTS_API_KEY=https://alerts.com.ua/api/states node scripts/fetch-alerts.js
- *   # or set ALERTS_API_URL to override (default https://alerts.com.ua/api/states)
- *
- * Run on a schedule (e.g. every 1–2 min) or in CI to keep the map updated.
+ * If neither token/key is set, script writes live:false fallback JSON.
  */
 
 import { writeFileSync, mkdirSync } from 'fs';
@@ -19,14 +16,25 @@ import { dirname, join } from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = join(__dirname, '..', 'assets', 'data', 'ukraine-alerts.json');
 
-const API_URL = process.env.ALERTS_API_URL || 'https://alerts.com.ua/api/states';
 const API_KEY = process.env.ALERTS_API_KEY || '';
+const ALERTS_IN_UA_TOKEN = process.env.ALERTS_IN_UA_TOKEN || '';
+const ALERTS_IN_UA_URL = process.env.ALERTS_IN_UA_URL || 'https://api.alerts.in.ua/v1/alerts/active.json';
+const ALERTS_API_URL = process.env.ALERTS_API_URL || 'https://alerts.com.ua/api/states';
 
-/** Map API name_en to our SVG map oblast id (CodePen ukraine-map.svg) */
-function nameEnToOblastId(nameEn) {
-  if (!nameEn || typeof nameEn !== 'string') return null;
-  const n = nameEn.trim().toLowerCase();
+function toKey(s) {
+  return (s || '')
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/[`'".,]/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+/** Map English/Ukrainian oblast names to SVG IDs. */
+function locationToOblastId(name) {
+  const n = toKey(name);
   const map = {
+    // English
     'vinnytsia oblast': 'Vinnytsia',
     'volyn oblast': 'Volyn',
     'dnipropetrovsk oblast': 'Dnipropetrovsk',
@@ -40,6 +48,7 @@ function nameEnToOblastId(nameEn) {
     'kyiv city': 'KyivCity',
     'kiev city': 'KyivCity',
     'kirovohrad oblast': 'Kirovohrad',
+    'kropyvnytskyi oblast': 'Kirovohrad',
     'luhansk oblast': 'Luhansk',
     'lviv oblast': 'Lviv',
     'mykolaiv oblast': 'Mykolaiv',
@@ -54,43 +63,111 @@ function nameEnToOblastId(nameEn) {
     'chernivtsi oblast': 'Chernivtsi',
     'chernihiv oblast': 'Chernihiv',
     'odessa oblast': 'Odessa',
+    'odesa oblast': 'Odessa',
+    // Ukrainian
+    'вінницька область': 'Vinnytsia',
+    'волинська область': 'Volyn',
+    'дніпропетровська область': 'Dnipropetrovsk',
+    'донецька область': 'Donetsk',
+    'житомирська область': 'Zhytomyr',
+    'закарпатська область': 'Zakarpattia',
+    'запорізька область': 'Zaporizhia',
+    'івано-франківська область': 'Ivano-Frankivsk',
+    'київська область': 'Kiev',
+    'м київ': 'KyivCity',
+    'м. київ': 'KyivCity',
+    'кіровоградська область': 'Kirovohrad',
+    'луганська область': 'Luhansk',
+    'львівська область': 'Lviv',
+    'миколаївська область': 'Mykolaiv',
+    'полтавська область': 'Poltava',
+    'рівненська область': 'Rivne',
+    'сумська область': 'Sumu',
+    'тернопільська область': 'Ternopil',
+    'харківська область': 'Kharkiv',
+    'херсонська область': 'Kherson',
+    'хмельницька область': 'Khmelnytskyi',
+    'черкаська область': 'Cherkasy',
+    'чернівецька область': 'Chernivtsi',
+    'чернігівська область': 'Chernihiv',
+    'одеська область': 'Odessa'
   };
   return map[n] || null;
 }
 
-async function fetchAlerts() {
-  if (!API_KEY) {
-    console.warn('ALERTS_API_KEY not set. Write fallback JSON with no data.');
-    const fallback = { last_update: new Date().toISOString(), regions: {} };
-    mkdirSync(dirname(OUT_PATH), { recursive: true });
-    writeFileSync(OUT_PATH, JSON.stringify(fallback, null, 2), 'utf8');
-    return;
-  }
+function writeFallback() {
+  const fallback = {
+    live: false,
+    last_update: new Date().toISOString(),
+    regions: {}
+  };
+  mkdirSync(dirname(OUT_PATH), { recursive: true });
+  writeFileSync(OUT_PATH, JSON.stringify(fallback, null, 2), 'utf8');
+}
 
-  const res = await fetch(API_URL, {
-    headers: { 'X-API-Key': API_KEY },
+async function fetchFromAlertsComUa() {
+  const res = await fetch(ALERTS_API_URL, {
+    headers: { 'X-API-Key': API_KEY }
   });
-
   if (!res.ok) {
-    throw new Error(`Alerts API ${res.status}: ${res.statusText}`);
+    throw new Error(`alerts.com.ua ${res.status}: ${res.statusText}`);
   }
-
   const data = await res.json();
   const states = data.states || [];
   const regions = {};
-  let lastUpdate = data.last_update || null;
-
   for (const s of states) {
-    const oblastId = nameEnToOblastId(s.name_en);
-    if (oblastId) {
-      regions[oblastId] = !!s.alert;
-    }
+    const oblastId = locationToOblastId(s.name_en || s.name_uk);
+    if (oblastId) regions[oblastId] = !!s.alert;
+  }
+  return {
+    live: true,
+    last_update: data.last_update || new Date().toISOString(),
+    regions
+  };
+}
+
+async function fetchFromAlertsInUa() {
+  const res = await fetch(ALERTS_IN_UA_URL, {
+    headers: { Authorization: `Bearer ${ALERTS_IN_UA_TOKEN}` }
+  });
+  if (!res.ok) {
+    throw new Error(`alerts.in.ua ${res.status}: ${res.statusText}`);
+  }
+  const data = await res.json();
+  const alerts = Array.isArray(data.alerts) ? data.alerts : [];
+  const regions = {};
+  for (const a of alerts) {
+    const type = (a.alert_type || '').toString().toLowerCase();
+    const locType = (a.location_type || '').toString().toLowerCase();
+    if (type !== 'air_raid') continue;
+    if (locType && locType !== 'oblast' && locType !== 'state') continue;
+    const oblastId = locationToOblastId(a.location_title || a.location_oblast || a.location_name);
+    if (oblastId) regions[oblastId] = true;
+  }
+  return {
+    live: true,
+    last_update: data.last_updated_at || new Date().toISOString(),
+    regions
+  };
+}
+
+async function fetchAlerts() {
+  if (!ALERTS_IN_UA_TOKEN && !API_KEY) {
+    console.warn('No alert provider token/key set. Writing live:false fallback JSON.');
+    writeFallback();
+    return;
   }
 
-  const out = { last_update: lastUpdate, regions };
+  let out;
+  if (ALERTS_IN_UA_TOKEN) {
+    out = await fetchFromAlertsInUa();
+  } else {
+    out = await fetchFromAlertsComUa();
+  }
+
   mkdirSync(dirname(OUT_PATH), { recursive: true });
   writeFileSync(OUT_PATH, JSON.stringify(out, null, 2), 'utf8');
-  console.log('Wrote', OUT_PATH, Object.keys(regions).length, 'regions');
+  console.log('Wrote', OUT_PATH, Object.keys(out.regions || {}).length, 'regions');
 }
 
 fetchAlerts().catch((err) => {

@@ -53,18 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
     return '/assets/images/oblasts/' + slug + '.jpg';
   }
 
-  /* Air raid map: real data from assets/data/ukraine-alerts.json (from alerts.com.ua API). Fallback: city.alert text. */
-  let alertData = { last_update: null, regions: {} };
+  /* Air raid map: local JSON. If live feed unavailable, keep map neutral and show status text. */
+  let alertData = { live: false, last_update: null, regions: {} };
 
   /* Per-oblast weather: real data from assets/data/ukraine-weather.json (capital cities via fetch-weather.js). */
   let weatherData = { last_update: null, oblasti: {} };
 
+  function alertsFeedLive() {
+    if (alertData.live === false) return false;
+    if (alertData.live === true) return true;
+    return !!(alertData.regions && Object.keys(alertData.regions).length > 0);
+  }
+
   function getOblastAlertLevel(oblastId) {
-    if (alertData.regions && oblastId in alertData.regions) {
-      return alertData.regions[oblastId] ? 'critical' : 'none';
+    if (alertsFeedLive()) {
+      if (alertData.regions && oblastId in alertData.regions) {
+        return alertData.regions[oblastId] ? 'critical' : 'none';
+      }
+      return 'none';
     }
     const city = cities.find(c => c.oblastId === oblastId);
-    if (!city) return 'elevated';
+    if (!city) return 'none';
     if (city.alert.indexOf('Critical') !== -1) return 'critical';
     if (city.alert.indexOf('High') !== -1) return 'high';
     if (city.alert.indexOf('Elevated') !== -1) return 'elevated';
@@ -514,18 +523,29 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(data => {
       if (data && typeof data.regions === 'object') {
-        alertData = { last_update: data.last_update || null, regions: data.regions };
+        const regions = data.regions || {};
+        const live = data.live === false ? false : (data.live === true || Object.keys(regions).length > 0);
+        alertData = { live, last_update: data.last_update || null, regions };
         applyAirraidColors();
         const el = document.getElementById('airraid-last-update');
-        if (el && alertData.last_update) {
-          try {
-            const t = new Date(alertData.last_update);
-            if (!isNaN(t.getTime())) el.textContent = 'Updated ' + t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          } catch (_) {}
+        if (el) {
+          if (!alertsFeedLive()) {
+            el.textContent = 'Live feed unavailable';
+          } else if (alertData.last_update) {
+            try {
+              const t = new Date(alertData.last_update);
+              if (!isNaN(t.getTime())) {
+                el.textContent = 'Updated ' + t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              }
+            } catch (_) {}
+          }
         }
       }
     })
-    .catch(() => { /* use fallback getOblastAlertLevel from cities */ });
+    .catch(() => {
+      const el = document.getElementById('airraid-last-update');
+      if (el) el.textContent = 'Alert feed unavailable';
+    });
 
   /* Per-oblast weather: load temperatures/conditions for each oblast capital (from scripts/fetch-weather.js) */
   fetch('/assets/data/ukraine-weather.json')

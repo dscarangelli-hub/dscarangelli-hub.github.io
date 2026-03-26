@@ -1,0 +1,49 @@
+# Refresh utility-bar JSON: weather + optional air alerts (alerts.in.ua token preferred).
+name: Fetch Ukraine live data (weather + alerts)
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fetch-weather.js'
+      - 'scripts/fetch-alerts.js'
+      - '.github/workflows/fetch-ukraine-live-data.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch weather (Open-Meteo)
+        run: node scripts/fetch-weather.js
+
+      - name: Fetch air raid alerts
+        env:
+          ALERTS_IN_UA_TOKEN: ${{ secrets.ALERTS_IN_UA_TOKEN }}
+          ALERTS_API_KEY: ${{ secrets.ALERTS_API_KEY }}
+        run: node scripts/fetch-alerts.js
+
+      - name: Commit data files
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add assets/data/ukraine-weather.json assets/data/ukraine-alerts.json
+          git diff --staged --quiet || git commit -m "chore: update Ukraine weather & alerts JSON [bot]"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
