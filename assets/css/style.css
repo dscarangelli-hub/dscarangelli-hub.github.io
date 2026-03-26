@@ -243,26 +243,25 @@ body {
 
 /* Right: air raid map */
 .utility-col-airraid {
-  flex: 0 0 280px;
+  flex: 0 0 340px;
   display: flex;
   align-items: center;
 }
 .utility-col-airraid .utility-airraid-wrapper {
   width: 100%;
-  max-width: 280px;
+  max-width: 340px;
   height: 212px;
 }
 
 .utility-airraid-embed {
   width: 100%;
-  max-width: 280px;
+  max-width: 340px;
   height: 212px;
   border-radius: 6px;
   overflow: hidden;
   background: rgba(0, 87, 183, 0.08);
   border: 1px solid rgba(0, 53, 102, 0.15);
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
 .utility-airraid-iframe {
@@ -274,9 +273,14 @@ body {
 }
 
 .utility-airraid-embed-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   font-size: 0.62rem;
   padding: 4px 6px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(1px);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -600,9 +604,9 @@ body {
   .utility-header-top { justify-content: flex-start; gap: 1rem; }
   .utility-col-map-left { flex: 0 0 260px; }
   .utility-col-map-left .utility-map-wrapper { max-width: 260px; height: 162px; }
-  .utility-col-airraid { flex: 0 0 220px; }
-  .utility-col-airraid .utility-airraid-wrapper { max-width: 220px; height: 162px; }
-  .utility-airraid-embed { max-width: 220px; height: 162px; }
+  .utility-col-airraid { flex: 0 0 260px; }
+  .utility-col-airraid .utility-airraid-wrapper { max-width: 260px; height: 162px; }
+  .utility-airraid-embed { max-width: 260px; height: 162px; }
   .airraid-legend { font-size: 0.55rem; }
 }
 
@@ -1238,6 +1242,29 @@ footer,
 
 .footer-weather-attribution a:hover {
   color: #fff;
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.footer-social a {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.78rem;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.footer-social a:hover {
+  background: rgba(255,255,255,0.22);
 }
 
 .donate-ein-ubi {

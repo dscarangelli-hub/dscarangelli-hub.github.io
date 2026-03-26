@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* 6 rotating cities; oblastId matches SVG ids in assets/svg/ukraine-map.svg */
   const cities = [
-    { city: "Kyiv", temp: "3°C", weather: "☁️ Cloudy", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/kyiv.jpg", oblastId: "KyivCity" },
-    { city: "Lviv", temp: "-1°C", weather: "❄️ Snow", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/lviv.jpg", oblastId: "Lviv" },
-    { city: "Kharkiv", temp: "0°C", weather: "🌫️ Fog", alert: "🔴 Critical", photo: "/assets/images/cities/kharkiv.jpg", oblastId: "Kharkiv" },
-    { city: "Odesa", temp: "4°C", weather: "🌧️ Rain", alert: "🟠 High Risk", photo: "/assets/images/cities/odesa.jpg", oblastId: "Odessa" },
-    { city: "Mykolaiv", temp: "2°C", weather: "☁️ Cloudy", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/mykolaiv.jpg", oblastId: "Mykolaiv" },
-    { city: "Zaporizhzhia", temp: "1°C", weather: "🌤️ Partly Cloudy", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/zaporizhzhia.jpg", oblastId: "Zaporizhia" }
+    { city: "Kyiv", temp: "—", weather: "Weather pending", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/kyiv.jpg", oblastId: "KyivCity" },
+    { city: "Lviv", temp: "—", weather: "Weather pending", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/lviv.jpg", oblastId: "Lviv" },
+    { city: "Kharkiv", temp: "—", weather: "Weather pending", alert: "🔴 Critical", photo: "/assets/images/cities/kharkiv.jpg", oblastId: "Kharkiv" },
+    { city: "Odesa", temp: "—", weather: "Weather pending", alert: "🟠 High Risk", photo: "/assets/images/cities/odesa.jpg", oblastId: "Odessa" },
+    { city: "Mykolaiv", temp: "—", weather: "Weather pending", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/mykolaiv.jpg", oblastId: "Mykolaiv" },
+    { city: "Zaporizhzhia", temp: "—", weather: "Weather pending", alert: "🟡 Elevated Risk", photo: "/assets/images/cities/zaporizhzhia.jpg", oblastId: "Zaporizhia" }
   ];
 
   /* All 24 oblasts + Kyiv + Sevastopol/Crimea, grouped North / South / East / West. All oblasts in each region rotate. */
