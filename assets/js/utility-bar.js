@@ -356,31 +356,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /** For a region, get the display object for the currently selected oblast (city data if we have it, else name + key-feature image + per-oblast or region weather). */
+  /** For a region, prefer weather JSON when available (also for featured cities). */
   function getDisplayForRegion(regionKey) {
     const r = REGIONS[regionKey];
     if (!r || !r.oblastIds.length) return null;
     const idx = { north: northIndex, south: southIndex, east: eastIndex, west: westIndex }[regionKey];
     const oblastId = r.oblastIds[idx % r.oblastIds.length];
     const city = cities.find(c => c.oblastId === oblastId);
-    if (city) return { ...city, oblastId };
     const level = getOblastAlertLevel(oblastId);
     const alertText = level === 'critical' ? '🔴 Critical' : level === 'high' ? '🟠 High Risk' : level === 'elevated' ? '🟡 Elevated Risk' : '🟢 None';
-    // Prefer real per-oblast weather from backend JSON (capital city of this oblast).
     const w = weatherData.oblasti && weatherData.oblasti[oblastId];
     const sampleCity = cities.find(c => r.oblastIds.includes(c.oblastId));
-    const fallbackTemp = sampleCity ? sampleCity.temp : '—';
-    const fallbackWeather = sampleCity ? sampleCity.weather : '—';
+    const fallbackTemp = city ? city.temp : sampleCity ? sampleCity.temp : '—';
+    const fallbackWeather = city ? city.weather : sampleCity ? sampleCity.weather : '—';
     const tempText =
       w && typeof w.tempC === 'number' ? `${Math.round(w.tempC)}°C` : fallbackTemp;
     const weatherText =
       w && w.weather ? w.weather : fallbackWeather;
     return {
-      city: formatOblastName(oblastId),
+      city: city ? city.city : formatOblastName(oblastId),
       temp: tempText,
       weather: weatherText,
       alert: alertText,
-      photo: oblastImagePath(oblastId) || '',
+      photo: city && city.photo ? city.photo : oblastImagePath(oblastId) || '',
       oblastId
     };
   }
