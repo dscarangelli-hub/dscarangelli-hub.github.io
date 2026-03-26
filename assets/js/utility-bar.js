@@ -72,11 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return 'none';
     }
-    const city = cities.find(c => c.oblastId === oblastId);
-    if (!city) return 'none';
-    if (city.alert.indexOf('Critical') !== -1) return 'critical';
-    if (city.alert.indexOf('High') !== -1) return 'high';
-    if (city.alert.indexOf('Elevated') !== -1) return 'elevated';
+    // Do not use static fallback risk labels when live feed is unavailable.
     return 'none';
   }
 
@@ -373,7 +369,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const oblastId = r.oblastIds[idx % r.oblastIds.length];
     const city = cities.find(c => c.oblastId === oblastId);
     const level = getOblastAlertLevel(oblastId);
-    const alertText = level === 'critical' ? '🔴 Critical' : level === 'high' ? '🟠 High Risk' : level === 'elevated' ? '🟡 Elevated Risk' : '🟢 None';
+    const alertText = !alertsFeedLive()
+      ? 'ℹ️ Official map'
+      : level === 'critical'
+        ? '🔴 Critical'
+        : level === 'high'
+          ? '🟠 High Risk'
+          : level === 'elevated'
+            ? '🟡 Elevated Risk'
+            : '🟢 None';
     const w = weatherData.oblasti && weatherData.oblasti[oblastId];
     const sampleCity = cities.find(c => r.oblastIds.includes(c.oblastId));
     const fallbackTemp = city ? city.temp : sampleCity ? sampleCity.temp : '—';
@@ -530,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = document.getElementById('airraid-last-update');
         if (el) {
           if (!alertsFeedLive()) {
-            el.textContent = 'Live feed unavailable';
+            el.textContent = 'Live alerts via official map';
           } else if (alertData.last_update) {
             try {
               const t = new Date(alertData.last_update);
