@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     Zaporizhia: 'Zaporizhzhia'
   };
 
+  const FEATURED_CITY_COORDS = {
+    KyivCity: [50.4501, 30.5234],
+    Lviv: [49.8397, 24.0297],
+    Kharkiv: [49.9935, 36.2304],
+    Odessa: [46.4825, 30.7233],
+    Mykolaiv: [46.975, 31.9946],
+    Zaporizhia: [47.8388, 35.1396]
+  };
+
   function formatOblastName(oblastId) {
     if (!oblastId) return '';
     if (UKRAINIAN_DISPLAY_NAMES[oblastId]) return UKRAINIAN_DISPLAY_NAMES[oblastId];
@@ -520,6 +529,47 @@ document.addEventListener('DOMContentLoaded', () => {
     return div.innerHTML;
   }
 
+  function weatherLabelFromCode(code) {
+    const c = Number(code);
+    if (c === 0) return '☀️ Clear';
+    if (c === 1) return '🌤️ Mainly clear';
+    if (c === 2) return '⛅ Partly cloudy';
+    if (c === 3) return '☁️ Overcast';
+    if (c === 45 || c === 48) return '🌫️ Fog';
+    if (c >= 51 && c <= 55) return '🌦️ Drizzle';
+    if (c >= 56 && c <= 57) return '🌨️ Freezing drizzle';
+    if (c >= 61 && c <= 65) return '🌧️ Rain';
+    if (c >= 66 && c <= 67) return '🌧️ Freezing rain';
+    if (c >= 71 && c <= 77) return '❄️ Snow';
+    if (c >= 80 && c <= 82) return '🌧️ Showers';
+    if (c >= 85 && c <= 86) return '❄️ Snow showers';
+    if (c >= 95 && c <= 99) return '⛈️ Storm';
+    return '🌡️ Weather';
+  }
+
+  function refreshFeaturedWeather() {
+    const keys = Object.keys(FEATURED_CITY_COORDS);
+    Promise.all(keys.map((oblastId) => {
+      const [lat, lon] = FEATURED_CITY_COORDS[oblastId];
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=Europe/Kyiv`;
+      return fetch(url)
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => ({ oblastId, current: data.current || {} }))
+        .catch(() => null);
+    })).then((rows) => {
+      rows.forEach((row) => {
+        if (!row || !row.current) return;
+        const temp = typeof row.current.temperature_2m === 'number' ? row.current.temperature_2m : null;
+        if (temp == null) return;
+        weatherData.oblasti[row.oblastId] = {
+          tempC: temp,
+          weather: weatherLabelFromCode(row.current.weather_code)
+        };
+      });
+      updateRegionRows();
+    });
+  }
+
   renderNewsSnippet();
 
   /* Air raid map: load real alert data (from scripts/fetch-alerts.js + alerts.com.ua API) */
@@ -562,9 +612,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         // Immediately refresh region rows so temps/weather reflect real data.
         updateRegionRows();
+        const last = weatherData.last_update ? new Date(weatherData.last_update) : null;
+        const stale = !last || isNaN(last.getTime()) || (Date.now() - last.getTime()) > (3 * 60 * 60 * 1000);
+        if (stale) refreshFeaturedWeather();
       }
     })
-    .catch(() => { /* keep fallback weather from cities[] */ });
+    .catch(() => {
+      // If JSON is unavailable, fetch featured city weather directly in browser.
+      refreshFeaturedWeather();
+    });
+  setInterval(refreshFeaturedWeather, 20 * 60 * 1000);
 
   fetch('/assets/data/ukraine-news.json')
     .then(r => r.ok ? r.json() : Promise.reject())
