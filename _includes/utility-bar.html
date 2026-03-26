@@ -65,18 +65,26 @@
           <span class="utility-news-sep">·</span>
           <div id="news-snippet" class="news-snippet"></div>
         </div>
+        <div class="utility-telegram-feed" aria-label="Telegram air alert channels">
+          <span class="utility-telegram-label">Telegram alerts:</span>
+          <a href="https://t.me/air_alert_ua" target="_blank" rel="noopener">Official channel</a>
+          <span class="utility-news-sep">·</span>
+          <a href="https://t.me/ukrainealarm" target="_blank" rel="noopener">Ukraine Alarm app</a>
+        </div>
       </div>
 
-      <!-- RIGHT: Air raid map -->
+      <!-- RIGHT: Official embedded air alert map -->
       <div class="utility-col utility-col-airraid">
-        <div class="utility-airraid-wrapper" id="utility-airraid-container" aria-label="Air raid alert map">
-          <span class="utility-map-placeholder" aria-hidden="true">Alerts</span>
-          <div class="airraid-legend" aria-hidden="true">
-            <span class="airraid-legend-dot airraid-alert-none"></span> None
-            <span class="airraid-legend-dot airraid-alert-elevated"></span> Elevated
-            <span class="airraid-legend-dot airraid-alert-high"></span> High
-            <span class="airraid-legend-dot airraid-alert-critical"></span> Critical
-            <span id="airraid-last-update" class="airraid-last-update"></span>
+        <div class="utility-airraid-embed" aria-label="Official Ukraine Air Alert map">
+          <iframe
+            class="utility-airraid-iframe"
+            src="https://map.ukrainealarm.com/"
+            title="Official Ukraine Air Alert Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="utility-airraid-embed-footer">
+            <a href="https://map.ukrainealarm.com/" target="_blank" rel="noopener">Open official live map</a>
+            <span id="airraid-last-update" class="airraid-last-update">Embedded source: map.ukrainealarm.com</span>
           </div>
         </div>
       </div>

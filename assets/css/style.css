@@ -218,6 +218,29 @@ body {
   text-overflow: ellipsis;
 }
 
+.utility-telegram-feed {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+}
+
+.utility-telegram-label {
+  font-weight: 700;
+  color: #003566;
+}
+
+.utility-telegram-feed a {
+  color: #0057b7;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.utility-telegram-feed a:hover {
+  text-decoration: underline;
+}
+
 /* Right: air raid map */
 .utility-col-airraid {
   flex: 0 0 280px;
@@ -228,6 +251,45 @@ body {
   width: 100%;
   max-width: 280px;
   height: 212px;
+}
+
+.utility-airraid-embed {
+  width: 100%;
+  max-width: 280px;
+  height: 212px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0, 87, 183, 0.08);
+  border: 1px solid rgba(0, 53, 102, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.utility-airraid-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  min-height: 0;
+}
+
+.utility-airraid-embed-footer {
+  font-size: 0.62rem;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.utility-airraid-embed-footer a {
+  color: #0057b7;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.utility-airraid-embed-footer a:hover {
+  text-decoration: underline;
 }
 
 .utility-map-wrapper {
@@ -540,6 +602,7 @@ body {
   .utility-col-map-left .utility-map-wrapper { max-width: 260px; height: 162px; }
   .utility-col-airraid { flex: 0 0 220px; }
   .utility-col-airraid .utility-airraid-wrapper { max-width: 220px; height: 162px; }
+  .utility-airraid-embed { max-width: 220px; height: 162px; }
   .airraid-legend { font-size: 0.55rem; }
 }
 
@@ -564,6 +627,11 @@ body {
     height: 200px;
   }
   .utility-col-airraid .utility-airraid-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+  }
+  .utility-airraid-embed {
     max-width: 100%;
     width: 100%;
     height: 200px;
