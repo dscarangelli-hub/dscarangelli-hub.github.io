@@ -248,6 +248,8 @@ body {
   flex: 0 0 var(--utility-map-w);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 .utility-col-airraid .utility-airraid-wrapper {
   width: 100%;
@@ -274,6 +276,17 @@ body {
   border: 0;
   display: block;
   min-height: 0;
+}
+
+.utility-airraid-official-link {
+  font-size: 0.68rem;
+  color: #0057b7;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.utility-airraid-official-link:hover {
+  text-decoration: underline;
 }
 
 .utility-map-wrapper {
