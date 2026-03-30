@@ -172,6 +172,8 @@ body {
   min-height: 80px;
   --utility-map-w: 340px;
   --utility-map-h: 212px;
+  --embed-crop-top: 56px;
+  --embed-crop-bottom: 42px;
 }
 
 /* Left: interactive map (bigger) */
@@ -270,9 +272,9 @@ body {
 
 .utility-airraid-iframe {
   width: 100%;
-  /* Crop embedded site chrome to show map area. */
-  height: calc(var(--utility-map-h) + 62px);
-  margin-top: -62px;
+  /* Crop both top toolbar and bottom overlays from embedded page. */
+  height: calc(var(--utility-map-h) + var(--embed-crop-top) + var(--embed-crop-bottom));
+  margin-top: calc(-1 * var(--embed-crop-top));
   border: 0;
   display: block;
   min-height: 0;
@@ -596,6 +598,8 @@ body {
   .utility-header-top {
     --utility-map-w: 260px;
     --utility-map-h: 162px;
+    --embed-crop-top: 48px;
+    --embed-crop-bottom: 34px;
   }
   .utility-header-top { justify-content: flex-start; gap: 1rem; }
   .utility-col-map-left { flex: 0 0 var(--utility-map-w); }
@@ -637,8 +641,8 @@ body {
     height: 200px;
   }
   .utility-airraid-iframe {
-    height: 270px;
-    margin-top: -58px;
+    height: calc(200px + 42px + 34px);
+    margin-top: -42px;
   }
   .utility-cta-block-bottom { flex-direction: column; align-items: flex-start; }
   .utility-news-sep { display: none; }
@@ -1073,6 +1077,49 @@ h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
   opacity: 0.9;
 }
 
+/* Homepage updates/blog cards */
+.updates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.25rem;
+}
+
+.update-card {
+  background: #fff;
+  border: 1px solid #dfe5ee;
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  box-shadow: 0 4px 14px rgba(0, 35, 86, 0.08);
+}
+
+.update-date {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #005bbb;
+  margin-bottom: 0.45rem;
+}
+
+.update-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.45rem;
+  color: #003566;
+}
+
+.update-card p {
+  color: #3e4653;
+  font-size: 0.95rem;
+}
+
+.updates-more-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-weight: 700;
+  color: #005bbb;
+}
+
 /* ============================
    TEAM CARDS
 ============================ */
@@ -1117,6 +1164,232 @@ h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
 .team-bio {
   font-size: 0.95rem;
   color: #444;
+}
+
+/* Coffee page: Charity Roasters collection integration */
+.shop-partner-section {
+  margin-top: 0.5rem;
+}
+
+.shop-partner-panel {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
+  background: linear-gradient(145deg, rgba(0, 87, 183, 0.07), rgba(255, 213, 0, 0.1));
+  border: 1px solid rgba(0, 53, 102, 0.18);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0, 35, 86, 0.08);
+}
+
+.shop-partner-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #003566;
+  margin: 0 0 0.5rem;
+}
+
+.shop-partner-panel h2 {
+  margin: 0 0 0.5rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1.55rem;
+  color: #003566;
+  line-height: 1.25;
+}
+
+.shop-partner-quote {
+  margin: 0 0 1rem;
+  font-size: 0.98rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.45;
+}
+
+.shop-partner-lead {
+  margin: 0 0 1.25rem;
+  color: #333;
+  line-height: 1.55;
+  font-size: 0.98rem;
+}
+
+.shop-partner-cta {
+  margin-top: 0.25rem;
+}
+
+.shop-partner-note {
+  margin: 1.1rem 0 0;
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.45;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shop-partner-note a {
+  color: #005bbb;
+  font-weight: 600;
+}
+
+.team-card--coffee {
+  align-items: stretch;
+}
+
+.roast-shop-link {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: inline-block;
+  align-self: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #003566;
+  text-decoration: none;
+  border: 2px solid #005bbb;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.roast-shop-link:hover {
+  background: rgba(0, 91, 187, 0.08);
+  color: #005bbb;
+}
+
+.team-card--split {
+  align-items: stretch;
+}
+
+.shop-card-main-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.shop-card-main-link:hover .team-role,
+.shop-card-main-link:focus-visible .team-role {
+  color: #003566;
+}
+
+.shop-card-main-link:hover h3,
+.shop-card-main-link:focus-visible h3 {
+  color: #005bbb;
+}
+
+/* Admin inline text editing controls */
+.admin-controls {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 10001;
+  background: #ffffff;
+  border: 1px solid rgba(0, 53, 102, 0.22);
+  border-radius: 10px;
+  padding: 0.7rem;
+  box-shadow: 0 8px 22px rgba(0, 35, 86, 0.18);
+  min-width: 200px;
+}
+
+.admin-controls-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #003566;
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-controls button {
+  width: 100%;
+  margin-top: 0.4rem;
+  border: 1px solid #005bbb;
+  background: #f8fbff;
+  color: #003566;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 0.55rem;
+  cursor: pointer;
+}
+
+.admin-controls button:hover {
+  background: #eaf3ff;
+}
+
+.editable-active {
+  outline: 2px dashed rgba(0, 91, 187, 0.45);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Local admin milestone panel */
+.admin-local-panel {
+  margin-top: 1rem;
+  background: #fff;
+  border: 1px solid #d9e3f0;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.admin-local-panel label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+  color: #003566;
+}
+
+#admin-home-json {
+  width: 100%;
+  min-height: 360px;
+  border-radius: 8px;
+  border: 1px solid #c9d8ee;
+  padding: 0.75rem;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.admin-local-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.admin-local-actions button {
+  border: 1px solid #005bbb;
+  background: #f7fbff;
+  color: #003566;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-local-actions button:hover {
+  background: #e9f3ff;
+}
+
+.admin-local-status {
+  margin-top: 0.8rem;
+  color: #1f5e1f;
+  font-weight: 600;
+}
+
+.admin-local-status-error {
+  color: #9b1c1c;
+}
+
+.admin-local-note {
+  margin-top: 0.45rem;
+  color: #5c6675;
+  font-size: 0.82rem;
 }
 
 /* ============================

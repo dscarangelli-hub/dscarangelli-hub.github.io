@@ -1,0 +1,37 @@
+---
+layout: default
+title: Local Admin
+hero_title: Local Admin Console
+hero_subtitle: Edit and publish homepage content from this browser.
+hero_cta_text: Open Homepage
+hero_cta_link: /index.html
+---
+
+<main>
+  <section class="content content-section fade-in">
+    <h2>Milestone A - Home Content Publisher</h2>
+    <p>
+      This tool updates homepage content JSON in your local browser. Use Publish to preview changes
+      immediately on the homepage, then export JSON when you want to persist it to the repository.
+    </p>
+
+    <div class="admin-local-panel">
+      <label for="admin-home-json">Homepage JSON</label>
+      <textarea id="admin-home-json" spellcheck="false"></textarea>
+
+      <div class="admin-local-actions">
+        <button id="admin-load-default" type="button">Load File Default</button>
+        <button id="admin-publish-local" type="button">Publish Locally</button>
+        <button id="admin-clear-local" type="button">Clear Local Publish</button>
+        <button id="admin-download-json" type="button">Download JSON</button>
+      </div>
+
+      <p id="admin-local-status" class="admin-local-status">Ready.</p>
+      <p class="admin-local-note">
+        Local publish key: <code>wsua-published-content:/assets/data/content/home.json</code>
+      </p>
+    </div>
+  </section>
+</main>
+
+<script src="/assets/js/local-admin-home.js" defer></script>
