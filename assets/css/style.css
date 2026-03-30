@@ -1264,6 +1264,12 @@ h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.team-card--coffee .roast-shop-link {
+  margin-top: 0.75rem;
+  margin-bottom: 0.9rem;
+  padding-top: 0.5rem;
+}
+
 .roast-shop-link:hover {
   background: rgba(0, 91, 187, 0.08);
   color: #005bbb;
