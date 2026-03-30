@@ -1,0 +1,28 @@
+{
+  "homeSection": {
+    "title": "Major Updates",
+    "intro": "Key milestones, announcements, and major WSUA developments.",
+    "moreLabel": "View all updates"
+  },
+  "pageSection": {
+    "title": "Latest Updates",
+    "intro": "This page highlights major WSUA announcements and important milestones."
+  },
+  "posts": [
+    {
+      "date": "March 30, 2026",
+      "title": "WSUA Coffee Collection Integrated",
+      "body": "Our coffee page now links directly to each Charity Roasters product so supporters can go from story to checkout in one click."
+    },
+    {
+      "date": "March 2026",
+      "title": "Program Pages Expanded",
+      "body": "Core program pages have been refreshed to better explain humanitarian aid, legal research, and energy independence initiatives."
+    },
+    {
+      "date": "March 2026",
+      "title": "Legal Resource Access Improved",
+      "body": "Research, claims guidance, and document library navigation has been streamlined to make information easier to find."
+    }
+  ]
+}

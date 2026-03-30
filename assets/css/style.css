@@ -1392,6 +1392,33 @@ h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
   font-size: 0.82rem;
 }
 
+.admin-local-post-manager {
+  margin-top: 1rem;
+  border-top: 1px solid #e4ecf6;
+  padding-top: 0.9rem;
+}
+
+.admin-local-post-manager h3 {
+  margin-bottom: 0.45rem;
+  color: #003566;
+}
+
+.admin-local-post-manager label {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.admin-local-post-manager select,
+.admin-local-post-manager input,
+.admin-local-post-manager textarea {
+  width: 100%;
+  border: 1px solid #c9d8ee;
+  border-radius: 6px;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.85rem;
+}
+
 /* ============================
    CTA
 ============================ */

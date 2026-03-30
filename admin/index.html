@@ -31,6 +31,44 @@ hero_cta_link: /index.html
         Local publish key: <code>wsua-published-content:/assets/data/content/home.json</code>
       </p>
     </div>
+
+    <div class="admin-local-panel" style="margin-top:1.5rem;">
+      <label for="admin-updates-json">Updates JSON</label>
+      <textarea id="admin-updates-json" spellcheck="false"></textarea>
+
+      <div class="admin-local-post-manager">
+        <h3>Post Manager</h3>
+        <label for="admin-post-list">Posts</label>
+        <select id="admin-post-list" size="6"></select>
+        <div class="admin-local-actions">
+          <button id="admin-post-up" type="button">Move Up</button>
+          <button id="admin-post-down" type="button">Move Down</button>
+          <button id="admin-post-delete" type="button">Delete Selected</button>
+        </div>
+
+        <label for="admin-new-post-date">New post date</label>
+        <input id="admin-new-post-date" type="text" placeholder="April 2026">
+        <label for="admin-new-post-title">New post title</label>
+        <input id="admin-new-post-title" type="text" placeholder="Major milestone">
+        <label for="admin-new-post-body">New post body</label>
+        <textarea id="admin-new-post-body" rows="4" placeholder="Write a short update..."></textarea>
+        <div class="admin-local-actions">
+          <button id="admin-post-add" type="button">Add New Post</button>
+        </div>
+      </div>
+
+      <div class="admin-local-actions">
+        <button id="admin-updates-load-default" type="button">Load File Default</button>
+        <button id="admin-updates-publish-local" type="button">Publish Locally</button>
+        <button id="admin-updates-clear-local" type="button">Clear Local Publish</button>
+        <button id="admin-updates-download-json" type="button">Download JSON</button>
+      </div>
+
+      <p id="admin-updates-status" class="admin-local-status">Ready.</p>
+      <p class="admin-local-note">
+        Local publish key: <code>wsua-published-content:/assets/data/content/updates.json</code>
+      </p>
+    </div>
   </section>
 </main>
 

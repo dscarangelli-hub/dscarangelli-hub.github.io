@@ -2,26 +2,5 @@
   "mission": {
     "lead": "WSUA mobilizes communities across the Western United States to support Ukraine through <strong>humanitarian aid</strong>, <strong>legal research</strong>, and <strong>energy independence</strong> for rural communities. We work to protect the rights of displaced Ukrainians, strengthen accountability efforts, and build the foundations for long-term recovery and restitution.",
     "trustLine": "Pursuing 501(c)(3) status - Transparent reporting - EIN 41-359-3491 - UBI 606-029-374"
-  },
-  "updates": {
-    "title": "Major Updates",
-    "intro": "Key milestones, announcements, and major WSUA developments.",
-    "cards": [
-      {
-        "date": "March 30, 2026",
-        "title": "WSUA Coffee Collection Integrated",
-        "body": "Our coffee page now links directly to each Charity Roasters product so supporters can go from story to checkout in one click."
-      },
-      {
-        "date": "March 2026",
-        "title": "Program Pages Expanded",
-        "body": "Core program pages have been refreshed to better explain humanitarian aid, legal research, and energy independence initiatives."
-      },
-      {
-        "date": "March 2026",
-        "title": "Legal Resource Access Improved",
-        "body": "Research, claims guidance, and document library navigation has been streamlined to make information easier to find."
-      }
-    ]
   }
 }
