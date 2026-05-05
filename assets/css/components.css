@@ -15,6 +15,70 @@
     --steppe-yellow: #ffd700;
 }
 
+.steppe-custom-hero {
+    position: relative;
+    min-height: 68vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem 4rem;
+}
+
+.steppe-custom-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2,6,23,0.76), rgba(2,6,23,0.84));
+}
+
+.steppe-custom-hero-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #f8fafc;
+    text-align: left;
+    width: 100%;
+}
+
+.steppe-custom-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    color: #cbd5f5;
+    margin-bottom: 0.7rem;
+}
+
+.steppe-custom-hero-inner h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.15;
+    margin-bottom: 0.55rem;
+}
+
+.steppe-custom-subtitle {
+    font-size: 1.15rem;
+    color: #dbeafe;
+    margin-bottom: 0.45rem;
+}
+
+.steppe-custom-tagline {
+    font-size: 0.95rem;
+    color: #cbd5f5;
+    margin-bottom: 1rem;
+}
+
+.steppe-custom-cta {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
+    color: #020617 !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+}
+
 .content-steppe {
     background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617 55%, #000 100%);
     color: #e5e7eb;
@@ -832,6 +896,13 @@
 }
 
 @media (max-width: 768px) {
+    .steppe-custom-hero {
+        min-height: 56vh;
+        padding: 4.5rem 1.2rem 3.2rem;
+    }
+    .steppe-custom-subtitle {
+        font-size: 1rem;
+    }
     .steppe-market-grid {
         grid-template-columns: minmax(0, 1fr);
     }
