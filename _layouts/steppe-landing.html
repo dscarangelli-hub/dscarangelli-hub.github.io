@@ -43,11 +43,31 @@
 <section class="steppe-custom-hero" style="background-image:url('{{ page.hero_image | default: '/assets/images/heroes/steppe-shkvall.html.jpg' }}');">
     <div class="steppe-custom-hero-overlay"></div>
     <div class="steppe-custom-hero-inner">
-        <p class="steppe-custom-kicker">{{ page.hero_kicker | default: 'VFU · WSUA · SWUF' }}</p>
-        <h1>{{ page.hero_title | default: page.title }}</h1>
-        <p class="steppe-custom-subtitle">{{ page.hero_subtitle | default: 'Solid-state hybrid energy for rural Mykolaiv' }}</p>
-        <p class="steppe-custom-tagline">{{ page.hero_tagline | default: 'Pivdennyi Stepovyi Shkvall: Harvesting the Force of the Steppe.' }}</p>
-        <a href="{{ page.hero_cta_link | default: '/donate.html' }}" class="steppe-custom-cta">{{ page.hero_cta_text | default: 'Donate to VFU' }}</a>
+        <div class="steppe-custom-hero-grid">
+            <div class="steppe-custom-hero-copy">
+                <p class="steppe-custom-kicker">{{ page.hero_kicker | default: 'VFU · WSUA · SWUF' }}</p>
+                <h1>{{ page.hero_title | default: page.title }}</h1>
+                <p class="steppe-custom-subtitle">{{ page.hero_subtitle | default: 'Solid-state hybrid energy for rural Mykolaiv' }}</p>
+                <p class="steppe-custom-tagline">{{ page.hero_tagline | default: 'Pivdennyi Stepovyi Shkvall: Harvesting the Force of the Steppe.' }}</p>
+                <a href="{{ page.hero_cta_link | default: '/donate.html' }}" class="steppe-custom-cta">{{ page.hero_cta_text | default: 'Donate to VFU' }}</a>
+            </div>
+
+            <aside class="steppe-hero-tier-panel" aria-label="Top contribution tiers">
+                <p class="steppe-live-kicker">Top contribution tiers</p>
+                <a href="/donate.html?amount=50&tier=steppe-warrior" class="steppe-hero-tier-item">
+                    <span>$50</span> The Steppe Warrior
+                </a>
+                <a href="/donate.html?amount=250&tier=solar-cossack" class="steppe-hero-tier-item">
+                    <span>$250</span> The Solar Cossack
+                </a>
+                <a href="/donate.html?amount=1000&tier=energy-hetman" class="steppe-hero-tier-item">
+                    <span>$1,000</span> The Energy Hetman
+                </a>
+                <a href="/donate.html?amount=4500&tier=stribog" class="steppe-hero-tier-item">
+                    <span>$4,500</span> The Stribog
+                </a>
+            </aside>
+        </div>
     </div>
 </section>
 

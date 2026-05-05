@@ -33,11 +33,18 @@
 
 .steppe-custom-hero-inner {
     position: relative;
-    max-width: 900px;
+    max-width: 1150px;
     margin: 0 auto;
     color: #f8fafc;
     text-align: left;
     width: 100%;
+}
+
+.steppe-custom-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 1.2rem;
+    align-items: end;
 }
 
 .steppe-custom-kicker {
@@ -77,6 +84,32 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.8rem;
+}
+
+.steppe-hero-tier-panel {
+    border: 1px solid rgba(148,163,184,0.35);
+    border-radius: 16px;
+    background: rgba(2,6,23,0.62);
+    padding: 0.9rem;
+    backdrop-filter: blur(4px);
+}
+
+.steppe-hero-tier-item {
+    display: block;
+    margin-top: 0.45rem;
+    border: 1px solid var(--steppe-border);
+    border-radius: 10px;
+    padding: 0.55rem 0.65rem;
+    color: #f8fafc !important;
+    font-size: 0.84rem;
+    font-weight: 600;
+    background: rgba(15,23,42,0.82);
+}
+
+.steppe-hero-tier-item span {
+    color: var(--steppe-yellow);
+    font-weight: 800;
+    margin-right: 0.35rem;
 }
 
 .content-steppe {
@@ -152,6 +185,15 @@
     background: rgba(2,6,23,0.5);
 }
 
+.steppe-projects-header {
+    border: 1px solid rgba(148,163,184,0.35);
+}
+
+.steppe-projects-title {
+    font-size: 1.5rem;
+    margin: 0.35rem 0 0.5rem;
+}
+
 .steppe-marketplace {
     overflow: hidden;
 }
@@ -216,6 +258,21 @@
     letter-spacing: 0.09em;
     font-size: 0.72rem;
     cursor: pointer;
+}
+
+.steppe-support-lanes {
+    border: 1px solid rgba(148,163,184,0.35);
+}
+
+.steppe-lane-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 16px;
+    background: rgba(15,23,42,0.9);
+    padding: 1rem;
+}
+
+.steppe-lane-card h4 {
+    margin: 0.25rem 0 0.45rem;
 }
 
 .steppe-live-impact {
@@ -561,6 +618,10 @@
     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+.steppe-tier-card h4 {
+    font-size: 1.05rem;
+}
+
 .steppe-tier-card::before {
     content: "";
     position: absolute;
@@ -618,6 +679,23 @@
 
 .steppe-urgency-card p {
     margin-bottom: 0.9rem;
+}
+
+.steppe-corporate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.steppe-corporate-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 14px;
+    background: rgba(15,23,42,0.88);
+    padding: 1rem;
+}
+
+.steppe-corporate-card h4 {
+    margin-bottom: 0.4rem;
 }
 
 .steppe-calc-grid {
@@ -810,75 +888,6 @@
     display: none;
 }
 
-.steppe-payment-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(2,6,23,0.75);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10010;
-    padding: 1rem;
-}
-
-.steppe-payment-modal.open {
-    display: flex;
-}
-
-.steppe-payment-box {
-    width: min(100%, 440px);
-    border-radius: 16px;
-    border: 1px solid var(--steppe-border);
-    background: #020617;
-    padding: 1.1rem;
-    position: relative;
-    box-shadow: 0 22px 46px rgba(2,6,23,0.72);
-}
-
-.steppe-payment-close {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.5rem;
-    border: 0;
-    background: transparent;
-    color: #cbd5f5;
-    font-size: 1.7rem;
-    line-height: 1;
-    cursor: pointer;
-}
-
-.steppe-payment-box h4 {
-    margin: 0.35rem 0 0.5rem;
-}
-
-.steppe-payment-amount {
-    font-size: 0.92rem;
-    color: #e2e8f0;
-}
-
-.steppe-payment-actions {
-    margin-top: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-}
-
-.steppe-payment-link {
-    border: 1px solid var(--steppe-border);
-    border-radius: 10px;
-    padding: 0.62rem 0.85rem;
-    color: #e2e8f0 !important;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.steppe-payment-link-primary {
-    background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
-    color: #020617 !important;
-    border-color: transparent;
-}
-
 @media (max-width: 900px) {
     .content-steppe {
         margin: 0 -1.5rem;
@@ -889,6 +898,9 @@
     }
     .steppe-section {
         padding: 1.8rem 1.4rem;
+    }
+    .steppe-custom-hero-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
     .steppe-market-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -904,6 +916,9 @@
         font-size: 1rem;
     }
     .steppe-market-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .steppe-corporate-grid {
         grid-template-columns: minmax(0, 1fr);
     }
     .steppe-grid-3 {
