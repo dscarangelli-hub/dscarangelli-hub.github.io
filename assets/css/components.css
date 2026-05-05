@@ -86,6 +86,11 @@
     font-size: 0.8rem;
 }
 
+.steppe-custom-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(2, 6, 23, 0.45);
+}
+
 .steppe-hero-tier-panel {
     border: 1px solid rgba(148,163,184,0.35);
     border-radius: 16px;
@@ -110,6 +115,91 @@
     color: var(--steppe-yellow);
     font-weight: 800;
     margin-right: 0.35rem;
+}
+
+.steppe-modern {
+    max-width: 1320px;
+    margin: -3rem auto 0;
+    padding: 0 1.3rem 4rem;
+    background: none;
+}
+
+.steppe-modern .content-section {
+    margin-bottom: 1.35rem;
+}
+
+.steppe-media-ribbon {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.steppe-media-ribbon img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: 0 14px 28px rgba(2, 6, 23, 0.35);
+}
+
+.steppe-section {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.2), transparent 38%),
+        radial-gradient(circle at 0% 100%, rgba(250, 204, 21, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.9));
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 20px 36px rgba(2, 6, 23, 0.45);
+}
+
+.steppe-section h3 {
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+}
+
+.steppe-section p {
+    color: #dbe4f1;
+}
+
+.steppe-live-card,
+.steppe-spec-card,
+.steppe-tier-card,
+.steppe-calc-card,
+.steppe-lane-card,
+.steppe-corporate-card {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.9));
+    border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.steppe-tier-card,
+.steppe-calc-card,
+.steppe-hero-tier-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.steppe-tier-card:hover,
+.steppe-calc-card:hover,
+.steppe-hero-tier-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(250, 204, 21, 0.55);
+    box-shadow: 0 14px 26px rgba(2, 6, 23, 0.44);
+}
+
+.steppe-live-progress {
+    min-height: 42px;
+}
+
+.steppe-live-progress-text {
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.steppe-crisis-main img,
+.steppe-community-image img,
+.steppe-tech-image img {
+    border-radius: 16px;
 }
 
 .content-steppe {
@@ -889,6 +979,10 @@
 }
 
 @media (max-width: 900px) {
+    .steppe-modern {
+        margin-top: -2rem;
+        padding: 0 0.9rem 3.3rem;
+    }
     .content-steppe {
         margin: 0 -1.5rem;
         padding: 2.5rem 1.5rem 3rem;
@@ -902,6 +996,12 @@
     .steppe-custom-hero-grid {
         grid-template-columns: minmax(0, 1fr);
     }
+    .steppe-media-ribbon {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .steppe-media-ribbon img:first-child {
+        grid-column: 1 / -1;
+    }
     .steppe-market-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -914,6 +1014,22 @@
     }
     .steppe-custom-subtitle {
         font-size: 1rem;
+    }
+    .steppe-modern {
+        padding: 0 0.75rem 5.4rem;
+    }
+    .steppe-media-ribbon {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .steppe-media-ribbon img {
+        height: 180px;
+    }
+    .steppe-section {
+        padding: 1.2rem 1rem;
+        border-radius: 16px;
+    }
+    .steppe-section-header {
+        margin-bottom: 1rem;
     }
     .steppe-market-grid {
         grid-template-columns: minmax(0, 1fr);
