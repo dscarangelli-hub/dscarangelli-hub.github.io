@@ -79,6 +79,81 @@
     color: #cbd5f5;
 }
 
+.steppe-market-note {
+    font-size: 0.86rem;
+    color: #cbd5f5;
+    border: 1px dashed rgba(148,163,184,0.45);
+    border-radius: 12px;
+    padding: 0.65rem 0.8rem;
+    background: rgba(2,6,23,0.5);
+}
+
+.steppe-marketplace {
+    overflow: hidden;
+}
+
+.steppe-market-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.steppe-market-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(15,23,42,0.9);
+    display: flex;
+    flex-direction: column;
+}
+
+.steppe-market-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.steppe-market-body {
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+}
+
+.steppe-market-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.steppe-market-desc {
+    font-size: 0.78rem;
+    color: #cbd5f5;
+    line-height: 1.45;
+    flex: 1;
+}
+
+.steppe-market-amount {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--steppe-yellow);
+}
+
+.steppe-market-donate-btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 0.55rem 0.8rem;
+    background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
+    color: #020617;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
 .steppe-live-impact {
     overflow: hidden;
 }
@@ -465,6 +540,22 @@
     position: relative;
 }
 
+.steppe-urgency-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 16px;
+    background: radial-gradient(circle at top left, rgba(30,64,175,0.3), rgba(15,23,42,0.95));
+    padding: 1.2rem;
+}
+
+.steppe-urgency-card h4 {
+    margin: 0.4rem 0;
+    font-size: 1.2rem;
+}
+
+.steppe-urgency-card p {
+    margin-bottom: 0.9rem;
+}
+
 .steppe-calc-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
@@ -601,6 +692,19 @@
     font-size: 0.8rem;
 }
 
+.steppe-badge-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #e5e7eb !important;
+}
+
+.steppe-badge-logo {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+}
+
 .steppe-footer-donate {
     display: inline-block;
     padding: 0.6rem 1.4rem;
@@ -621,6 +725,12 @@
     color: var(--steppe-yellow);
 }
 
+.steppe-market-reference {
+    margin-top: 0.65rem;
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
 .steppe-reveal {
     opacity: 0;
     transform: translateY(14px);
@@ -636,6 +746,75 @@
     display: none;
 }
 
+.steppe-payment-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(2,6,23,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10010;
+    padding: 1rem;
+}
+
+.steppe-payment-modal.open {
+    display: flex;
+}
+
+.steppe-payment-box {
+    width: min(100%, 440px);
+    border-radius: 16px;
+    border: 1px solid var(--steppe-border);
+    background: #020617;
+    padding: 1.1rem;
+    position: relative;
+    box-shadow: 0 22px 46px rgba(2,6,23,0.72);
+}
+
+.steppe-payment-close {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.5rem;
+    border: 0;
+    background: transparent;
+    color: #cbd5f5;
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.steppe-payment-box h4 {
+    margin: 0.35rem 0 0.5rem;
+}
+
+.steppe-payment-amount {
+    font-size: 0.92rem;
+    color: #e2e8f0;
+}
+
+.steppe-payment-actions {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.steppe-payment-link {
+    border: 1px solid var(--steppe-border);
+    border-radius: 10px;
+    padding: 0.62rem 0.85rem;
+    color: #e2e8f0 !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.steppe-payment-link-primary {
+    background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
+    color: #020617 !important;
+    border-color: transparent;
+}
+
 @media (max-width: 900px) {
     .content-steppe {
         margin: 0 -1.5rem;
@@ -647,9 +826,15 @@
     .steppe-section {
         padding: 1.8rem 1.4rem;
     }
+    .steppe-market-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
+    .steppe-market-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
     .steppe-grid-3 {
         grid-template-columns: minmax(0, 1fr);
     }
