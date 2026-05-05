@@ -79,6 +79,86 @@
     color: #cbd5f5;
 }
 
+.steppe-live-impact {
+    overflow: hidden;
+}
+
+.steppe-live-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.steppe-live-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.72rem;
+    color: #93c5fd;
+}
+
+.steppe-live-sub {
+    font-size: 0.85rem;
+    color: #cbd5f5;
+}
+
+.steppe-live-grid {
+    margin-bottom: 1rem;
+}
+
+.steppe-live-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 14px;
+    padding: 0.95rem;
+    background: rgba(15,23,42,0.85);
+}
+
+.steppe-live-label {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #94a3b8;
+}
+
+.steppe-live-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+    color: #f8fafc;
+}
+
+.steppe-live-progress {
+    margin-top: 0.8rem;
+    border: 1px solid var(--steppe-border);
+    border-radius: 999px;
+    position: relative;
+    background: rgba(15,23,42,0.8);
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.steppe-live-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--steppe-blue), var(--steppe-yellow));
+    transition: width 1s ease;
+}
+
+.steppe-live-progress-text {
+    position: relative;
+    z-index: 2;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #020617;
+    padding: 0 0.85rem;
+}
+
 .steppe-grid-2 {
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
@@ -104,6 +184,24 @@
     display: block;
     object-fit: cover;
     max-height: 340px;
+}
+
+.steppe-crisis-main {
+    position: relative;
+}
+
+.steppe-crisis-tag {
+    position: absolute;
+    left: 0.7rem;
+    bottom: 0.7rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(2,6,23,0.82);
+    border: 1px solid rgba(148,163,184,0.45);
+    color: #e2e8f0;
 }
 
 .steppe-crisis-thumbs {
@@ -363,6 +461,119 @@
     opacity: 1;
 }
 
+.steppe-calculator {
+    position: relative;
+}
+
+.steppe-calc-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+    gap: 1.15rem;
+}
+
+.steppe-calc-input-wrap {
+    border: 1px solid var(--steppe-border);
+    border-radius: 14px;
+    padding: 1rem;
+    background: rgba(15,23,42,0.85);
+}
+
+.steppe-calc-input-wrap label {
+    display: block;
+    font-size: 0.84rem;
+    color: #cbd5f5;
+    margin-bottom: 0.5rem;
+}
+
+.steppe-calc-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.steppe-calc-currency {
+    border: 1px solid var(--steppe-border);
+    border-radius: 10px;
+    padding: 0.62rem 0.72rem;
+    background: rgba(2,6,23,0.85);
+    color: #e2e8f0;
+    font-weight: 700;
+}
+
+.steppe-calc-input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--steppe-border);
+    border-radius: 10px;
+    background: rgba(2,6,23,0.9);
+    color: #f8fafc;
+    padding: 0.62rem 0.72rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.steppe-calc-btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.62rem 0.95rem;
+    background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
+    color: #020617;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.steppe-calc-hint {
+    margin-top: 0.65rem;
+    font-size: 0.76rem;
+    color: #94a3b8;
+}
+
+.steppe-calc-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.steppe-calc-card {
+    border: 1px solid var(--steppe-border);
+    border-radius: 12px;
+    padding: 0.85rem;
+    background: rgba(15,23,42,0.88);
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.steppe-calc-card-title {
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+}
+
+.steppe-calc-card-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+    color: #f8fafc;
+}
+
+.steppe-calc-card-link {
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: #93c5fd;
+}
+
+.steppe-calc-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(148,163,184,0.75);
+    box-shadow: 0 12px 22px rgba(2,6,23,0.45);
+}
+
 .steppe-footer-panel {
     text-align: left;
 }
@@ -421,6 +632,10 @@
     transform: translateY(0);
 }
 
+.steppe-mobile-donate {
+    display: none;
+}
+
 @media (max-width: 900px) {
     .content-steppe {
         margin: 0 -1.5rem;
@@ -441,9 +656,62 @@
     .steppe-grid-4 {
         grid-template-columns: minmax(0, 1fr);
     }
+    .steppe-calc-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .steppe-calc-results {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .steppe-calc-input-row {
+        flex-wrap: wrap;
+    }
+    .steppe-calc-currency {
+        display: none;
+    }
+    .steppe-calc-btn {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .steppe-live-value {
+        font-size: 1.45rem;
+    }
     .steppe-section-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .steppe-crisis-thumbs {
+        flex-direction: column;
+    }
+    .steppe-thumb {
+        border-radius: 14px;
+    }
+    .steppe-tier-card {
+        padding: 1.1rem 1rem;
+    }
+    .steppe-mobile-donate {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        bottom: 12px;
+        z-index: 9998;
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--steppe-blue), var(--steppe-yellow));
+        color: #020617 !important;
+        font-weight: 800;
+        font-size: 0.9rem;
+        box-shadow: 0 12px 30px rgba(2,6,23,0.55);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    #floating-donate {
+        display: none !important;
+    }
+    .content-steppe {
+        padding-bottom: 5.3rem;
     }
 }
 

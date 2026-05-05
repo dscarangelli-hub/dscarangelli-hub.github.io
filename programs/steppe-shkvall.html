@@ -26,12 +26,43 @@ description: A 6‑month WSUA initiative deploying silent, solid‑state hybrid 
         </p>
     </section>
 
+    <!-- LIVE IMPACT STRIP -->
+    <section class="content-section steppe-section steppe-live-impact fade-in">
+        <div class="steppe-live-head">
+            <p class="steppe-live-kicker">Field deployment dashboard</p>
+            <p class="steppe-live-sub">Projected 6-month mission outcomes for rural Mykolaiv</p>
+        </div>
+        <div class="steppe-grid-4 steppe-live-grid">
+            <article class="steppe-live-card">
+                <p class="steppe-live-label">Villages stabilized</p>
+                <p class="steppe-live-value" data-counter="9">0</p>
+            </article>
+            <article class="steppe-live-card">
+                <p class="steppe-live-label">Water-well uptime target</p>
+                <p class="steppe-live-value"><span data-counter="24">0</span>/7</p>
+            </article>
+            <article class="steppe-live-card">
+                <p class="steppe-live-label">Comms hub availability</p>
+                <p class="steppe-live-value"><span data-counter="97">0</span>%</p>
+            </article>
+            <article class="steppe-live-card">
+                <p class="steppe-live-label">Diesel dependency reduction</p>
+                <p class="steppe-live-value"><span data-counter="68">0</span>%</p>
+            </article>
+        </div>
+        <div class="steppe-live-progress" aria-label="Campaign funding progress">
+            <div class="steppe-live-progress-fill" data-progress="62"></div>
+            <p class="steppe-live-progress-text">62% of first village cluster package funded</p>
+        </div>
+    </section>
+
     <!-- CRISIS BLOCK -->
     <section class="content-section steppe-section steppe-crisis fade-in">
         <div class="steppe-grid-2">
             <div class="steppe-crisis-media">
                 <div class="steppe-crisis-main">
                     <img src="/assets/images/1000013854.png" alt="Burning and damaged energy infrastructure in Mykolaiv oblast.">
+                    <div class="steppe-crisis-tag" id="steppeCrisisTag">Targeted grid strikes</div>
                 </div>
                 <div class="steppe-crisis-thumbs">
                     <button class="steppe-thumb active" type="button" data-target="infrastructure">
@@ -189,29 +220,87 @@ description: A 6‑month WSUA initiative deploying silent, solid‑state hybrid 
         </div>
 
         <div class="steppe-grid-4 steppe-tier-grid">
-            <button type="button" class="steppe-tier-card">
+            <button type="button" class="steppe-tier-card" data-amount="50">
                 <h4>$50 – The Steppe Warrior</h4>
                 <p>Funds a rugged hybrid charge controller, converting chaotic rural grids and wild steppe wind into stable DC power.</p>
                 <span class="steppe-tier-cta">Tap to pledge component</span>
             </button>
 
-            <button type="button" class="steppe-tier-card">
+            <button type="button" class="steppe-tier-card" data-amount="250">
                 <h4>$250 – The Solar Cossack</h4>
                 <p>Deploys a 400&nbsp;W monocrystalline panel, adding quiet peak‑sun power to keep pumps and routers online.</p>
                 <span class="steppe-tier-cta">Tap to pledge component</span>
             </button>
 
-            <button type="button" class="steppe-tier-card">
+            <button type="button" class="steppe-tier-card" data-amount="1000">
                 <h4>$1,000 – The Energy Hetman</h4>
                 <p>Builds a 5&nbsp;kWh LiFePO<sub>4</sub> battery bank—deep‑cycle storage that rides through long blackouts.</p>
                 <span class="steppe-tier-cta">Tap to pledge component</span>
             </button>
 
-            <button type="button" class="steppe-tier-card">
+            <button type="button" class="steppe-tier-card" data-amount="4500">
                 <h4>$4,500 – The Stribog</h4>
                 <p>Sponsors an entire 5&nbsp;kW motionless wind unit, turning the steppe wind itself into a village‑scale lifeline.</p>
                 <span class="steppe-tier-cta">Tap to pledge component</span>
             </button>
+        </div>
+    </section>
+
+    <!-- IMPACT CALCULATOR -->
+    <section class="content-section steppe-section steppe-calculator fade-in">
+        <div class="steppe-section-header">
+            <div>
+                <h3>Impact Calculator</h3>
+                <p>
+                    Estimate how your contribution translates into real field hardware. Enter any amount,
+                    then see equivalent mission components for the first village cluster.
+                </p>
+            </div>
+        </div>
+
+        <div class="steppe-calc-grid">
+            <div class="steppe-calc-input-wrap">
+                <label for="steppeDonationAmount">Your donation amount (USD)</label>
+                <div class="steppe-calc-input-row">
+                    <span class="steppe-calc-currency">$</span>
+                    <input
+                        id="steppeDonationAmount"
+                        class="steppe-calc-input"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value="250"
+                        inputmode="numeric"
+                    >
+                    <button type="button" class="steppe-calc-btn" id="steppeCalcButton">Calculate</button>
+                </div>
+                <p class="steppe-calc-hint">
+                    Includes projected 20% purchasing advantage from 0% VAT / duty-free status.
+                </p>
+            </div>
+
+            <div class="steppe-calc-results">
+                <article class="steppe-calc-card" data-calc-tier="controller">
+                    <p class="steppe-calc-card-title">Hybrid Charge Controllers</p>
+                    <p class="steppe-calc-card-value"><span data-calc-output="controller">0</span> units</p>
+                    <p class="steppe-calc-card-link">Fund this component →</p>
+                </article>
+                <article class="steppe-calc-card" data-calc-tier="panel">
+                    <p class="steppe-calc-card-title">400W Solar Panels</p>
+                    <p class="steppe-calc-card-value"><span data-calc-output="panel">0</span> units</p>
+                    <p class="steppe-calc-card-link">Fund this component →</p>
+                </article>
+                <article class="steppe-calc-card" data-calc-tier="battery">
+                    <p class="steppe-calc-card-title">5kWh LiFePO<sub>4</sub> Packs</p>
+                    <p class="steppe-calc-card-value"><span data-calc-output="battery">0</span> packs</p>
+                    <p class="steppe-calc-card-link">Fund this component →</p>
+                </article>
+                <article class="steppe-calc-card" data-calc-tier="wind">
+                    <p class="steppe-calc-card-title">5kW Motionless Wind Units</p>
+                    <p class="steppe-calc-card-value"><span data-calc-output="wind">0</span> units</p>
+                    <p class="steppe-calc-card-link">Fund this component →</p>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -237,25 +326,165 @@ description: A 6‑month WSUA initiative deploying silent, solid‑state hybrid 
 
 </main>
 
+<a href="/donate.html" class="steppe-mobile-donate" aria-label="Donate to VFU">
+    Donate to VFU
+</a>
+
 <script>
-// Simple crisis gallery toggle (no framework)
+// Enhanced interactions (mobile-first, lightweight, no framework)
 document.addEventListener('DOMContentLoaded', function () {
   const mainImage = document.querySelector('.steppe-crisis-main img');
+  const crisisTag = document.getElementById('steppeCrisisTag');
   const thumbs = document.querySelectorAll('.steppe-thumb');
-  if (!mainImage || !thumbs.length) return;
+  const crisisConfig = {
+    infrastructure: {
+      src: '/assets/images/1000013854.png',
+      label: 'Targeted grid strikes'
+    },
+    housing: {
+      src: '/assets/images/1000013860.png',
+      label: 'Destroyed civilian housing'
+    }
+  };
 
-  thumbs.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      thumbs.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      const target = btn.getAttribute('data-target');
-      if (target === 'housing') {
-        mainImage.src = '/assets/images/1000013860.png';
-      } else {
-        mainImage.src = '/assets/images/1000013854.png';
-      }
+  let autoRotate;
+  let index = 0;
+
+  function renderCrisis(target) {
+    const data = crisisConfig[target] || crisisConfig.infrastructure;
+    if (mainImage) mainImage.src = data.src;
+    if (crisisTag) crisisTag.textContent = data.label;
+    thumbs.forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-target') === target);
+    });
+    index = target === 'housing' ? 1 : 0;
+  }
+
+  function startAutoRotate() {
+    if (!thumbs.length) return;
+    clearInterval(autoRotate);
+    autoRotate = setInterval(function () {
+      index = (index + 1) % thumbs.length;
+      const target = thumbs[index].getAttribute('data-target');
+      if (target) renderCrisis(target);
+    }, 4500);
+  }
+
+  if (mainImage && thumbs.length) {
+    thumbs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const target = btn.getAttribute('data-target');
+        if (target) renderCrisis(target);
+        startAutoRotate();
+      });
+      btn.addEventListener('mouseenter', function () {
+        clearInterval(autoRotate);
+      });
+      btn.addEventListener('mouseleave', function () {
+        startAutoRotate();
+      });
+    });
+
+    renderCrisis('infrastructure');
+    startAutoRotate();
+  }
+
+  // Animated counters and progress bars
+  const counters = document.querySelectorAll('[data-counter]');
+  const progressBars = document.querySelectorAll('[data-progress]');
+  const animateCounters = function () {
+    counters.forEach(function (el) {
+      const target = Number(el.getAttribute('data-counter') || 0);
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 36));
+      const timer = setInterval(function () {
+        current += step;
+        if (current >= target) {
+          el.textContent = String(target);
+          clearInterval(timer);
+        } else {
+          el.textContent = String(current);
+        }
+      }, 24);
+    });
+
+    progressBars.forEach(function (bar) {
+      const target = Number(bar.getAttribute('data-progress') || 0);
+      bar.style.width = Math.max(0, Math.min(100, target)) + '%';
+    });
+  };
+
+  const liveStrip = document.querySelector('.steppe-live-impact');
+  if ('IntersectionObserver' in window && liveStrip) {
+    const counterObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounters();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    counterObserver.observe(liveStrip);
+  } else {
+    animateCounters();
+  }
+
+  // Tier cards route to donation page with amount query
+  const tierCards = document.querySelectorAll('.steppe-tier-card[data-amount]');
+  tierCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const amount = card.getAttribute('data-amount');
+      const url = amount ? '/donate.html?amount=' + encodeURIComponent(amount) : '/donate.html';
+      window.location.href = url;
     });
   });
+
+  // Impact calculator
+  const amountInput = document.getElementById('steppeDonationAmount');
+  const calcButton = document.getElementById('steppeCalcButton');
+  const outputController = document.querySelector('[data-calc-output="controller"]');
+  const outputPanel = document.querySelector('[data-calc-output="panel"]');
+  const outputBattery = document.querySelector('[data-calc-output="battery"]');
+  const outputWind = document.querySelector('[data-calc-output="wind"]');
+  const calcCards = document.querySelectorAll('.steppe-calc-card[data-calc-tier]');
+
+  function formatCount(value) {
+    if (value >= 10) return String(Math.round(value));
+    return value.toFixed(1);
+  }
+
+  function runCalculator() {
+    if (!amountInput) return;
+    const baseAmount = Number(amountInput.value || 0);
+    const safeAmount = Math.max(0, baseAmount);
+    const boosted = safeAmount * 1.2;
+
+    const controllerUnits = boosted / 50;
+    const panelUnits = boosted / 250;
+    const batteryUnits = boosted / 1000;
+    const windUnits = boosted / 4500;
+
+    if (outputController) outputController.textContent = formatCount(controllerUnits);
+    if (outputPanel) outputPanel.textContent = formatCount(panelUnits);
+    if (outputBattery) outputBattery.textContent = formatCount(batteryUnits);
+    if (outputWind) outputWind.textContent = formatCount(windUnits);
+  }
+
+  if (calcButton) {
+    calcButton.addEventListener('click', runCalculator);
+  }
+  if (amountInput) {
+    amountInput.addEventListener('input', runCalculator);
+  }
+  calcCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const tier = card.getAttribute('data-calc-tier') || '';
+      const amount = Math.max(1, Number((amountInput && amountInput.value) || 0) || 0);
+      const url = '/donate.html?amount=' + encodeURIComponent(String(amount)) + '&tier=' + encodeURIComponent(tier);
+      window.location.href = url;
+    });
+  });
+  runCalculator();
 
   // Simple scroll reveal for technical cards
   const reveals = document.querySelectorAll('.steppe-reveal');
@@ -272,6 +501,18 @@ document.addEventListener('DOMContentLoaded', function () {
     reveals.forEach(function (el) { observer.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Soft parallax background on capable devices
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && window.innerWidth > 900) {
+    window.addEventListener('scroll', function () {
+      const y = Math.min(36, window.scrollY * 0.04);
+      const content = document.querySelector('.content-steppe');
+      if (content) {
+        content.style.backgroundPosition = 'center ' + y + 'px';
+      }
+    }, { passive: true });
   }
 });
 </script>
